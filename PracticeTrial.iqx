@@ -1,5 +1,6 @@
 ﻿<include>
 file = "MainStructure.iqx"
+file = "PictureAndText.iqx"
 </include>
 
 <text StartPractice>
@@ -101,35 +102,50 @@ If you are ready, please press SPACE button to start the experiment.")
 	
 	if(counter.PracticeCounter.selectedvalue == 1 ||counter.PracticeCounter.selectedvalue == 2||counter.PracticeCounter.selectedvalue == 3){
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
+
+		trial.PresentCircles_practice.insertstimulusframe(shape.F1_response_black,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F2_response_black,1);
+		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
 		
+
+						
 		if(counter.PracticeCounter.selectedvalue == 1){
 			shape.F1.color = values.color1;
 			shape.F2.color = values.color9;
 			shape.P1.color = values.color3;
 			shape.P2.color = values.color7;
+						
 		}else if(counter.PracticeCounter.selectedvalue == 2){
 			shape.F1.color = values.color2;
 			shape.F2.color = values.color8;
 			shape.P1.color = values.color1;
 			shape.P2.color = values.color9;
+			
 		}else if(counter.PracticeCounter.selectedvalue == 3){
 			shape.F1.color = values.color3;
 			shape.F2.color = values.color7;
 			shape.P1.color = values.color2;
 			shape.P2.color = values.color8;
+			
 		}
 	}else if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
+		
+		trial.PresentCircles_practice.insertstimulusframe(shape.F1_response_black,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1_response_black,1);
+		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		
+		
 		
 		if(counter.PracticeCounter.selectedvalue == 4){
 			shape.F1.color = values.color4;
@@ -149,11 +165,17 @@ If you are ready, please press SPACE button to start the experiment.")
 		}
 	}else{
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
+		
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1_response_black,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P2_response_black,1);
+		
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+		
+
 		
 		if(counter.PracticeCounter.selectedvalue == 7){
 			shape.P1.color = values.color7;
@@ -175,47 +197,15 @@ If you are ready, please press SPACE button to start the experiment.")
 ]
 / stimulusframes = []
 / timeout = values.patch_timeout
-/ recorddata = false
 / ontrialend = [
 	trial.PresentCircles_practice.clearstimulusframes();
 ]
-/ branch = [if(item.PositionComination.item(counter.order.selectedvalue) == "FF"){
-		trial.highlight_patches_FF_practice
-	} else if(item.PositionComination.item(counter.order.selectedvalue) == "FP"){
-		trial.highlight_patches_FP_practice
-	} else if(item.PositionComination.item(counter.order.selectedvalue) == "PP"){
-		trial.highlight_patches_PP_practice
-	}
-]
+/ recorddata = false
+
+/ branch = [trial.peripheral_response_practice]
 </trial>
 
 * NB: the 'timeout' variable above is what controls the SOA. Note you have to set the practice trial one separately
-
-
-** indicate which patches we want them to give a response to
-<trial highlight_patches_FF_practice>
-/ timeout = values.highlight_timeout
-/ stimulusframes = [1 = cross,F1_response_black,F1_response_grey,F2_response_black,F2_response_grey]
-/ recorddata = false
-/ ontrialend = [trial.PresentCircles.clearstimulusframes();]
-/branch = [trial.peripheral_response_practice]
-</trial>
-
-<trial highlight_patches_FP_practice>
-/ timeout = values.highlight_timeout
-/ stimulusframes = [1 = cross,F1_response_black,F1_response_grey,P1_response_black,P1_response_grey]
-/ recorddata = false
-/ ontrialend = [trial.PresentCircles.clearstimulusframes();]
-/branch = [trial.peripheral_response_practice]
-</trial>
-
-<trial highlight_patches_PP_practice>
-/ timeout = values.highlight_timeout
-/ stimulusframes = [1 = cross,P1_response_black,P1_response_grey,P2_response_black,P2_response_grey]
-/ recorddata = false
-/ ontrialend = [trial.PresentCircles.clearstimulusframes();]
-/branch = [trial.peripheral_response_practice]
-</trial>
 
 <trial peripheral_response_practice>
 / stimulusframes = [
