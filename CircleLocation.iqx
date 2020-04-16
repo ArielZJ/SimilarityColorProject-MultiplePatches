@@ -1,0 +1,53 @@
+﻿** r_F sets the radius of the inner circle to 2% of screen size, thus 4% circumference
+** r_P determines the scaling size of the peripheral stimulus relative to the central stimulus
+	this is currently set to 3x the r_F, thus 6% radius or 12% circumference
+** radius_F and radius_P set how far away the stimuli are from the fixation cross. Currently set to 8% and 50-8=42% of screen
+<values>
+/x = 1px * display.getpixelsx(50,1)
+/y = 1px * display.getpixelsy(50,1)
+/r_F = 1px * display.getpixelsx(2,1)
+/R_P = 3 * values.r_F
+/radius_F = 1px * display.getpixelsy(8,1)
+/radius_P = 1px * display.getpixelsy(50,1) - values.R_P
+/angle_min_F = deg(acos(1 - 2 * pow(values.r_F,2)/pow(values.radius_F,2)))
+/angle_min_P = deg(acos(1 - 2 * pow(values.R_P,2)/pow(values.radius_P,2)))
+/angle_1 = 0
+/angle_2 = 0
+/angle_3 = 0
+/angle_4 = 0
+</values>
+
+<counter F2_position>
+/ select = replace
+/ items = (1,-1)
+</counter>
+
+<counter P2_position>
+/ select = replace
+/ items = (1,-1)
+</counter>
+
+<expressions>
+/ theta_1 = (values.angle_1)*(m_pi/180)
+/ theta_2 = (values.angle_2)*(m_pi/180)
+/ theta_3 = (values.angle_3)*(m_pi/180)
+/ theta_4 = (values.angle_4)*(m_pi/180)
+
+/ deltax_1 = values.radius_F*cos(expressions.theta_1)
+/ deltay_1 = values.radius_F*sin(expressions.theta_1)
+/ deltax_2 = values.radius_F*cos(expressions.theta_2)
+/ deltay_2 = values.radius_F*sin(expressions.theta_2)
+/ deltax_3 = values.radius_P*cos(expressions.theta_3)
+/ deltay_3 = values.radius_P*sin(expressions.theta_3)
+/ deltax_4 = values.radius_P*cos(expressions.theta_4)
+/ deltay_4 = values.radius_P*sin(expressions.theta_4)
+
+/ a_1 = values.x + expressions.deltax_1
+/ b_1 = values.y + expressions.deltay_1
+/ a_2 = values.x + expressions.deltax_2
+/ b_2 = values.y + expressions.deltay_2
+/ a_3 = values.x + expressions.deltax_3
+/ b_3 = values.y + expressions.deltay_3
+/ a_4 = values.x + expressions.deltax_4
+/ b_4 = values.y + expressions.deltay_4
+</expressions>

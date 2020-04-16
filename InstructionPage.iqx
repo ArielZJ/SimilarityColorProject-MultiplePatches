@@ -1,0 +1,387 @@
+﻿<page start>
+^Welcome to the experiment !
+^^This will take about 20 minutes
+</page>
+
+<page end>
+^^Thank you for your participation !
+</page>
+
+<instruct>
+/ nextkey = (57)
+/ fontstyle = ("Arial", 10%, true)
+/ screencolor = (127,127,127)
+/ txcolor = yellow
+</instruct>
+
+<text quit_notice>
+/ items = ("Press Ctrl + Q to quit the experiment")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txcolor = yellow
+/ txbgcolor = (127,127,127)
+/ position = (80,90)
+</text>
+
+********************************************************************
+********************************************************************
+
+Next Button: Space Button
+<text Next_button>
+/ items = ("Press SPACE BUTTON to continue")
+/ position = (80%,85%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+********************************************************************
+********************************************************************
+
+********************************************************************
+********************************************************************
+Operation Instruction Page 1:
+<text Instruction_Page_1>
+/ items = ("Throughout the experiment, focus on the cross at the centre
+of the screen.
+2 circles will flash out quickly somewhere on the screen")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<video Instruction_Page_1_gif>
+/ items = ("InstructionPage1.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+<text Instruction_Page_2>
+/ items = ("On this page, please decide the dissimilarity level of the colour of the 2 circles flashed previously. 
+Ignore any size differences.
+
+0 => most similar colour (least dissimilar colour)
+7 => most dissimilar colour (least similar colour)
+
+After choosing, move your cursor back to the centre and click the green box to continue")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+
+<video Instruction_Page_2_gif>
+/ items = ("InstructionPage2.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+
+<text Instruction_Page_3>
+/ items = ("During the test, you will see these 9 colors below")
+/ hposition = 50%
+/ vposition = 20%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<shape circle_1_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (35%,35%)
+</shape>
+<shape circle_2_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (50%,35%)
+</shape>
+<shape circle_3_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (65%,35%)
+</shape>
+<shape circle_4_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (35%,50%)
+</shape>
+<shape circle_5_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (50%,50%)
+</shape>
+<shape circle_6_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (65%,50%)
+</shape>
+<shape circle_7_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (35%,65%)
+</shape>
+<shape circle_8_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (50%,65%)
+</shape>
+<shape circle_9_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (65%,65%)
+</shape>
+
+<counter instruction_3_position>
+/ select = noreplace(1-9)
+/ selectionrate = always
+</counter>
+
+<counter instruction_3_color>
+/ select = noreplace(1-9)
+/ selectionrate = always
+</counter>
+
+<values>
+/color_position_1 = 0
+/color_position_2 = 0
+/color_position_3 = 0
+/color_position_4 = 0
+/color_position_5 = 0
+/color_position_6 = 0
+/color_position_7 = 0
+/color_position_8 = 0
+/color_position_9 = 0
+</values>
+
+
+
+
+<trial Instruction_1>
+/ stimulusframes = [1 = Instruction_Page_1,Instruction_Page_1_gif,Next_button,quit_notice]
+/ validresponse = (57)
+/ branch = [
+	trial.Instruction_2
+]
+</trial>
+<trial Instruction_2>
+/ stimulusframes = [1 = Instruction_Page_2,Instruction_Page_2_gif,Next_button,quit_notice]
+/ validresponse = (57)
+/ branch = [
+	trial.Instruction_3
+]
+</trial>
+<trial Instruction_3>
+/ ontrialbegin = [
+	values.color_position_1 = counter.instruction_3_color.selectedvalue;
+	values.color_position_2 = counter.instruction_3_color.selectedvalue;
+	values.color_position_3 = counter.instruction_3_color.selectedvalue;
+	values.color_position_4 = counter.instruction_3_color.selectedvalue;
+	values.color_position_5 = counter.instruction_3_color.selectedvalue;
+	values.color_position_6 = counter.instruction_3_color.selectedvalue;
+	values.color_position_7 = counter.instruction_3_color.selectedvalue;
+	values.color_position_8 = counter.instruction_3_color.selectedvalue;
+	values.color_position_9 = counter.instruction_3_color.selectedvalue;
+	if(values.color_position_1 == 1){
+		shape.circle_1_instruction.color = values.color1;
+	}else if(values.color_position_1 == 2){
+		shape.circle_1_instruction.color = values.color2;
+	}else if(values.color_position_1 == 3){
+		shape.circle_1_instruction.color = values.color3;
+	}else if(values.color_position_1 == 4){
+		shape.circle_1_instruction.color = values.color4;
+	}else if(values.color_position_1 == 5){
+		shape.circle_1_instruction.color = values.color5;
+	}else if(values.color_position_1 == 6){
+		shape.circle_1_instruction.color = values.color6;
+	}else if(values.color_position_1 == 7){
+		shape.circle_1_instruction.color = values.color7;
+	}else if(values.color_position_1 == 8){
+		shape.circle_1_instruction.color = values.color8;
+	}else if(values.color_position_1 == 9){
+		shape.circle_1_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_2 == 1){
+		shape.circle_2_instruction.color = values.color1;
+	}else if(values.color_position_2 == 2){
+		shape.circle_2_instruction.color = values.color2;
+	}else if(values.color_position_2 == 3){
+		shape.circle_2_instruction.color = values.color3;
+	}else if(values.color_position_2 == 4){
+		shape.circle_2_instruction.color = values.color4;
+	}else if(values.color_position_2 == 5){
+		shape.circle_2_instruction.color = values.color5;
+	}else if(values.color_position_2 == 6){
+		shape.circle_2_instruction.color = values.color6;
+	}else if(values.color_position_2 == 7){
+		shape.circle_2_instruction.color = values.color7;
+	}else if(values.color_position_2 == 8){
+		shape.circle_2_instruction.color = values.color8;
+	}else if(values.color_position_2 == 9){
+		shape.circle_2_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_3 == 1){
+		shape.circle_3_instruction.color = values.color1;
+	}else if(values.color_position_3 == 2){
+		shape.circle_3_instruction.color = values.color2;
+	}else if(values.color_position_3 == 3){
+		shape.circle_3_instruction.color = values.color3;
+	}else if(values.color_position_3 == 4){
+		shape.circle_3_instruction.color = values.color4;
+	}else if(values.color_position_3 == 5){
+		shape.circle_3_instruction.color = values.color5;
+	}else if(values.color_position_3 == 6){
+		shape.circle_3_instruction.color = values.color6;
+	}else if(values.color_position_3 == 7){
+		shape.circle_3_instruction.color = values.color7;
+	}else if(values.color_position_3 == 8){
+		shape.circle_3_instruction.color = values.color8;
+	}else if(values.color_position_3 == 9){
+		shape.circle_3_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_4 == 1){
+		shape.circle_4_instruction.color = values.color1;
+	}else if(values.color_position_4 == 2){
+		shape.circle_4_instruction.color = values.color2;
+	}else if(values.color_position_4 == 3){
+		shape.circle_4_instruction.color = values.color3;
+	}else if(values.color_position_4 == 4){
+		shape.circle_4_instruction.color = values.color4;
+	}else if(values.color_position_4 == 5){
+		shape.circle_4_instruction.color = values.color5;
+	}else if(values.color_position_4 == 6){
+		shape.circle_4_instruction.color = values.color6;
+	}else if(values.color_position_4 == 7){
+		shape.circle_4_instruction.color = values.color7;
+	}else if(values.color_position_4 == 8){
+		shape.circle_4_instruction.color = values.color8;
+	}else if(values.color_position_4 == 9){
+		shape.circle_4_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_5 == 1){
+		shape.circle_5_instruction.color = values.color1;
+	}else if(values.color_position_5 == 2){
+		shape.circle_5_instruction.color = values.color2;
+	}else if(values.color_position_5 == 3){
+		shape.circle_5_instruction.color = values.color3;
+	}else if(values.color_position_5 == 4){
+		shape.circle_5_instruction.color = values.color4;
+	}else if(values.color_position_5 == 5){
+		shape.circle_5_instruction.color = values.color5;
+	}else if(values.color_position_5 == 6){
+		shape.circle_5_instruction.color = values.color6;
+	}else if(values.color_position_5 == 7){
+		shape.circle_5_instruction.color = values.color7;
+	}else if(values.color_position_5 == 8){
+		shape.circle_5_instruction.color = values.color8;
+	}else if(values.color_position_5 == 9){
+		shape.circle_5_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_6 == 1){
+		shape.circle_6_instruction.color = values.color1;
+	}else if(values.color_position_6 == 2){
+		shape.circle_6_instruction.color = values.color2;
+	}else if(values.color_position_6 == 3){
+		shape.circle_6_instruction.color = values.color3;
+	}else if(values.color_position_6 == 4){
+		shape.circle_6_instruction.color = values.color4;
+	}else if(values.color_position_6 == 5){
+		shape.circle_6_instruction.color = values.color5;
+	}else if(values.color_position_6 == 6){
+		shape.circle_6_instruction.color = values.color6;
+	}else if(values.color_position_6 == 7){
+		shape.circle_6_instruction.color = values.color7;
+	}else if(values.color_position_6 == 8){
+		shape.circle_6_instruction.color = values.color8;
+	}else if(values.color_position_6 == 9){
+		shape.circle_6_instruction.color = values.color9;
+	}
+	
+	
+	if(values.color_position_7 == 1){
+		shape.circle_7_instruction.color = values.color1;
+	}else if(values.color_position_7 == 2){
+		shape.circle_7_instruction.color = values.color2;
+	}else if(values.color_position_7 == 3){
+		shape.circle_7_instruction.color = values.color3;
+	}else if(values.color_position_7 == 4){
+		shape.circle_7_instruction.color = values.color4;
+	}else if(values.color_position_7 == 5){
+		shape.circle_7_instruction.color = values.color5;
+	}else if(values.color_position_7 == 6){
+		shape.circle_7_instruction.color = values.color6;
+	}else if(values.color_position_7 == 7){
+		shape.circle_7_instruction.color = values.color7;
+	}else if(values.color_position_7 == 8){
+		shape.circle_7_instruction.color = values.color8;
+	}else if(values.color_position_7 == 9){
+		shape.circle_7_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_8 == 1){
+		shape.circle_8_instruction.color = values.color1;
+	}else if(values.color_position_8 == 2){
+		shape.circle_8_instruction.color = values.color2;
+	}else if(values.color_position_8 == 3){
+		shape.circle_8_instruction.color = values.color3;
+	}else if(values.color_position_8 == 4){
+		shape.circle_8_instruction.color = values.color4;
+	}else if(values.color_position_8 == 5){
+		shape.circle_8_instruction.color = values.color5;
+	}else if(values.color_position_8 == 6){
+		shape.circle_8_instruction.color = values.color6;
+	}else if(values.color_position_8 == 7){
+		shape.circle_8_instruction.color = values.color7;
+	}else if(values.color_position_8 == 8){
+		shape.circle_8_instruction.color = values.color8;
+	}else if(values.color_position_8 == 9){
+		shape.circle_8_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_9 == 1){
+		shape.circle_9_instruction.color = values.color1;
+	}else if(values.color_position_9 == 2){
+		shape.circle_9_instruction.color = values.color2;
+	}else if(values.color_position_9 == 3){
+		shape.circle_9_instruction.color = values.color3;
+	}else if(values.color_position_9 == 4){
+		shape.circle_9_instruction.color = values.color4;
+	}else if(values.color_position_9 == 5){
+		shape.circle_9_instruction.color = values.color5;
+	}else if(values.color_position_9 == 6){
+		shape.circle_9_instruction.color = values.color6;
+	}else if(values.color_position_9 == 7){
+		shape.circle_9_instruction.color = values.color7;
+	}else if(values.color_position_9 == 8){
+		shape.circle_9_instruction.color = values.color8;
+	}else if(values.color_position_9 == 9){
+		shape.circle_9_instruction.color = values.color9;
+	}
+	
+]
+/ stimulusframes = [1 = Instruction_Page_3,circle_1_instruction,circle_2_instruction,circle_3_instruction,
+circle_4_instruction,circle_5_instruction,circle_6_instruction,circle_7_instruction,circle_8_instruction,circle_9_instruction,quit_notice]
+/ validresponse = (57)
+/ branch = [
+	trial.start_prac
+]
+</trial>
+
+<trial start_prac>
+/ stimulusframes = [1 = StartPractice,Next_button]
+/ validresponse = (57)
+</trial>
+********************************************************************
+********************************************************************

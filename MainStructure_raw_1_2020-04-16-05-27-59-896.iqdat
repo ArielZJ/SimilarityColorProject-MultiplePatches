@@ -1,0 +1,13 @@
+subject	values.trial_number	values.Cross_position	values.Circle_1	values.Position_1	values.Color_1	values.Circle_2	values.Position_2	values.Color_2	values.p_confidence	values.response_time	checkboxes.acuityq.response	checkboxes.colourq.response	checkboxes.stategy.response	textbox.colour_response.response	textbox.strategy_text.response
+1	0	0	0	0	0	0	0	0	0	0					
+1	0	0	0	0	0	0	0	0	0	0					
+1	0	0	0	0	0	0	0	0	0	0					
+1	0	0	0	0	0	0	0	0	0	0					
+1	0	0	0	0	0	0	0	0	0	0					
+1	0	0	0	0	0	0	0	0	0	0					
+1	0	0	0	0	0	0	0	0	0	0					
+1	0	0	0	0	0	0	0	0	0	0					
+1	1	0	-1	45.3130595258700452632	2	1	132.7184727677885689445	6	0	621					
+1	2	0	1	-102.1657789783006933249	2	1	94.7317138463511128066	4	0	520					
+1	3	0	-1	-159.333068071709249125	9	-1	50.4689054844299818114	3	1	2804					
+1	4	0	1	-59.0099848338891632693	9	1	-154.3748204570730990781	9	0	600					

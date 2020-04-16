@@ -1,0 +1,256 @@
+﻿<include>
+file = "MainStructure.iqx"
+</include>
+
+<text StartPractice>
+/ items = ("You are going to do a few practice trials to make you be more familar with the experiment.
+When you ready, please press SPACE button to start the practice trial.")
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text EndPractice>
+/ items = ("You have finished the practice trial.
+Next page will be the formal test. 
+If you are ready, please press SPACE button to start the experiment.")
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+
+<text title>
+/ items = ("Practice Trial")
+/ position = (50%,5%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<values>
+/order_practice = 0
+</values>
+
+<trial Fixiation_practice>
+/ stimulusframes = [1 = cross]
+/ timeout = 500
+/ recorddata = false
+/ ontrialend = [
+	values.order_practice += 1;
+]
+/ branch = [
+	trial.PresentCircles_practice
+]
+</trial>
+
+<counter PracticeCounter>
+/ select = noreplace(1-9)
+/ selectionrate = block
+</counter>
+
+<trial PresentCircles_practice>
+/ ontrialbegin = [
+	values.angle_1 = rand(-180,180);
+	values.angle_3 = rand(-180,180);
+	if(values.angle_1 < 0){
+		if(abs(values.angle_1) > 180 - values.angle_min_F){
+			values.angle_2 = rand(values.angle_1 + values.angle_min_F,360 + (values.angle_1 - values.angle_min_F));
+		}else if(abs(values.angle_1) <= 180 - values.angle_min_F){
+			if(counter.F2_position.selectedvalue == -1){
+				values.angle_2 = rand(-180,values.angle_1 - values.angle_min_F);
+			}else{
+				values.angle_2 = rand(values.angle_1 + values.angle_min_F,180);
+			}
+		}
+	}else{
+		if(values.angle_1 > 180 - values.angle_min_F){
+			values.angle_2 = rand(-360 + (values.angle_1 + values.angle_min_F),values.angle_1 - values.angle_min_F);
+		}else if (values.angle_1 <= 180 - values.angle_min_F){
+			if(counter.F2_position.selectedvalue == -1){
+				values.angle_2 = rand(values.angle_1 + values.angle_min_F,180);
+			}else{
+				values.angle_2 = rand(-180,values.angle_1 - values.angle_min_F);
+			}
+		}
+	}
+	
+	if(values.angle_3 < 0){
+		if(abs(values.angle_3) > 180 - values.angle_min_P){
+			values.angle_4 = rand(values.angle_3 + values.angle_min_P,360 + (values.angle_3 - values.angle_min_P));
+		}else if(abs(values.angle_3) <= 180 - values.angle_min_P){
+			if(counter.P2_position.selectedvalue == -1){
+				values.angle_4 = rand(-180,values.angle_3 - values.angle_min_P);
+			}else{
+				values.angle_4 = rand(values.angle_3 + values.angle_min_P,180);
+			}
+		}
+	}else{
+		if(values.angle_3 > 180 - values.angle_min_P){
+			values.angle_4 = rand(-360 + (values.angle_3 + values.angle_min_P),values.angle_3 - values.angle_min_P);
+		}else if(values.angle_3 <= 180 - values.angle_min_P){
+			if(counter.P2_position.selectedvalue == -1){
+				values.angle_4 = rand(values.angle_3 + values.angle_min_P,180);
+			}else{
+				values.angle_4 = rand(-180,values.angle_3 - values.angle_min_P);
+			}
+		}
+	}
+	
+	if(counter.PracticeCounter.selectedvalue == 1 ||counter.PracticeCounter.selectedvalue == 2||counter.PracticeCounter.selectedvalue == 3){
+		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+		
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		
+		if(counter.PracticeCounter.selectedvalue == 1){
+			shape.F1.color = values.color1;
+			shape.F2.color = values.color9;
+			shape.P1.color = values.color3;
+			shape.P2.color = values.color7;
+		}else if(counter.PracticeCounter.selectedvalue == 2){
+			shape.F1.color = values.color2;
+			shape.F2.color = values.color8;
+			shape.P1.color = values.color1;
+			shape.P2.color = values.color9;
+		}else if(counter.PracticeCounter.selectedvalue == 3){
+			shape.F1.color = values.color3;
+			shape.F2.color = values.color7;
+			shape.P1.color = values.color2;
+			shape.P2.color = values.color8;
+		}
+	}else if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
+		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
+		
+		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		
+		if(counter.PracticeCounter.selectedvalue == 4){
+			shape.F1.color = values.color4;
+			shape.P1.color = values.color6;
+			shape.F2.color = values.color5;
+			shape.P2.color = values.color5;
+		}else if(counter.PracticeCounter.selectedvalue == 5){
+			shape.F1.color = values.color5;
+			shape.P1.color = values.color5;
+			shape.F2.color = values.color4;
+			shape.P2.color = values.color6;
+		}else if(counter.PracticeCounter.selectedvalue == 6){
+			shape.F1.color = values.color6;
+			shape.P1.color = values.color4;
+			shape.F2.color = values.color4;
+			shape.P2.color = values.color6;
+		}
+	}else{
+		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		
+		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+		
+		if(counter.PracticeCounter.selectedvalue == 7){
+			shape.P1.color = values.color7;
+			shape.P2.color = values.color3;
+			shape.F1.color = values.color8;
+			shape.F2.color = values.color2;
+		}else if(counter.PracticeCounter.selectedvalue == 8){
+			shape.P1.color = values.color8;
+			shape.P2.color = values.color2;
+			shape.F1.color = values.color9;
+			shape.F2.color = values.color1;
+		}else if(counter.PracticeCounter.selectedvalue == 9){
+			shape.P1.color = values.color9;
+			shape.P2.color = values.color1;
+			shape.F1.color = values.color7;
+			shape.F2.color = values.color3;
+		}
+	}
+]
+/ stimulusframes = []
+/ timeout = values.patch_timeout
+/ recorddata = false
+/ ontrialend = [
+	trial.PresentCircles_practice.clearstimulusframes();
+]
+/ branch = [if(item.PositionComination.item(counter.order.selectedvalue) == "FF"){
+		trial.highlight_patches_FF_practice
+	} else if(item.PositionComination.item(counter.order.selectedvalue) == "FP"){
+		trial.highlight_patches_FP_practice
+	} else if(item.PositionComination.item(counter.order.selectedvalue) == "PP"){
+		trial.highlight_patches_PP_practice
+	}
+]
+</trial>
+
+* NB: the 'timeout' variable above is what controls the SOA. Note you have to set the practice trial one separately
+
+
+** indicate which patches we want them to give a response to
+<trial highlight_patches_FF_practice>
+/ timeout = values.highlight_timeout
+/ stimulusframes = [1 = cross,F1_response_black,F1_response_grey,F2_response_black,F2_response_grey]
+/ recorddata = false
+/ ontrialend = [trial.PresentCircles.clearstimulusframes();]
+/branch = [trial.peripheral_response_practice]
+</trial>
+
+<trial highlight_patches_FP_practice>
+/ timeout = values.highlight_timeout
+/ stimulusframes = [1 = cross,F1_response_black,F1_response_grey,P1_response_black,P1_response_grey]
+/ recorddata = false
+/ ontrialend = [trial.PresentCircles.clearstimulusframes();]
+/branch = [trial.peripheral_response_practice]
+</trial>
+
+<trial highlight_patches_PP_practice>
+/ timeout = values.highlight_timeout
+/ stimulusframes = [1 = cross,P1_response_black,P1_response_grey,P2_response_black,P2_response_grey]
+/ recorddata = false
+/ ontrialend = [trial.PresentCircles.clearstimulusframes();]
+/branch = [trial.peripheral_response_practice]
+</trial>
+
+<trial peripheral_response_practice>
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder
+]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.peripheral_response.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.peripheral_response.latency;
+]
+/ branch = [
+	trial.centermouse_practice
+]
+</trial>
+
+<trial centermouse_practice>
+/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+highC_instruction,centersquare,notice_centre_mouse,process_notice_practice,title, similar_reminder, dissimilar_reminder]
+/ inputdevice = mouse
+/ recorddata = false
+/ validresponse = (centersquare)
+/ branch = [
+	if (values.order_practice == 9){
+		trial.EndPracticeTrail
+	}
+]
+</trial>
+
+<trial EndPracticeTrail>
+/ stimulusframes = [1 = EndPractice]
+/ validresponse = (57)
+</trial>
+
