@@ -46,8 +46,8 @@
 /number_of_patch = 243
 /number_of_patch_practice = 9
 
-/patch_timeout = 200
-/highlight_timeout = 500
+/patch_timeout = 100
+/highlight_timeout = 50
 </values>
 
 
@@ -145,8 +145,8 @@
 	if(item.PositionComination.item(counter.order.selectedvalue) == "FF"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles.insertstimulusframe(shape.F1_response_black,1);
-		trial.PresentCircles.insertstimulusframe(shape.F2_response_black,1);
+		trial.PresentCircles.insertstimulusframe(shape.F1_cue,1);
+		trial.PresentCircles.insertstimulusframe(shape.F2_cue,1);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
@@ -278,8 +278,8 @@
 	}else if (item.PositionComination.item(counter.order.selectedvalue) == "FP"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles.insertstimulusframe(shape.F1_response_black,1);
-		trial.PresentCircles.insertstimulusframe(shape.P1_response_black,1);
+		trial.PresentCircles.insertstimulusframe(shape.F1_cue,1);
+		trial.PresentCircles.insertstimulusframe(shape.P1_cue,1);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
@@ -411,8 +411,8 @@
 	}else if (item.PositionComination.item(counter.order.selectedvalue) == "PP"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles.insertstimulusframe(shape.P1_response_black,1);
-		trial.PresentCircles.insertstimulusframe(shape.P2_response_black,1);
+		trial.PresentCircles.insertstimulusframe(shape.P1_cue,1);
+		trial.PresentCircles.insertstimulusframe(shape.P2_cue,1);
 		
 		
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
@@ -614,7 +614,6 @@ highC_instruction,centersquare,notice_centre_mouse,process_notice]
 
 <data>
 / columns=[subject,values.trial_number,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
-values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.p_confidence,values.response_time,
-checkboxes.acuityq.response, checkboxes.colourq.response, checkboxes.stategy.response,textbox.colour_response.response,textbox.strategy_text.response]
+values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.p_confidence,values.response_time,display.canvasheight,display.canvaswidth,values.canvaswidth,values.canvasheight]
 / separatefiles = true
 </data>

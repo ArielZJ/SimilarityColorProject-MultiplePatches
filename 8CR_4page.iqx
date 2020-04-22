@@ -33,10 +33,14 @@ expressions.validresponse
 
 *************************************************************************************************************************************************************************
 
-
+** found an issue with Inquisit v6 where display.canvaswidth now gives you a string value with 'px' at the end of it. Need to remove it to make the calculations work
 <values>
+/canvaswidthpx = display.canvaswidth
+/canvasheightpx = display.canvasheight
+/canvaswidth = trimright(values.canvaswidthpx, "px")
+/canvasheight = trimright(values.canvasheightpx, "px")
 /responseY = 9
-/responseX = values.responseY*(display.canvasheight / display.canvaswidth)
+/responseX = (canvasheight/canvaswidth) * (values.responseY)
 </values>
 
 <picture reveal>
@@ -75,6 +79,7 @@ expressions.validresponse
 / position = (50,50)
 / size = (8%,8%)
 </picture>
+
 
 <picture response1>
 / items = ("response1w.png")

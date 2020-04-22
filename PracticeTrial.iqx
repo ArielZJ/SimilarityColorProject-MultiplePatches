@@ -103,8 +103,8 @@ If you are ready, please press SPACE button to start the experiment.")
 	if(counter.PracticeCounter.selectedvalue == 1 ||counter.PracticeCounter.selectedvalue == 2||counter.PracticeCounter.selectedvalue == 3){
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
 
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1_response_black,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2_response_black,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F1_cue,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F2_cue,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
@@ -136,8 +136,8 @@ If you are ready, please press SPACE button to start the experiment.")
 	}else if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1_response_black,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1_response_black,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.F1_cue,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1_cue,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
@@ -166,8 +166,8 @@ If you are ready, please press SPACE button to start the experiment.")
 	}else{
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1_response_black,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2_response_black,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1_cue,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P2_cue,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
@@ -214,12 +214,12 @@ highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_r
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
-/ isvalidresponse = [if (trial.peripheral_response.response == "response_blank") false; else
+/ isvalidresponse = [if (trial.peripheral_response_practice.response == "response_blank") false; else
 expressions.validresponse_disks
 ]
 / recorddata = false
 / ontrialend = [
-	values.response_time = trial.peripheral_response.latency;
+	values.response_time = trial.peripheral_response_practice.latency;
 ]
 / branch = [
 	trial.centermouse_practice

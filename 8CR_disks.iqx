@@ -66,25 +66,25 @@ picture response_blank>
 
 <picture response1d>
 / items = ("response1disks.png")
-/ position = ( 50+values.responseX,50 - values.responseY )
+/ position = ( 50+values.responseX,50-values.responseY )
 / size = (15.8%,15.8%)
 </picture>
 
 <picture response2d>
 / items = ("response2disks.png")
-/ position = (50+values.responseX,50 - values.responseY)
+/ position = (50+values.responseX,50-values.responseY)
 / size = (15.8%,15.8%)
 </picture>
 
 <picture response3d>
 / items = ("response3disks.png")
-/ position = (50+values.responseX,50 + values.responseY)
+/ position = (50+values.responseX,50+values.responseY)
 / size = (15.8%,15.8%)
 </picture>
 
 <picture response4d>
 / items = ("response4disks.png")
-/ position = (50+values.responseX,50 + values.responseY)
+/ position = (50+values.responseX,50+values.responseY)
 / size = (15.8%,15.8%)
 </picture>
 
