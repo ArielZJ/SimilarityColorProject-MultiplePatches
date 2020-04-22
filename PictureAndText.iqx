@@ -1,7 +1,12 @@
-﻿** control cue parameters
+﻿** include other stuff we need
+<include>
+/file = "CircleLocation.iqx"
+</include>
+
+** control cue parameters
 <values>
-/cue_height = 20
-/cue_width = 40
+/cue_height = 5
+/cue_width = 15
 </values>
 
 <text cross>
@@ -26,10 +31,10 @@
 <shape F1_cue>
 / shape = triangle
 / size = (values.cue_height,values.cue_width)
-/ color = red
+
 / hposition = expressions.a_1_cue
 / vposition = expressions.b_1_cue
-/ rotation = 20
+/ rotation = 90
 </shape>
 
 
@@ -43,9 +48,10 @@
 <shape F2_cue>
 / shape = triangle
 / size = (values.cue_height,values.cue_width)
-/ color = green
+
 / hposition = expressions.a_2_cue
 / vposition = expressions.b_2_cue
+/ rotation = values.angle_2
 </shape>
 
 <shape P1>
@@ -58,9 +64,10 @@
 <shape P1_cue>
 / shape = triangle
 / size = (values.cue_height,values.cue_width)
-/ color = blue
+
 / hposition = expressions.a_3_cue
 / vposition = expressions.b_3_cue
+/ rotation = 180
 </shape>
 
 <shape P2>
@@ -73,9 +80,10 @@
 <shape P2_cue>
 / shape = triangle
 / size = (values.cue_height,values.cue_width)
-/ color = yellow
+
 / hposition = expressions.a_4_cue
 / vposition = expressions.b_4_cue
+/ rotation = values.angle_4
 </shape>
 
 ***************************************************************************************************

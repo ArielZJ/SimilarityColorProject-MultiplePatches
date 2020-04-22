@@ -46,7 +46,7 @@
 /number_of_patch = 243
 /number_of_patch_practice = 9
 
-/patch_timeout = 100
+/patch_timeout = 5000
 /highlight_timeout = 50
 </values>
 
@@ -553,12 +553,8 @@
 / ontrialend = [
 	trial.PresentCircles.clearstimulusframes();
 ]
-/ branch = [trial.peripheral_response
-]
+/ branch = [trial.peripheral_response]
 </trial>
-
-* NB: the 'timeout' variable above is what controls the SOA. Note you have to set the practice trial one separately
-
 
 
 <trial peripheral_response>

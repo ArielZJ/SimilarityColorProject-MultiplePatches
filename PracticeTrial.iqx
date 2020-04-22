@@ -133,6 +133,10 @@ If you are ready, please press SPACE button to start the experiment.")
 			shape.P2.color = values.color8;
 			
 		}
+		
+		shape.F1_cue.color = shape.F1.color;
+		shape.F2_cue.color = shape.F2.color;
+		
 	}else if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
 		
@@ -163,6 +167,10 @@ If you are ready, please press SPACE button to start the experiment.")
 			shape.F2.color = values.color4;
 			shape.P2.color = values.color6;
 		}
+		
+		shape.F1_cue.color = shape.F1.color;
+		shape.P1_cue.color = shape.P1.color;
+		
 	}else{
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
 		
@@ -193,6 +201,10 @@ If you are ready, please press SPACE button to start the experiment.")
 			shape.F1.color = values.color7;
 			shape.F2.color = values.color3;
 		}
+		
+		shape.P1_cue.color = shape.P1.color;
+		shape.P2_cue.color = shape.P2.color;
+		
 	}
 ]
 / stimulusframes = []
