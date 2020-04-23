@@ -5,8 +5,8 @@
 
 ** control cue parameters
 <values>
-/cue_height = 5
-/cue_width = 15
+/cue_height = 2
+/cue_width = 2
 </values>
 
 <text cross>
@@ -14,7 +14,7 @@
 	/ position = (values.x,values.y)
 	/ color = snow
 	/ txbgcolor = (127, 127, 127)
-	/ fontstyle = ("Arial",100pt)
+	/ fontstyle = ("Arial",50pt)
 </text>
 
 <shape F1>
@@ -24,18 +24,16 @@
 / vposition = expressions.b_1
 </shape>
 
-
-
 ** new system of producing a cue to point at the stimuli we want compared
 
-<shape F1_cue>
-/ shape = triangle
+<picture F1_cue>
+/ items = ("arrow.png")
 / size = (values.cue_height,values.cue_width)
 
 / hposition = expressions.a_1_cue
 / vposition = expressions.b_1_cue
-/ rotation = 90
-</shape>
+/ rotation = values.angle_1_cue
+</picture>
 
 
 <shape F2>
@@ -45,14 +43,14 @@
 / vposition = expressions.b_2
 </shape>
 
-<shape F2_cue>
-/ shape = triangle
+<picture F2_cue>
+/ items = ("arrow.png")
 / size = (values.cue_height,values.cue_width)
 
 / hposition = expressions.a_2_cue
 / vposition = expressions.b_2_cue
-/ rotation = values.angle_2
-</shape>
+/ rotation = values.angle_2_cue
+</picture>
 
 <shape P1>
 / shape = circle
@@ -61,14 +59,14 @@
 / vposition = expressions.b_3
 </shape>
 
-<shape P1_cue>
-/ shape = triangle
+<picture P1_cue>
+/ items = ("arrow.png")
 / size = (values.cue_height,values.cue_width)
 
 / hposition = expressions.a_3_cue
 / vposition = expressions.b_3_cue
-/ rotation = 180
-</shape>
+/ rotation = values.angle_3_cue
+</picture>
 
 <shape P2>
 / shape = circle
@@ -77,14 +75,14 @@
 / vposition = expressions.b_4
 </shape>
 
-<shape P2_cue>
-/ shape = triangle
+<picture P2_cue>
+/ items = ("arrow.png")
 / size = (values.cue_height,values.cue_width)
 
 / hposition = expressions.a_4_cue
 / vposition = expressions.b_4_cue
-/ rotation = values.angle_4
-</shape>
+/ rotation = values.angle_4_cue
+</picture>
 
 ***************************************************************************************************
 ***************************************************************************************************

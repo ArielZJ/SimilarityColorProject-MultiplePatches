@@ -46,7 +46,7 @@
 /number_of_patch = 243
 /number_of_patch_practice = 9
 
-/patch_timeout = 5000
+/patch_timeout = 2000
 /highlight_timeout = 50
 </values>
 
@@ -141,12 +141,16 @@
 		}
 	}
 	
+	values.angle_1_cue = values.angle_1+90;
+	values.angle_2_cue = values.angle_2+90;
+	values.angle_3_cue = values.angle_3+90;
+	values.angle_4_cue = values.angle_4+90;
 	
 	if(item.PositionComination.item(counter.order.selectedvalue) == "FF"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles.insertstimulusframe(shape.F1_cue,1);
-		trial.PresentCircles.insertstimulusframe(shape.F2_cue,1);
+		trial.PresentCircles.insertstimulusframe(picture.F1_cue,1);
+		trial.PresentCircles.insertstimulusframe(picture.F2_cue,1);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
@@ -278,8 +282,8 @@
 	}else if (item.PositionComination.item(counter.order.selectedvalue) == "FP"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles.insertstimulusframe(shape.F1_cue,1);
-		trial.PresentCircles.insertstimulusframe(shape.P1_cue,1);
+		trial.PresentCircles.insertstimulusframe(picture.F1_cue,1);
+		trial.PresentCircles.insertstimulusframe(picture.P1_cue,1);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
@@ -411,21 +415,21 @@
 	}else if (item.PositionComination.item(counter.order.selectedvalue) == "PP"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 		
-		trial.PresentCircles.insertstimulusframe(shape.P1_cue,1);
-		trial.PresentCircles.insertstimulusframe(shape.P2_cue,1);
+		trial.PresentCircles.insertstimulusframe(picture.P1_cue,1);
+		trial.PresentCircles.insertstimulusframe(picture.P2_cue,1);
 		
 		
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles.insertstimulusframe(shape.P2,1);
 		values.Circle_1 = 1;
 		values.Circle_2 = 1;
-		values.Position_1 = values.angle_1;
-		values.Position_2 = values.angle_2;
+		values.Position_1 = values.angle_3;
+		values.Position_2 = values.angle_4;
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,2);
-		values.Position_3 = values.angle_3;
-		values.Position_4 = values.angle_4;
+		values.Position_3 = values.angle_1;
+		values.Position_4 = values.angle_2;
 
 		
 		
@@ -610,6 +614,7 @@ highC_instruction,centersquare,notice_centre_mouse,process_notice]
 
 <data>
 / columns=[subject,values.trial_number,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
-values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.p_confidence,values.response_time,display.canvasheight,display.canvaswidth,values.canvaswidth,values.canvasheight]
+values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.p_confidence,values.response_time,
+values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue]
 / separatefiles = true
 </data>

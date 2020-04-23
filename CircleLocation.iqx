@@ -17,6 +17,11 @@
 /angle_3 = 0
 /angle_4 = 0
 /radius_cue = 1px * display.getpixelsy(3,1)
+
+/angle_1_cue = 0
+/angle_2_cue = 0
+/angle_3_cue = 0
+/angle_4_cue = 0
 </values>
 
 <counter F2_position>
