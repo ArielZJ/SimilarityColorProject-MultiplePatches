@@ -93,6 +93,7 @@
 </counter>
 
 ** modified to also specify Circle_3 and Circle_4
+** angle_x_cue has 0 at the top (N), while angle_cue has 0 at the right (E), so need to make them line up
 <trial PresentCircles>
 / ontrialbegin = [
 	values.angle_1 = rand(-180,180);

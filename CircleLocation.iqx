@@ -3,6 +3,8 @@
 	this is currently set to 3x the r_F, thus 6% radius or 12% circumference
 ** radius_F and radius_P set how far away the stimuli are from the fixation cross. Currently set to 8% and 50-8=42% of screen
 ** adding radius_cue to set the cue arrows near the central fixation cross
+** angle_x_cue has 0 at the top (N), while angle_cue has 0 at the right (E), so need to make them line up
+
 <values>
 /x = 1px * display.getpixelsx(50,1)
 /y = 1px * display.getpixelsy(50,1)
