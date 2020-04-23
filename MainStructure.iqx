@@ -46,7 +46,7 @@
 /number_of_patch = 243
 /number_of_patch_practice = 9
 
-/patch_timeout = 2000
+/patch_timeout = 200
 /highlight_timeout = 50
 </values>
 
@@ -96,50 +96,9 @@
 <trial PresentCircles>
 / ontrialbegin = [
 	values.angle_1 = rand(-180,180);
-	values.angle_3 = rand(-180,180);
-	if(values.angle_1 < 0){
-		if(abs(values.angle_1) > 180 - values.angle_min_F){
-			values.angle_2 = rand(values.angle_1 + values.angle_min_F,360 + (values.angle_1 - values.angle_min_F));
-		}else if(abs(values.angle_1) <= 180 - values.angle_min_F){
-			if(counter.F2_position.selectedvalue == -1){
-				values.angle_2 = rand(-180,values.angle_1 - values.angle_min_F);
-			}else{
-				values.angle_2 = rand(values.angle_1 + values.angle_min_F,180);
-			}
-		}
-	}else{
-		if(values.angle_1 > 180 - values.angle_min_F){
-			values.angle_2 = rand(-360 + (values.angle_1 + values.angle_min_F),values.angle_1 - values.angle_min_F);
-		}else if (values.angle_1 <= 180 - values.angle_min_F){
-			if(counter.F2_position.selectedvalue == -1){
-				values.angle_2 = rand(values.angle_1 + values.angle_min_F,180);
-			}else{
-				values.angle_2 = rand(-180,values.angle_1 - values.angle_min_F);
-			}
-		}
-	}
-	
-	if(values.angle_3 < 0){
-		if(abs(values.angle_3) > 180 - values.angle_min_P){
-			values.angle_4 = rand(values.angle_3 + values.angle_min_P,360 + (values.angle_3 - values.angle_min_P));
-		}else if(abs(values.angle_3) <= 180 - values.angle_min_P){
-			if(counter.P2_position.selectedvalue == -1){
-				values.angle_4 = rand(-180,values.angle_3 - values.angle_min_P);
-			}else{
-				values.angle_4 = rand(values.angle_3 + values.angle_min_P,180);
-			}
-		}
-	}else{
-		if(values.angle_3 > 180 - values.angle_min_P){
-			values.angle_4 = rand(-360 + (values.angle_3 + values.angle_min_P),values.angle_3 - values.angle_min_P);
-		}else if(values.angle_3 <= 180 - values.angle_min_P){
-			if(counter.P2_position.selectedvalue == -1){
-				values.angle_4 = rand(values.angle_3 + values.angle_min_P,180);
-			}else{
-				values.angle_4 = rand(-180,values.angle_3 - values.angle_min_P);
-			}
-		}
-	}
+	values.angle_2 = values.angle_1 + 180;
+	values.angle_3 = values.angle_1 + 90;
+	values.angle_4 = values.angle_3 + 180;
 	
 	values.angle_1_cue = values.angle_1+90;
 	values.angle_2_cue = values.angle_2+90;
