@@ -211,7 +211,7 @@ If you are ready, please press SPACE button to start the experiment.")
 	shape.F2.width = values.response_stim_width;
 ]
 / stimulusframes = [
-	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
 highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, F2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
@@ -234,7 +234,7 @@ expressions.validresponse_disks
 	shape.P1.width = values.response_stim_width;
 ]
 / stimulusframes = [
-	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
 highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P1
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
@@ -257,7 +257,7 @@ expressions.validresponse_disks
 	shape.P2.width = values.response_stim_width;
 ]
 / stimulusframes = [
-	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
 highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
@@ -273,7 +273,7 @@ expressions.validresponse_disks
 </trial>
 
 <trial centermouse_practice>
-/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
 highC_instruction,centersquare,notice_centre_mouse,process_notice_practice,title, similar_reminder, dissimilar_reminder]
 / inputdevice = mouse
 / recorddata = false

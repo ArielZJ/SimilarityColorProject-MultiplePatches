@@ -53,11 +53,11 @@
 / shape = rectangle
 / size = (5%, 5%)
 / position = (50%, 50%)
-/ color = (green)
+/ color = (black)
 </shape>
 
 <text notice_centre_mouse>
-/ items = ("Please click the green rectangle to continue")
+/ items = ("Please click the black rectangle to continue")
 / fontstyle = ("Arial", 3%, true)
 / position = (50%,80%)
 / txbgcolor = (127,127,127)
