@@ -49,8 +49,8 @@
 /number_of_patch_practice = 9
 
 /patch_timeout = 200
-/highlight_timeout = 50
 /cue_before_time = 500
+/cue_stim_gap = 500
 
 /response_stim_x = 50
 /response_stim_y = 50
@@ -139,11 +139,11 @@
 		trial.PresentCircles.insertstimulusframe(picture.F2_cue,1);
 		trial.PresentCircles.insertstimulustime(shape.F2_cue_remover,values.cue_before_time-1);
 				
-		trial.PresentCircles.insertstimulustime(shape.F1,values.cue_before_time);
-		trial.PresentCircles.insertstimulustime(shape.F2,values.cue_before_time);
+		trial.PresentCircles.insertstimulustime(shape.F1,values.cue_before_time + values.cue_stim_gap);
+		trial.PresentCircles.insertstimulustime(shape.F2,values.cue_before_time + values.cue_stim_gap);
 		
-		trial.PresentCircles.insertstimulustime(shape.P1,values.cue_before_time);
-		trial.PresentCircles.insertstimulustime(shape.P2,values.cue_before_time);
+		trial.PresentCircles.insertstimulustime(shape.P1,values.cue_before_time + values.cue_stim_gap);
+		trial.PresentCircles.insertstimulustime(shape.P2,values.cue_before_time + values.cue_stim_gap);
 		values.Circle_1 = -1;
 		values.Circle_2 = -1;
 		values.Position_1 = values.angle_1;
@@ -274,11 +274,11 @@
 		trial.PresentCircles.insertstimulusframe(picture.P1_cue,1);
 		trial.PresentCircles.insertstimulustime(shape.P1_cue_remover,values.cue_before_time-1);	
 		
-		trial.PresentCircles.insertstimulustime(shape.F1,values.cue_before_time);
-		trial.PresentCircles.insertstimulustime(shape.P1,values.cue_before_time);
+		trial.PresentCircles.insertstimulustime(shape.F1,values.cue_before_time + values.cue_stim_gap);
+		trial.PresentCircles.insertstimulustime(shape.P1,values.cue_before_time + values.cue_stim_gap);
 		
-		trial.PresentCircles.insertstimulustime(shape.F2,values.cue_before_time);
-		trial.PresentCircles.insertstimulustime(shape.P2,values.cue_before_time);
+		trial.PresentCircles.insertstimulustime(shape.F2,values.cue_before_time + values.cue_stim_gap);
+		trial.PresentCircles.insertstimulustime(shape.P2,values.cue_before_time + values.cue_stim_gap);
 		values.Circle_1 = -1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_1;
@@ -409,11 +409,11 @@
 		trial.PresentCircles.insertstimulusframe(picture.P2_cue,1);
 		trial.PresentCircles.insertstimulustime(shape.P2_cue_remover,values.cue_before_time-1);
 		
-		trial.PresentCircles.insertstimulustime(shape.P1,values.cue_before_time);
-		trial.PresentCircles.insertstimulustime(shape.P2,values.cue_before_time);
+		trial.PresentCircles.insertstimulustime(shape.P1,values.cue_before_time + values.cue_stim_gap);
+		trial.PresentCircles.insertstimulustime(shape.P2,values.cue_before_time + values.cue_stim_gap);
 		
-		trial.PresentCircles.insertstimulustime(shape.F1,values.cue_before_time);
-		trial.PresentCircles.insertstimulustime(shape.F2,values.cue_before_time);
+		trial.PresentCircles.insertstimulustime(shape.F1,values.cue_before_time + values.cue_stim_gap);
+		trial.PresentCircles.insertstimulustime(shape.F2,values.cue_before_time + values.cue_stim_gap);
 		values.Circle_1 = 1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_3;
@@ -542,7 +542,7 @@
 	
 ]
 / stimulusframes = []
-/ timeout = values.patch_timeout + values.cue_before_time
+/ timeout = values.patch_timeout + values.cue_before_time +  + values.cue_stim_gap
 / recorddata = false
 / ontrialend = [
 	trial.PresentCircles.clearstimulusframes();
