@@ -135,6 +135,8 @@
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
 		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.PresentCircles.insertstimulustime(picture.F2_cue,values.patch_timeout + values.stim_cue_gap);
+
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
@@ -271,6 +273,8 @@
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
 		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.PresentCircles.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
+
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
@@ -406,6 +410,8 @@
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
 		trial.PresentCircles.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.PresentCircles.insertstimulustime(picture.P2_cue,values.patch_timeout + values.stim_cue_gap);
+
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
@@ -561,7 +567,7 @@
 <trial peripheral_response_FF>
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, F2
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, response_blank
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
