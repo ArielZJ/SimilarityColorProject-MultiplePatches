@@ -53,7 +53,7 @@
 / shape = rectangle
 / size = (5%, 5%)
 / position = (50%, 50%)
-/ color = (black)
+/ color = (green)
 </shape>
 
 <text notice_centre_mouse>
