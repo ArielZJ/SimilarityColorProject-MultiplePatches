@@ -88,12 +88,14 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
 
 		trial.PresentCircles_practice.insertstimulusframe(picture.F1_cue,1);
+		trial.PresentCircles_practice.insertstimulustime(shape.F1_cue_remover,values.cue_before_time-1);
+
+				
+		trial.PresentCircles_practice.insertstimulustime(shape.F1,values.cue_before_time);
+		trial.PresentCircles_practice.insertstimulustime(shape.F2,values.cue_before_time);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		trial.PresentCircles_practice.insertstimulustime(shape.P1,values.cue_before_time);
+		trial.PresentCircles_practice.insertstimulustime(shape.P2,values.cue_before_time);
 		
 
 						
@@ -120,15 +122,16 @@ If you are ready, please press SPACE button to start the experiment.")
 
 		
 	}else if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
-		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
-		
+		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);		
 		trial.PresentCircles_practice.insertstimulusframe(picture.F1_cue,1);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
+		trial.PresentCircles_practice.insertstimulustime(shape.F1_cue_remover,values.cue_before_time-1);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		trial.PresentCircles_practice.insertstimulustime(shape.F1,values.cue_before_time);
+		trial.PresentCircles_practice.insertstimulustime(shape.P1,values.cue_before_time);
+		
+		trial.PresentCircles_practice.insertstimulustime(shape.F2,values.cue_before_time);
+		trial.PresentCircles_practice.insertstimulustime(shape.P2,values.cue_before_time);
 		
 		
 		
@@ -155,12 +158,13 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(picture.P1_cue,1);
+		trial.PresentCircles_practice.insertstimulustime(shape.P1_cue_remover,values.cue_before_time-1);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		trial.PresentCircles_practice.insertstimulustime(shape.P1,values.cue_before_time);
+		trial.PresentCircles_practice.insertstimulustime(shape.P2,values.cue_before_time);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+		trial.PresentCircles_practice.insertstimulustime(shape.F1,values.cue_before_time);
+		trial.PresentCircles_practice.insertstimulustime(shape.F2,values.cue_before_time);
 		
 
 		
@@ -185,7 +189,7 @@ If you are ready, please press SPACE button to start the experiment.")
 	}
 ]
 / stimulusframes = []
-/ timeout = values.patch_timeout
+/ timeout = values.patch_timeout + values.cue_before_time
 / ontrialend = [trial.PresentCircles_practice.clearstimulusframes();]
 / recorddata = false
 

@@ -35,6 +35,14 @@
 / rotation = values.angle_1_cue
 </picture>
 
+<shape F1_cue_remover>
+/ shape = rectangle
+/ size = (values.cue_height,values.cue_width)
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ hposition = expressions.a_1_cue
+/ vposition = expressions.b_1_cue
+/ rotation = values.angle_1_cue
+</shape>
 
 <shape F2>
 / shape = circle
@@ -52,6 +60,7 @@
 / rotation = values.angle_2_cue
 </picture>
 
+
 <shape P1>
 / shape = circle
 / size = ( 2 * values.R_P, 2 * values.R_P)
@@ -67,6 +76,15 @@
 / vposition = expressions.b_3_cue
 / rotation = values.angle_3_cue
 </picture>
+
+<shape P1_cue_remover>
+/ shape = rectangle
+/ size = (values.cue_height,values.cue_width)
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ hposition = expressions.a_3_cue
+/ vposition = expressions.b_3_cue
+/ rotation = values.angle_3_cue
+</shape>
 
 <shape P2>
 / shape = circle
