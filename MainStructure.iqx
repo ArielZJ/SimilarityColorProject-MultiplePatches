@@ -134,7 +134,7 @@
 	if(item.PositionComination.item(counter.order.selectedvalue) == "FF"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
-		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.cue_time + values.stim_cue_gap);
+		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
@@ -270,7 +270,7 @@
 	}else if (item.PositionComination.item(counter.order.selectedvalue) == "FP"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
-		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.cue_time + values.stim_cue_gap);
+		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
@@ -405,7 +405,7 @@
 	}else if (item.PositionComination.item(counter.order.selectedvalue) == "PP"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
-		trial.PresentCircles.insertstimulustime(picture.P1_cue,values.cue_time + values.stim_cue_gap);
+		trial.PresentCircles.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
