@@ -559,12 +559,6 @@
 
 
 <trial peripheral_response_FF>
-/ ontrialbegin = [
-	shape.F2.hposition = values.response_stim_x;
-	shape.F2.vposition = values.response_stim_y;
-	shape.F2.height = values.response_stim_height;
-	shape.F2.width = values.response_stim_width;
-]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
 highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, F2
@@ -582,15 +576,9 @@ expressions.validresponse_disks
 </trial>
 
 <trial peripheral_response_FP>
-/ ontrialbegin = [
-	shape.P1.hposition = values.response_stim_x;
-	shape.P1.vposition = values.response_stim_y;
-	shape.P1.height = values.response_stim_height;
-	shape.P1.width = values.response_stim_width;
-]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P1
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,response_blank
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -605,15 +593,10 @@ expressions.validresponse_disks
 </trial>
 
 <trial peripheral_response_PP>
-/ ontrialbegin = [
-	shape.P2.hposition = values.response_stim_x;
-	shape.P2.vposition = values.response_stim_y;
-	shape.P2.height = values.response_stim_height;
-	shape.P2.width = values.response_stim_width;
-]
+
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P2
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,response_blank
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -628,7 +611,7 @@ expressions.validresponse_disks
 </trial>
 
 <trial centermouse>
-/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
+/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
 highC_instruction,centersquare,notice_centre_mouse,process_notice]
 / inputdevice = mouse
 / recorddata = true
