@@ -206,7 +206,6 @@
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
 		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.PresentCircles.insertstimulustime(picture.F2_cue,values.patch_timeout + values.stim_cue_gap);
 
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
@@ -464,7 +463,6 @@
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
 		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.PresentCircles.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
 
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
@@ -722,7 +720,6 @@
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
 
 		trial.PresentCircles.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.PresentCircles.insertstimulustime(picture.P2_cue,values.patch_timeout + values.stim_cue_gap);
 
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
@@ -998,9 +995,15 @@
 
 
 <trial peripheral_response_FF>
+/ ontrialbegin = [
+	shape.F2.hposition = values.response_stim_x;
+	shape.F2.vposition = values.response_stim_y;
+	shape.F2.height = values.response_stim_height;
+	shape.F2.width = values.response_stim_width;
+]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, response_blank
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, F2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -1015,9 +1018,15 @@ expressions.validresponse_disks
 </trial>
 
 <trial peripheral_response_FP>
+/ ontrialbegin = [
+	shape.P1.hposition = values.response_stim_x;
+	shape.P1.vposition = values.response_stim_y;
+	shape.P1.height = values.response_stim_height;
+	shape.P1.width = values.response_stim_width;
+]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,response_blank
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P1
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -1032,10 +1041,15 @@ expressions.validresponse_disks
 </trial>
 
 <trial peripheral_response_PP>
-
+/ ontrialbegin = [
+	shape.P2.hposition = values.response_stim_x;
+	shape.P2.vposition = values.response_stim_y;
+	shape.P2.height = values.response_stim_height;
+	shape.P2.width = values.response_stim_width;
+]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,response_blank
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -1050,7 +1064,7 @@ expressions.validresponse_disks
 </trial>
 
 <trial centermouse>
-/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
 highC_instruction,centersquare,notice_centre_mouse,process_notice]
 / inputdevice = mouse
 / recorddata = true
