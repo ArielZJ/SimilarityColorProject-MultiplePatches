@@ -134,6 +134,125 @@
 / rotation = values.angle_4_cue
 </picture>
 
+****************
+
+<shape F3>
+/ shape = circle
+/ size = (2 * values.r_F,2 * values.r_F)
+/ hposition = expressions.a_5
+/ vposition = expressions.b_5
+</shape>
+
+<shape F3_remover>
+/ shape = circle
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ size = (2 * values.r_F,2 * values.r_F)
+/ hposition = expressions.a_5
+/ vposition = expressions.b_5
+</shape>
+
+** new system of producing a cue to point at the stimuli we want compared
+
+<picture F3_cue>
+/ items = ("arrow.png")
+/ size = (values.cue_height,values.cue_width)
+
+/ hposition = expressions.a_5_cue
+/ vposition = expressions.b_5_cue
+/ rotation = values.angle_5_cue
+</picture>
+
+<shape F3_cue_remover>
+/ shape = rectangle
+/ size = (values.cue_height,values.cue_width)
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ hposition = expressions.a_5_cue
+/ vposition = expressions.b_5_cue
+/ rotation = values.angle_5_cue
+</shape>
+
+<shape F4>
+/ shape = circle
+/ size = (2 * values.r_F,2 * values.r_F)
+/ hposition = expressions.a_6
+/ vposition = expressions.b_6
+</shape>
+
+<shape F4_remover>
+/ shape = circle
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ size = (2 * values.r_F,2 * values.r_F)
+/ hposition = expressions.a_6
+/ vposition = expressions.b_6
+</shape>
+
+<picture F4_cue>
+/ items = ("arrow.png")
+/ size = (values.cue_height,values.cue_width)
+
+/ hposition = expressions.a_6_cue
+/ vposition = expressions.b_6_cue
+/ rotation = values.angle_6_cue
+</picture>
+
+
+<shape P3>
+/ shape = circle
+/ size = ( 2 * values.R_P, 2 * values.R_P)
+/ hposition = expressions.a_7
+/ vposition = expressions.b_7
+</shape>
+
+<shape P3_remover>
+/ shape = circle
+/ size = ( 2 * values.R_P, 2 * values.R_P)
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ hposition = expressions.a_7
+/ vposition = expressions.b_7
+</shape>
+
+<picture P3_cue>
+/ items = ("arrow.png")
+/ size = (values.cue_height,values.cue_width)
+
+/ hposition = expressions.a_7_cue
+/ vposition = expressions.b_7_cue
+/ rotation = values.angle_7_cue
+</picture>
+
+<shape P3_cue_remover>
+/ shape = rectangle
+/ size = (values.cue_height,values.cue_width)
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ hposition = expressions.a_7_cue
+/ vposition = expressions.b_7_cue
+/ rotation = values.angle_7_cue
+</shape>
+
+<shape P4>
+/ shape = circle
+/ size = (2 * values.R_P,2 * values.R_P)
+/ hposition = expressions.a_8
+/ vposition = expressions.b_8
+</shape>
+
+<shape P4_remover>
+/ shape = circle
+/ size = (2 * values.R_P,2 * values.R_P)
+/ color = (values.screen_color,values.screen_color,values.screen_color)
+/ hposition = expressions.a_8
+/ vposition = expressions.b_8
+</shape>
+
+<picture P4_cue>
+/ items = ("arrow.png")
+/ size = (values.cue_height,values.cue_width)
+
+/ hposition = expressions.a_8_cue
+/ vposition = expressions.b_8_cue
+/ rotation = values.angle_8_cue
+</picture>
+
 ***************************************************************************************************
 ***************************************************************************************************
 <htmlpage consent>

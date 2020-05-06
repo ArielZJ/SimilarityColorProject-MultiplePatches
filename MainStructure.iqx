@@ -24,14 +24,26 @@
 /Circle_2 = 0
 /Circle_3 = 0
 /Circle_4 = 0
+/Circle_5 = 0
+/Circle_6 = 0
+/Circle_7 = 0
+/Circle_8 = 0
 /Position_1 = 0
 /Position_2 = 0
 /Position_3 = 0
 /Position_4 = 0
+/Position_5 = 0
+/Position_6 = 0
+/Position_7 = 0
+/Position_8 = 0
 /Color_1 = 0
 /Color_2 = 0
 /Color_3 = 0
 /Color_4 = 0
+/Color_5 = 0
+/Color_6 = 0
+/Color_7 = 0
+/Color_8 = 0
 /response_time = 0
 /temp = 0
 
@@ -48,7 +60,7 @@
 /number_of_patch = 243
 /number_of_patch_practice = 9
 
-/patch_timeout = 500
+/patch_timeout = 1000
 /stim_cue_gap = 200
 /cue_time = 300
 
@@ -70,14 +82,26 @@
 	values.Circle_2 = 0;
 	values.Circle_3 = 0;
 	values.Circle_4 = 0;
+	values.Circle_5 = 0;
+	values.Circle_6 = 0;
+	values.Circle_7 = 0;
+	values.Circle_8 = 0;
 	values.Position_1 = 0;
 	values.Position_2 = 0;
 	values.Position_3 = 0;
 	values.Position_4 = 0;
+	values.Position_5 = 0;
+	values.Position_6 = 0;
+	values.Position_7 = 0;
+	values.Position_8 = 0;
 	values.Color_1 = 0;
 	values.Color_2 = 0;
 	values.Color_3 = 0;
 	values.Color_4 = 0;
+	values.Color_5 = 0;
+	values.Color_6 = 0;
+	values.Color_7 = 0;
+	values.Color_8 = 0;
 	values.response = 0;
 ]
 / branch = [
@@ -100,19 +124,47 @@
 / resetinterval = 1
 </counter>
 
+<counter rand_color_3>
+/ select = noreplace(1-9)
+/ resetinterval = 1
+</counter>
+
+<counter rand_color_4>
+/ select = noreplace(1-9)
+/ resetinterval = 1
+</counter>
+
+<counter rand_color_5>
+/ select = noreplace(1-9)
+/ resetinterval = 1
+</counter>
+
+<counter rand_color_6>
+/ select = noreplace(1-9)
+/ resetinterval = 1
+</counter>
+
 ** modified to also specify Circle_3 and Circle_4
 ** angle_x_cue has 0 at the top (N), while angle_cue has 0 at the right (E), so need to make them line up
 <trial PresentCircles>
 / ontrialbegin = [
 	values.angle_1 = rand(-180,180);
 	values.angle_2 = values.angle_1 + 180;
-	values.angle_3 = values.angle_1 + 90;
+	values.angle_3 = values.angle_1 + 45;
 	values.angle_4 = values.angle_3 + 180;
+	values.angle_5 = values.angle_1 + 90;
+	values.angle_6 = values.angle_2 + 90;
+	values.angle_7 = values.angle_3 + 90;
+	values.angle_8 = values.angle_4 + 90;
 	
 	values.angle_1_cue = values.angle_1+90;
 	values.angle_2_cue = values.angle_2+90;
 	values.angle_3_cue = values.angle_3+90;
 	values.angle_4_cue = values.angle_4+90;
+	values.angle_5_cue = values.angle_5+90;
+	values.angle_6_cue = values.angle_6+90;
+	values.angle_7_cue = values.angle_7+90;
+	values.angle_8_cue = values.angle_8+90;
 	
 	shape.F1.hposition = expressions.a_1;
 	shape.F1.vposition = expressions.b_1;
@@ -122,6 +174,16 @@
 	shape.P1.vposition = expressions.b_3;
 	shape.P2.hposition = expressions.a_4;
 	shape.P2.vposition = expressions.b_4;
+	
+	shape.F3.hposition = expressions.a_5;
+	shape.F3.vposition = expressions.b_5;
+	shape.F4.hposition = expressions.a_6;
+	shape.F4.vposition = expressions.b_6;
+	shape.P3.hposition = expressions.a_7;
+	shape.P3.vposition = expressions.b_7;
+	shape.P4.hposition = expressions.a_8;
+	shape.P4.vposition = expressions.b_8;
+	
 	shape.F1.height = 2 * values.r_F;
 	shape.F1.width = 2 * values.r_F;
 	shape.F2.height = 2 * values.r_F;
@@ -130,6 +192,15 @@
 	shape.P1.width = 2 * values.R_P;
 	shape.P2.height = 2 * values.R_P;
 	shape.P2.width = 2 * values.R_P;
+	
+	shape.F3.height = 2 * values.r_F;
+	shape.F3.width = 2 * values.r_F;
+	shape.F4.height = 2 * values.r_F;
+	shape.F4.width = 2 * values.r_F;
+	shape.P3.height = 2 * values.R_P;
+	shape.P3.width = 2 * values.R_P;
+	shape.P4.height = 2 * values.R_P;
+	shape.P4.width = 2 * values.R_P;
 	
 	if(item.PositionComination.item(counter.order.selectedvalue) == "FF"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
@@ -142,10 +213,18 @@
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles.insertstimulusframe(shape.P2,1);
+		trial.PresentCircles.insertstimulusframe(shape.F3,1);
+		trial.PresentCircles.insertstimulusframe(shape.F4,1);
+		trial.PresentCircles.insertstimulusframe(shape.P3,1);
+		trial.PresentCircles.insertstimulusframe(shape.P4,1);
 		trial.PresentCircles.insertstimulustime(shape.P1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.P2_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.P3_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.P4_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.F3_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.F4_remover,values.patch_timeout);
 		
 		values.Circle_1 = -1;
 		values.Circle_2 = -1;
@@ -153,6 +232,10 @@
 		values.Position_2 = values.angle_2;
 		values.Position_3 = values.angle_3;
 		values.Position_4 = values.angle_4;
+		values.Position_5 = values.angle_5;
+		values.Position_6 = values.angle_6;
+		values.Position_7 = values.angle_7;
+		values.Position_8 = values.angle_8;
 		
 		if(item.Circle_1_color.item(counter.order.selectedvalue) == "1"){
 			shape.F1.color = values.color1;
@@ -266,6 +349,118 @@
 			values.Color_4 = 8;
 		}else{
 			shape.P2.color = values.color9;
+			values.Color_4 = 9;
+		}
+		if(counter.rand_color_3.selectedvalue == "1"){
+			shape.F3.color = values.color1;
+			values.Color_3 = 1;
+		}else if (counter.rand_color_3.selectedvalue == "2"){
+			shape.F3.color = values.color2;
+			values.Color_3 = 2;
+		}else if (counter.rand_color_3.selectedvalue == "3"){
+			shape.F3.color = values.color3;
+			values.Color_3 = 3;
+		}else if (counter.rand_color_3.selectedvalue == "4"){
+			shape.F3.color = values.color4;
+			values.Color_3 = 4;
+		}else if (counter.rand_color_3.selectedvalue == "5"){
+			shape.F3.color = values.color5;
+			values.Color_3 = 5;
+		}else if (counter.rand_color_3.selectedvalue == "6"){
+			shape.F3.color = values.color6;
+			values.Color_3 = 6;
+		}else if (counter.rand_color_3.selectedvalue == "7"){
+			shape.F3.color = values.color7;
+			values.Color_3 = 7;
+		}else if (counter.rand_color_3.selectedvalue == "8"){
+			shape.F3.color = values.color8;
+			values.Color_3 = 8;
+		}else{
+			shape.F3.color = values.color9;
+			values.Color_3 = 9;
+		}
+		if(counter.rand_color_4.selectedvalue == "1"){
+			shape.F4.color = values.color1;
+			values.Color_4 = 1;
+		}else if (counter.rand_color_4.selectedvalue == "2"){
+			shape.F4.color = values.color2;
+			values.Color_4 = 2;
+		}else if (counter.rand_color_4.selectedvalue == "3"){
+			shape.F4.color = values.color3;
+			values.Color_4 = 3;
+		}else if (counter.rand_color_4.selectedvalue == "4"){
+			shape.F4.color = values.color4;
+			values.Color_4 = 4;
+		}else if (counter.rand_color_4.selectedvalue == "5"){
+			shape.F4.color = values.color5;
+			values.Color_4 = 5;
+		}else if (counter.rand_color_4.selectedvalue == "6"){
+			shape.F4.color = values.color6;
+			values.Color_4 = 6;
+		}else if (counter.rand_color_4.selectedvalue == "7"){
+			shape.F4.color = values.color7;
+			values.Color_4 = 7;
+		}else if (counter.rand_color_4.selectedvalue == "8"){
+			shape.F4.color = values.color8;
+			values.Color_4 = 8;
+		}else{
+			shape.F4.color = values.color9;
+			values.Color_4 = 9;
+		}
+		if(counter.rand_color_5.selectedvalue == "1"){
+			shape.P3.color = values.color1;
+			values.Color_3 = 1;
+		}else if (counter.rand_color_5.selectedvalue == "2"){
+			shape.P3.color = values.color2;
+			values.Color_3 = 2;
+		}else if (counter.rand_color_5.selectedvalue == "3"){
+			shape.P3.color = values.color3;
+			values.Color_3 = 3;
+		}else if (counter.rand_color_5.selectedvalue == "4"){
+			shape.P3.color = values.color4;
+			values.Color_3 = 4;
+		}else if (counter.rand_color_5.selectedvalue == "5"){
+			shape.P3.color = values.color5;
+			values.Color_3 = 5;
+		}else if (counter.rand_color_5.selectedvalue == "6"){
+			shape.P3.color = values.color6;
+			values.Color_3 = 6;
+		}else if (counter.rand_color_5.selectedvalue == "7"){
+			shape.P3.color = values.color7;
+			values.Color_3 = 7;
+		}else if (counter.rand_color_5.selectedvalue == "8"){
+			shape.P3.color = values.color8;
+			values.Color_3 = 8;
+		}else{
+			shape.P3.color = values.color9;
+			values.Color_3 = 9;
+		}
+		if(counter.rand_color_6.selectedvalue == "1"){
+			shape.P4.color = values.color1;
+			values.Color_4 = 1;
+		}else if (counter.rand_color_6.selectedvalue == "2"){
+			shape.P4.color = values.color2;
+			values.Color_4 = 2;
+		}else if (counter.rand_color_6.selectedvalue == "3"){
+			shape.P4.color = values.color3;
+			values.Color_4 = 3;
+		}else if (counter.rand_color_6.selectedvalue == "4"){
+			shape.P4.color = values.color4;
+			values.Color_4 = 4;
+		}else if (counter.rand_color_6.selectedvalue == "5"){
+			shape.P4.color = values.color5;
+			values.Color_4 = 5;
+		}else if (counter.rand_color_6.selectedvalue == "6"){
+			shape.P4.color = values.color6;
+			values.Color_4 = 6;
+		}else if (counter.rand_color_6.selectedvalue == "7"){
+			shape.P4.color = values.color7;
+			values.Color_4 = 7;
+		}else if (counter.rand_color_6.selectedvalue == "8"){
+			shape.P4.color = values.color8;
+			values.Color_4 = 8;
+		}else{
+			shape.P4.color = values.color9;
 			values.Color_4 = 9;
 		}
 		
@@ -280,16 +475,29 @@
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles.insertstimulusframe(shape.P2,1);
+		trial.PresentCircles.insertstimulusframe(shape.F3,1);
+		trial.PresentCircles.insertstimulusframe(shape.F4,1);
+		trial.PresentCircles.insertstimulusframe(shape.P3,1);
+		trial.PresentCircles.insertstimulusframe(shape.P4,1);
 		trial.PresentCircles.insertstimulustime(shape.P1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.P2_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.P3_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.P4_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.F3_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.F4_remover,values.patch_timeout);
+		
 		values.Circle_1 = -1;
-		values.Circle_2 = 1;
+		values.Circle_2 = -1;
 		values.Position_1 = values.angle_1;
-		values.Position_2 = values.angle_3;
-		values.Position_3 = values.angle_2;
+		values.Position_2 = values.angle_2;
+		values.Position_3 = values.angle_3;
 		values.Position_4 = values.angle_4;
+		values.Position_5 = values.angle_5;
+		values.Position_6 = values.angle_6;
+		values.Position_7 = values.angle_7;
+		values.Position_8 = values.angle_8;
 		
 		if(item.Circle_1_color.item(counter.order.selectedvalue) == "1"){
 			shape.F1.color = values.color1;
@@ -405,6 +613,118 @@
 			shape.P2.color = values.color9;
 			values.Color_4 = 9;
 		}
+		if(counter.rand_color_3.selectedvalue == "1"){
+			shape.F3.color = values.color1;
+			values.Color_3 = 1;
+		}else if (counter.rand_color_3.selectedvalue == "2"){
+			shape.F3.color = values.color2;
+			values.Color_3 = 2;
+		}else if (counter.rand_color_3.selectedvalue == "3"){
+			shape.F3.color = values.color3;
+			values.Color_3 = 3;
+		}else if (counter.rand_color_3.selectedvalue == "4"){
+			shape.F3.color = values.color4;
+			values.Color_3 = 4;
+		}else if (counter.rand_color_3.selectedvalue == "5"){
+			shape.F3.color = values.color5;
+			values.Color_3 = 5;
+		}else if (counter.rand_color_3.selectedvalue == "6"){
+			shape.F3.color = values.color6;
+			values.Color_3 = 6;
+		}else if (counter.rand_color_3.selectedvalue == "7"){
+			shape.F3.color = values.color7;
+			values.Color_3 = 7;
+		}else if (counter.rand_color_3.selectedvalue == "8"){
+			shape.F3.color = values.color8;
+			values.Color_3 = 8;
+		}else{
+			shape.F3.color = values.color9;
+			values.Color_3 = 9;
+		}
+		if(counter.rand_color_4.selectedvalue == "1"){
+			shape.F4.color = values.color1;
+			values.Color_4 = 1;
+		}else if (counter.rand_color_4.selectedvalue == "2"){
+			shape.F4.color = values.color2;
+			values.Color_4 = 2;
+		}else if (counter.rand_color_4.selectedvalue == "3"){
+			shape.F4.color = values.color3;
+			values.Color_4 = 3;
+		}else if (counter.rand_color_4.selectedvalue == "4"){
+			shape.F4.color = values.color4;
+			values.Color_4 = 4;
+		}else if (counter.rand_color_4.selectedvalue == "5"){
+			shape.F4.color = values.color5;
+			values.Color_4 = 5;
+		}else if (counter.rand_color_4.selectedvalue == "6"){
+			shape.F4.color = values.color6;
+			values.Color_4 = 6;
+		}else if (counter.rand_color_4.selectedvalue == "7"){
+			shape.F4.color = values.color7;
+			values.Color_4 = 7;
+		}else if (counter.rand_color_4.selectedvalue == "8"){
+			shape.F4.color = values.color8;
+			values.Color_4 = 8;
+		}else{
+			shape.F4.color = values.color9;
+			values.Color_4 = 9;
+		}
+		if(counter.rand_color_5.selectedvalue == "1"){
+			shape.P3.color = values.color1;
+			values.Color_3 = 1;
+		}else if (counter.rand_color_5.selectedvalue == "2"){
+			shape.P3.color = values.color2;
+			values.Color_3 = 2;
+		}else if (counter.rand_color_5.selectedvalue == "3"){
+			shape.P3.color = values.color3;
+			values.Color_3 = 3;
+		}else if (counter.rand_color_5.selectedvalue == "4"){
+			shape.P3.color = values.color4;
+			values.Color_3 = 4;
+		}else if (counter.rand_color_5.selectedvalue == "5"){
+			shape.P3.color = values.color5;
+			values.Color_3 = 5;
+		}else if (counter.rand_color_5.selectedvalue == "6"){
+			shape.P3.color = values.color6;
+			values.Color_3 = 6;
+		}else if (counter.rand_color_5.selectedvalue == "7"){
+			shape.P3.color = values.color7;
+			values.Color_3 = 7;
+		}else if (counter.rand_color_5.selectedvalue == "8"){
+			shape.P3.color = values.color8;
+			values.Color_3 = 8;
+		}else{
+			shape.P3.color = values.color9;
+			values.Color_3 = 9;
+		}
+		if(counter.rand_color_6.selectedvalue == "1"){
+			shape.P4.color = values.color1;
+			values.Color_4 = 1;
+		}else if (counter.rand_color_6.selectedvalue == "2"){
+			shape.P4.color = values.color2;
+			values.Color_4 = 2;
+		}else if (counter.rand_color_6.selectedvalue == "3"){
+			shape.P4.color = values.color3;
+			values.Color_4 = 3;
+		}else if (counter.rand_color_6.selectedvalue == "4"){
+			shape.P4.color = values.color4;
+			values.Color_4 = 4;
+		}else if (counter.rand_color_6.selectedvalue == "5"){
+			shape.P4.color = values.color5;
+			values.Color_4 = 5;
+		}else if (counter.rand_color_6.selectedvalue == "6"){
+			shape.P4.color = values.color6;
+			values.Color_4 = 6;
+		}else if (counter.rand_color_6.selectedvalue == "7"){
+			shape.P4.color = values.color7;
+			values.Color_4 = 7;
+		}else if (counter.rand_color_6.selectedvalue == "8"){
+			shape.P4.color = values.color8;
+			values.Color_4 = 8;
+		}else{
+			shape.P4.color = values.color9;
+			values.Color_4 = 9;
+		}
 		
 	}else if (item.PositionComination.item(counter.order.selectedvalue) == "PP"){
 		trial.PresentCircles.insertstimulusframe(text.cross,1);
@@ -417,16 +737,29 @@
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles.insertstimulusframe(shape.P2,1);
+		trial.PresentCircles.insertstimulusframe(shape.F3,1);
+		trial.PresentCircles.insertstimulusframe(shape.F4,1);
+		trial.PresentCircles.insertstimulusframe(shape.P3,1);
+		trial.PresentCircles.insertstimulusframe(shape.P4,1);
 		trial.PresentCircles.insertstimulustime(shape.P1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.P2_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F2_remover,values.patch_timeout);
-		values.Circle_1 = 1;
-		values.Circle_2 = 1;
-		values.Position_1 = values.angle_3;
-		values.Position_2 = values.angle_4;
-		values.Position_3 = values.angle_1;
-		values.Position_4 = values.angle_2;
+		trial.PresentCircles.insertstimulustime(shape.P3_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.P4_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.F3_remover,values.patch_timeout);
+		trial.PresentCircles.insertstimulustime(shape.F4_remover,values.patch_timeout);
+		
+		values.Circle_1 = -1;
+		values.Circle_2 = -1;
+		values.Position_1 = values.angle_1;
+		values.Position_2 = values.angle_2;
+		values.Position_3 = values.angle_3;
+		values.Position_4 = values.angle_4;
+		values.Position_5 = values.angle_5;
+		values.Position_6 = values.angle_6;
+		values.Position_7 = values.angle_7;
+		values.Position_8 = values.angle_8;
 
 		
 		
@@ -542,6 +875,118 @@
 			values.Color_4 = 8;
 		}else{
 			shape.F2.color = values.color9;
+			values.Color_4 = 9;
+		}
+		if(counter.rand_color_3.selectedvalue == "1"){
+			shape.F3.color = values.color1;
+			values.Color_3 = 1;
+		}else if (counter.rand_color_3.selectedvalue == "2"){
+			shape.F3.color = values.color2;
+			values.Color_3 = 2;
+		}else if (counter.rand_color_3.selectedvalue == "3"){
+			shape.F3.color = values.color3;
+			values.Color_3 = 3;
+		}else if (counter.rand_color_3.selectedvalue == "4"){
+			shape.F3.color = values.color4;
+			values.Color_3 = 4;
+		}else if (counter.rand_color_3.selectedvalue == "5"){
+			shape.F3.color = values.color5;
+			values.Color_3 = 5;
+		}else if (counter.rand_color_3.selectedvalue == "6"){
+			shape.F3.color = values.color6;
+			values.Color_3 = 6;
+		}else if (counter.rand_color_3.selectedvalue == "7"){
+			shape.F3.color = values.color7;
+			values.Color_3 = 7;
+		}else if (counter.rand_color_3.selectedvalue == "8"){
+			shape.F3.color = values.color8;
+			values.Color_3 = 8;
+		}else{
+			shape.F3.color = values.color9;
+			values.Color_3 = 9;
+		}
+		if(counter.rand_color_4.selectedvalue == "1"){
+			shape.F4.color = values.color1;
+			values.Color_4 = 1;
+		}else if (counter.rand_color_4.selectedvalue == "2"){
+			shape.F4.color = values.color2;
+			values.Color_4 = 2;
+		}else if (counter.rand_color_4.selectedvalue == "3"){
+			shape.F4.color = values.color3;
+			values.Color_4 = 3;
+		}else if (counter.rand_color_4.selectedvalue == "4"){
+			shape.F4.color = values.color4;
+			values.Color_4 = 4;
+		}else if (counter.rand_color_4.selectedvalue == "5"){
+			shape.F4.color = values.color5;
+			values.Color_4 = 5;
+		}else if (counter.rand_color_4.selectedvalue == "6"){
+			shape.F4.color = values.color6;
+			values.Color_4 = 6;
+		}else if (counter.rand_color_4.selectedvalue == "7"){
+			shape.F4.color = values.color7;
+			values.Color_4 = 7;
+		}else if (counter.rand_color_4.selectedvalue == "8"){
+			shape.F4.color = values.color8;
+			values.Color_4 = 8;
+		}else{
+			shape.F4.color = values.color9;
+			values.Color_4 = 9;
+		}
+		if(counter.rand_color_5.selectedvalue == "1"){
+			shape.P3.color = values.color1;
+			values.Color_3 = 1;
+		}else if (counter.rand_color_5.selectedvalue == "2"){
+			shape.P3.color = values.color2;
+			values.Color_3 = 2;
+		}else if (counter.rand_color_5.selectedvalue == "3"){
+			shape.P3.color = values.color3;
+			values.Color_3 = 3;
+		}else if (counter.rand_color_5.selectedvalue == "4"){
+			shape.P3.color = values.color4;
+			values.Color_3 = 4;
+		}else if (counter.rand_color_5.selectedvalue == "5"){
+			shape.P3.color = values.color5;
+			values.Color_3 = 5;
+		}else if (counter.rand_color_5.selectedvalue == "6"){
+			shape.P3.color = values.color6;
+			values.Color_3 = 6;
+		}else if (counter.rand_color_5.selectedvalue == "7"){
+			shape.P3.color = values.color7;
+			values.Color_3 = 7;
+		}else if (counter.rand_color_5.selectedvalue == "8"){
+			shape.P3.color = values.color8;
+			values.Color_3 = 8;
+		}else{
+			shape.P3.color = values.color9;
+			values.Color_3 = 9;
+		}
+		if(counter.rand_color_6.selectedvalue == "1"){
+			shape.P4.color = values.color1;
+			values.Color_4 = 1;
+		}else if (counter.rand_color_6.selectedvalue == "2"){
+			shape.P4.color = values.color2;
+			values.Color_4 = 2;
+		}else if (counter.rand_color_6.selectedvalue == "3"){
+			shape.P4.color = values.color3;
+			values.Color_4 = 3;
+		}else if (counter.rand_color_6.selectedvalue == "4"){
+			shape.P4.color = values.color4;
+			values.Color_4 = 4;
+		}else if (counter.rand_color_6.selectedvalue == "5"){
+			shape.P4.color = values.color5;
+			values.Color_4 = 5;
+		}else if (counter.rand_color_6.selectedvalue == "6"){
+			shape.P4.color = values.color6;
+			values.Color_4 = 6;
+		}else if (counter.rand_color_6.selectedvalue == "7"){
+			shape.P4.color = values.color7;
+			values.Color_4 = 7;
+		}else if (counter.rand_color_6.selectedvalue == "8"){
+			shape.P4.color = values.color8;
+			values.Color_4 = 8;
+		}else{
+			shape.P4.color = values.color9;
 			values.Color_4 = 9;
 		}
 		
