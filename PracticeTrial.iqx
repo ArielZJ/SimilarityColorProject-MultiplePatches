@@ -58,13 +58,13 @@ If you are ready, please press SPACE button to start the experiment.")
 <trial PresentCircles_practice>
 / ontrialbegin = [
 	values.angle_1 = rand(-180,180);
-	values.angle_2 = values.angle_1 + 180;
-	values.angle_3 = values.angle_1 + 45;
-	values.angle_4 = values.angle_3 + 180;
-	values.angle_5 = values.angle_1 + 90;
-	values.angle_6 = values.angle_2 + 90;
-	values.angle_7 = values.angle_3 + 90;
-	values.angle_8 = values.angle_4 + 90;
+	values.angle_2 = values.angle_1 + 120;
+	values.angle_3 = values.angle_1 + 60;
+	values.angle_4 = values.angle_3 + 120;
+	values.angle_5 = values.angle_1 + 240;
+	values.angle_6 = values.angle_2 + 240;
+	values.angle_7 = values.angle_3 + 240;
+	values.angle_8 = values.angle_4 + 240;
 	
 	values.angle_1_cue = values.angle_1+90;
 	values.angle_2_cue = values.angle_2+90;
@@ -126,13 +126,9 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F3,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F4,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P3,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P4,1);
 		trial.PresentCircles_practice.insertstimulustime(shape.P3_remover,values.patch_timeout);
-		trial.PresentCircles_practice.insertstimulustime(shape.P4_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F3_remover,values.patch_timeout);
-		trial.PresentCircles_practice.insertstimulustime(shape.F4_remover,values.patch_timeout);
 		
 
 						
@@ -185,13 +181,9 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F3,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F4,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P3,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P4,1);
 		trial.PresentCircles_practice.insertstimulustime(shape.P3_remover,values.patch_timeout);
-		trial.PresentCircles_practice.insertstimulustime(shape.P4_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F3_remover,values.patch_timeout);
-		trial.PresentCircles_practice.insertstimulustime(shape.F4_remover,values.patch_timeout);
 		
 		
 		
@@ -241,13 +233,9 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F3,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F4,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P3,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P4,1);
-		trial.PresentCircles_practice.insertstimulustime(shape.P3_remover,values.patch_timeout);
-		trial.PresentCircles_practice.insertstimulustime(shape.P4_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F3_remover,values.patch_timeout);
-		trial.PresentCircles_practice.insertstimulustime(shape.F4_remover,values.patch_timeout);
+		trial.PresentCircles_practice.insertstimulustime(shape.P3_remover,values.patch_timeout);
 		
 
 		
