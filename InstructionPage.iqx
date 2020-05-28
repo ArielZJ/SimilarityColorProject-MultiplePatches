@@ -52,7 +52,7 @@ Operation Instruction Page 1:
 </text>
 
 <video Instruction_Page_1_gif>
-/ items = ("multipleinstruction_stimuli.gif")
+/ items = ("multipleinstruction_stimuli.mp4")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -77,7 +77,7 @@ After choosing, move your cursor back to the centre and click the black rectangl
 
 
 <video Instruction_Page_2_gif>
-/ items = ("multipleinstruction_stimuli.gif")
+/ items = ("multipleinstructions_singleresponse.mp4")
 / hposition = 50%
 / vposition = 30%
 / loop = true
