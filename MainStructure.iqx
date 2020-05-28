@@ -62,7 +62,7 @@
 /number_of_patch_practice = 3
 
 /patch_timeout = 250
-/stim_cue_gap = 200
+/stim_cue_gap = 100
 /cue_time = 250
 
 /response_stim_x = 50
