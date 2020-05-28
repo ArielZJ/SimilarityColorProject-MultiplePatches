@@ -9,7 +9,7 @@
 /x = 1px * display.getpixelsx(50,1)
 /y = 1px * display.getpixelsy(50,1)
 /r_F = 1px * display.getpixelsx(2,1)
-/R_P = 3 * values.r_F
+/R_P = values.peripheral_scale * values.r_F
 /radius_F = 1px * display.getpixelsy(8,1)
 /radius_P = 1px * display.getpixelsy(50,1) - values.R_P
 /angle_min_F = deg(acos(1 - 2 * pow(values.r_F,2)/pow(values.radius_F,2)))
@@ -18,12 +18,21 @@
 /angle_2 = 0
 /angle_3 = 0
 /angle_4 = 0
-/radius_cue = 1px * display.getpixelsy(3,1)
+/angle_5 = 0
+/angle_6 = 0
+/angle_7 = 0
+/angle_8 = 0
+/radius_cue_fovea = 1px * display.getpixelsy(3,1)
+/radius_cue_periphery = 1px * display.getpixelsy(30,1)
 
 /angle_1_cue = 0
 /angle_2_cue = 0
 /angle_3_cue = 0
 /angle_4_cue = 0
+/angle_5_cue = 0
+/angle_6_cue = 0
+/angle_7_cue = 0
+/angle_8_cue = 0
 </values>
 
 <counter F2_position>
@@ -41,6 +50,10 @@
 / theta_2 = (values.angle_2)*(m_pi/180)
 / theta_3 = (values.angle_3)*(m_pi/180)
 / theta_4 = (values.angle_4)*(m_pi/180)
+/ theta_5 = (values.angle_5)*(m_pi/180)
+/ theta_6 = (values.angle_6)*(m_pi/180)
+/ theta_7 = (values.angle_7)*(m_pi/180)
+/ theta_8 = (values.angle_8)*(m_pi/180)
 
 / deltax_1 = values.radius_F*cos(expressions.theta_1)
 / deltay_1 = values.radius_F*sin(expressions.theta_1)
@@ -51,14 +64,14 @@
 / deltax_4 = values.radius_P*cos(expressions.theta_4)
 / deltay_4 = values.radius_P*sin(expressions.theta_4)
 
-/ deltax_5 = values.radius_cue*cos(expressions.theta_1)
-/ deltay_5 = values.radius_cue*sin(expressions.theta_1)
-/ deltax_6 = values.radius_cue*cos(expressions.theta_2)
-/ deltay_6 = values.radius_cue*sin(expressions.theta_2)
-/ deltax_7 = values.radius_cue*cos(expressions.theta_3)
-/ deltay_7 = values.radius_cue*sin(expressions.theta_3)
-/ deltax_8 = values.radius_cue*cos(expressions.theta_4)
-/ deltay_8 = values.radius_cue*sin(expressions.theta_4)
+/ deltax_5 = values.radius_cue_fovea*cos(expressions.theta_1)
+/ deltay_5 = values.radius_cue_fovea*sin(expressions.theta_1)
+/ deltax_6 = values.radius_cue_fovea*cos(expressions.theta_2)
+/ deltay_6 = values.radius_cue_fovea*sin(expressions.theta_2)
+/ deltax_7 = values.radius_cue_periphery*cos(expressions.theta_3)
+/ deltay_7 = values.radius_cue_periphery*sin(expressions.theta_3)
+/ deltax_8 = values.radius_cue_periphery*cos(expressions.theta_4)
+/ deltay_8 = values.radius_cue_periphery*sin(expressions.theta_4)
 
 / a_1 = values.x + expressions.deltax_1
 / b_1 = values.y + expressions.deltay_1
@@ -77,4 +90,40 @@
 / b_3_cue = values.y + expressions.deltay_7
 / a_4_cue = values.x + expressions.deltax_8
 / b_4_cue = values.y + expressions.deltay_8
+
+/ deltax_9 = values.radius_F*cos(expressions.theta_5)
+/ deltay_9 = values.radius_F*sin(expressions.theta_5)
+/ deltax_10 = values.radius_F*cos(expressions.theta_6)
+/ deltay_10 = values.radius_F*sin(expressions.theta_6)
+/ deltax_11 = values.radius_P*cos(expressions.theta_7)
+/ deltay_11 = values.radius_P*sin(expressions.theta_7)
+/ deltax_12 = values.radius_P*cos(expressions.theta_8)
+/ deltay_12 = values.radius_P*sin(expressions.theta_8)
+
+/ deltax_13 = values.radius_cue_fovea*cos(expressions.theta_5)
+/ deltay_13 = values.radius_cue_fovea*sin(expressions.theta_5)
+/ deltax_14 = values.radius_cue_fovea*cos(expressions.theta_6)
+/ deltay_14 = values.radius_cue_fovea*sin(expressions.theta_6)
+/ deltax_15 = values.radius_cue_periphery*cos(expressions.theta_7)
+/ deltay_15 = values.radius_cue_periphery*sin(expressions.theta_7)
+/ deltax_16 = values.radius_cue_periphery*cos(expressions.theta_8)
+/ deltay_16 = values.radius_cue_periphery*sin(expressions.theta_8)
+
+/ a_5 = values.x + expressions.deltax_9
+/ b_5 = values.y + expressions.deltay_9
+/ a_6 = values.x + expressions.deltax_10
+/ b_6 = values.y + expressions.deltay_10
+/ a_7 = values.x + expressions.deltax_11
+/ b_7 = values.y + expressions.deltay_11
+/ a_8 = values.x + expressions.deltax_12
+/ b_8 = values.y + expressions.deltay_12
+
+/ a_5_cue = values.x + expressions.deltax_13
+/ b_5_cue = values.y + expressions.deltay_13
+/ a_6_cue = values.x + expressions.deltax_14
+/ b_6_cue = values.y + expressions.deltay_14
+/ a_7_cue = values.x + expressions.deltax_15
+/ b_7_cue = values.y + expressions.deltay_15
+/ a_8_cue = values.x + expressions.deltax_16
+/ b_8_cue = values.y + expressions.deltay_16
 </expressions>

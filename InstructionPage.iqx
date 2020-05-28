@@ -41,9 +41,9 @@ Next Button: Space Button
 ********************************************************************
 Operation Instruction Page 1:
 <text Instruction_Page_1>
-/ items = ("Throughout the experiment, focus on the cross at the centre
-of the screen.
-4 circles will flash out quickly somewhere on the screen")
+/ items = ("Throughout the experiment, focus on the cross at the centre of the screen.
+4 circles will flash out quickly somewhere on the screen.
+ One will then be marked with a black arrow.")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
@@ -52,7 +52,7 @@ of the screen.
 </text>
 
 <video Instruction_Page_1_gif>
-/ items = ("Instruction_page_1_multiple.gif")
+/ items = ("multipleinstruction_stimuli.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -60,13 +60,14 @@ of the screen.
 </video>
 
 <text Instruction_Page_2>
-/ items = ("On this page, please decide the dissimilarity level of the colour of the 2 circles with a BLACK edge. 
+/ items = ("On this page, please decide the dissimilarity level of the colour of the circle that was marked with an arrow 
+to the colour of the circle in the centre now. 
 Ignore any size differences.
 
 0 => most similar colour (least dissimilar colour)
 7 => most dissimilar colour (least similar colour)
 
-After choosing, move your cursor back to the centre and click the green box to continue")
+After choosing, move your cursor back to the centre and click the black rectangle to continue")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
@@ -76,7 +77,7 @@ After choosing, move your cursor back to the centre and click the green box to c
 
 
 <video Instruction_Page_2_gif>
-/ items = ("Instruction_page_2_multiple.gif")
+/ items = ("multipleinstruction_stimuli.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true

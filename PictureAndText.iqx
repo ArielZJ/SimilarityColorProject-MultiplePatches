@@ -94,7 +94,7 @@
 
 <picture P1_cue>
 / items = ("arrow.png")
-/ size = (values.cue_height,values.cue_width)
+/ size = (values.cue_height*values.peripheral_scale,values.cue_width*values.peripheral_scale)
 
 / hposition = expressions.a_3_cue
 / vposition = expressions.b_3_cue
