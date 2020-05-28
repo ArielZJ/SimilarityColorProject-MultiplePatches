@@ -61,9 +61,9 @@
 /number_of_patch = 18
 /number_of_patch_practice = 3
 
-/patch_timeout = 1000
+/patch_timeout = 250
 /stim_cue_gap = 200
-/cue_time = 300
+/cue_time = 250
 
 /response_stim_x = 50
 /response_stim_y = 50
