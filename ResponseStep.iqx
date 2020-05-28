@@ -95,7 +95,7 @@
 
 <text p_response_instructions>
 / items = 
-("Please choose the dissimilarity level of previous 2 circles
+("Please choose the dissimilarity level between the previously cued circle and the current coloured circle
 		0 => Most Similar
 		7 => Most Dissimilar")
 / fontstyle = ("Arial", 2.8%, true)
