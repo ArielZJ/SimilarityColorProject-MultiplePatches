@@ -102,6 +102,12 @@
 / resetinterval = 1
 </counter>
 
+<counter binarise>
+/ select = replace(1-2)
+/ resetinterval = 1
+</counter>
+
+
 ** modified to also specify Circle_3 and Circle_4
 ** angle_x_cue has 0 at the top (N), while angle_cue has 0 at the right (E), so need to make them line up
 <trial PresentCircles>
@@ -141,7 +147,7 @@
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles.insertstimulusframe(shape.F2,1);
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles.insertstimulusframe(shape.P2,1);
+
 		trial.PresentCircles.insertstimulustime(shape.P1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.P2_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F1_remover,values.patch_timeout);
@@ -275,9 +281,13 @@
 		trial.PresentCircles.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles.insertstimulusframe(shape.F2,1);
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles.insertstimulusframe(shape.P2,1);
+		if(counter.binarise.selectedvalue == 1){
+			trial.PresentCircles.insertstimulusframe(shape.F2,1);
+		}
+		else {
+			trial.PresentCircles.insertstimulusframe(shape.P2,1);
+		}
 		trial.PresentCircles.insertstimulustime(shape.P1_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.P2_remover,values.patch_timeout);
 		trial.PresentCircles.insertstimulustime(shape.F1_remover,values.patch_timeout);
@@ -410,7 +420,7 @@
 		trial.PresentCircles.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles.insertstimulusframe(shape.F2,1);
+
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles.insertstimulusframe(shape.P2,1);
 		trial.PresentCircles.insertstimulustime(shape.P1_remover,values.patch_timeout);
