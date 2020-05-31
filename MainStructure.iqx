@@ -46,8 +46,10 @@
 /number_of_patch = 243
 /number_of_patch_practice = 9
 
-/patch_timeout = 200
+/patch_timeout = 250
 /highlight_timeout = 50
+
+/peripheral_scale = 3
 </values>
 
 
