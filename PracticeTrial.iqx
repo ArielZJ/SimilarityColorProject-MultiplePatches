@@ -93,7 +93,7 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+
 		trial.PresentCircles_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
@@ -131,8 +131,11 @@ If you are ready, please press SPACE button to start the experiment.")
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
+			trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
+		} else {
+			trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		}
 		trial.PresentCircles_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
 		trial.PresentCircles_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
@@ -166,7 +169,7 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulustime(picture.P2_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
 		trial.PresentCircles_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
