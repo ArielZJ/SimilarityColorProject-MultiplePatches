@@ -74,7 +74,7 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+
 		
 
 						
@@ -109,8 +109,11 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
 		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
 		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
+			trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+		} else {
+			trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
+		}
 		
 		
 		
@@ -143,7 +146,7 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+
 		
 
 		

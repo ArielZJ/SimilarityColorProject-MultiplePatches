@@ -94,6 +94,12 @@
 / resetinterval = 1
 </counter>
 
+<counter binarise>
+/ select = replace(1-2)
+/ resetinterval = 1
+</counter>
+
+
 ** modified to also specify Circle_3 and Circle_4
 ** angle_x_cue has 0 at the top (N), while angle_cue has 0 at the right (E), so need to make them line up
 <trial PresentCircles>
@@ -122,7 +128,7 @@
 		values.Position_2 = values.angle_2;
 		
 		trial.PresentCircles.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles.insertstimulusframe(shape.P2,2);
+
 		values.Position_3 = values.angle_3;
 		values.Position_4 = values.angle_4;
 		
@@ -254,8 +260,12 @@
 		values.Position_1 = values.angle_1;
 		values.Position_2 = values.angle_3;
 		
-		trial.PresentCircles.insertstimulusframe(shape.F2,1);
-		trial.PresentCircles.insertstimulusframe(shape.P2,2);
+			if(counter.binarise.selectedvalue == 1){
+			trial.PresentCircles.insertstimulusframe(shape.F2,1);
+		}
+		else {
+			trial.PresentCircles.insertstimulusframe(shape.P2,1);
+		}
 		values.Position_3 = values.angle_2;
 		values.Position_4 = values.angle_4;
 		
@@ -389,7 +399,7 @@
 		values.Position_2 = values.angle_4;
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles.insertstimulusframe(shape.F2,2);
+
 		values.Position_3 = values.angle_1;
 		values.Position_4 = values.angle_2;
 
