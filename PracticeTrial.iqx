@@ -130,9 +130,9 @@ If you are ready, please press SPACE button to start the experiment.")
 		trial.PresentCircles_practice.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
+		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
 		if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
-			trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
+			trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
 		} else {
 			trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
 		}
@@ -203,7 +203,7 @@ If you are ready, please press SPACE button to start the experiment.")
 / timeout = values.patch_timeout + values.stim_cue_gap + values.cue_time
 / ontrialend = [trial.PresentCircles_practice.clearstimulusframes();]
 / recorddata = false
-
+/ screencapture = true
 / branch = [
 	if(counter.PracticeCounter.selectedvalue == 1 ||counter.PracticeCounter.selectedvalue == 2||counter.PracticeCounter.selectedvalue == 3){
 		trial.peripheral_response_practice_FF}

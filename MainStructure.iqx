@@ -18,6 +18,8 @@
 <values>
 /screen_color = 127
 
+/screencapturebool = true
+
 /trial_number = 0
 /Cross_position = 0
 /Circle_1 = 0
@@ -284,9 +286,9 @@
 
 		
 		trial.PresentCircles.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles.insertstimulusframe(shape.F2,1);
+		trial.PresentCircles.insertstimulusframe(shape.P1,1);
 		if(counter.binarise.selectedvalue == 1){
-			trial.PresentCircles.insertstimulusframe(shape.P1,1);
+			trial.PresentCircles.insertstimulusframe(shape.F2,1);
 		}
 		else {
 			trial.PresentCircles.insertstimulusframe(shape.P2,1);
