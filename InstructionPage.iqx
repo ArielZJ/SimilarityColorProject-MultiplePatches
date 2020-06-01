@@ -52,7 +52,7 @@ Operation Instruction Page 1:
 </text>
 
 <video Instruction_Page_1_gif>
-/ items = ("multipleinstruction_stimuli.mp4")
+/ items = ("3stim_1compare_after.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -67,7 +67,8 @@ Ignore any size differences.
 0 => most similar colour (least dissimilar colour)
 7 => most dissimilar colour (least similar colour)
 
-After choosing, move your cursor back to the centre and click the black rectangle to continue")
+After choosing, move your cursor back to the centre and
+click the black rectangle to continue")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
@@ -77,7 +78,7 @@ After choosing, move your cursor back to the centre and click the black rectangl
 
 
 <video Instruction_Page_2_gif>
-/ items = ("multipleinstructions_singleresponse.mp4")
+/ items = ("3stim_1compare_after.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
