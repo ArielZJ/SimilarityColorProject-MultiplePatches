@@ -102,9 +102,3 @@
 / txbgcolor = (127,127,127)
 / position = (50,80)
 </text>
-
-<shape response>
-/ shape = circle
-/ size = (2 * values.r_F,2 * values.r_F)
-/ position = (50,50)
-</shape>

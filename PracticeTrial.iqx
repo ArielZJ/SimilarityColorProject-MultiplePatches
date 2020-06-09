@@ -40,14 +40,16 @@ If you are ready, please press SPACE button to start the experiment.")
 / stimulusframes = [1 = cross]
 / timeout = 500
 / recorddata = false
-/ branch = [
+/ ontrialend = [
 	values.order_practice += 1;
+]
+/ branch = [
 	trial.PresentCircles_practice
 ]
 </trial>
 
 <counter PracticeCounter>
-/ select = noreplace(1,8,3)
+/ select = noreplace(1-9)
 / selectionrate = block
 </counter>
 
@@ -55,9 +57,6 @@ If you are ready, please press SPACE button to start the experiment.")
 ** angle_x_cue has 0 at the top (N), while angle_cue has 0 at the right (E), so need to make them line up
 <trial PresentCircles_practice>
 / ontrialbegin = [
-
-	values.response_counter = 9;
-	
 	values.angle_1 = rand(-180,180);
 	values.angle_2 = values.angle_1 + 120;
 	values.angle_3 = values.angle_1 + 60;
@@ -275,64 +274,87 @@ If you are ready, please press SPACE button to start the experiment.")
 / recorddata = false
 
 / branch = [
-	trial.response_practice
+	if(counter.PracticeCounter.selectedvalue == 1 ||counter.PracticeCounter.selectedvalue == 2||counter.PracticeCounter.selectedvalue == 3){
+		trial.peripheral_response_practice_FF}
+	else if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
+		trial.peripheral_response_practice_FP}
+	else{
+		trial.peripheral_response_practice_PP}
+	
 ]
 </trial>
 
 * NB: the 'timeout' variable above is what controls the SOA. Note you have to set the practice trial one separately
 
-** modified these to ask for all 9 response possibilities in random order
-<trial response_practice>
+** modified these to be specific to the FF, FP, PP cases
+<trial peripheral_response_practice_FF>
 / ontrialbegin = [
-		
-		shape.response.hposition = 50;
-		shape.response.vposition = 50;
-		
-		if(counter.rand_color_response.selectedvalue == "1"){
-			shape.response.color = values.color1;
-			values.response_color = 1;
-		}else if (counter.rand_color_response.selectedvalue == "2"){
-			shape.response.color = values.color2;
-			values.response_color = 2;
-		}else if (counter.rand_color_response.selectedvalue == "3"){
-			shape.response.color = values.color3;
-			values.response_color = 3;
-		}else if (counter.rand_color_response.selectedvalue == "4"){
-			shape.response.color = values.color4;
-			values.response_color = 4;
-		}else if (counter.rand_color_response.selectedvalue == "5"){
-			shape.response.color = values.color5;
-			values.response_color = 5;
-		}else if (counter.rand_color_response.selectedvalue == "6"){
-			shape.response.color = values.color6;
-			values.response_color = 6;
-		}else if (counter.rand_color_response.selectedvalue == "7"){
-			shape.response.color = values.color7;
-			values.response_color = 7;
-		}else if (counter.rand_color_response.selectedvalue == "8"){
-			shape.response.color = values.color8;
-			values.response_color = 8;
-		}else{
-			shape.response.color = values.color9;
-			values.response_color = 9;
-		}
+	shape.F2.hposition = values.response_stim_x;
+	shape.F2.vposition = values.response_stim_y;
+	shape.F2.height = values.response_stim_height;
+	shape.F2.width = values.response_stim_width;
 ]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, response
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder, F2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
-/ isvalidresponse = [if (trial.response_practice.response == "response_blank") false; else
+/ isvalidresponse = [if (trial.peripheral_response_practice_FF.response == "response_blank") false; else
 expressions.validresponse_disks
 ]
 / recorddata = false
 / ontrialend = [
-	values.response_time = trial.response_practice.latency;
+	values.response_time = trial.peripheral_response_practice_FF.latency;
 ]
 / branch = [trial.centermouse_practice]
 </trial>
 
+<trial peripheral_response_practice_FP>
+/ ontrialbegin = [
+	shape.P1.hposition = values.response_stim_x;
+	shape.P1.vposition = values.response_stim_y;
+	shape.P1.height = values.response_stim_height;
+	shape.P1.width = values.response_stim_width;
+]
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P1
+]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.peripheral_response_practice_FP.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.peripheral_response_practice_FP.latency;
+]
+/ branch = [trial.centermouse_practice]
+</trial>
+
+<trial peripheral_response_practice_PP>
+/ ontrialbegin = [
+	shape.P2.hposition = values.response_stim_x;
+	shape.P2.vposition = values.response_stim_y;
+	shape.P2.height = values.response_stim_height;
+	shape.P2.width = values.response_stim_width;
+]
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
+highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder,P2
+]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.peripheral_response_practice_PP.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.peripheral_response_practice_PP.latency;
+]
+/ branch = [trial.centermouse_practice]
+</trial>
 
 <trial centermouse_practice>
 / stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
@@ -341,10 +363,9 @@ highC_instruction,centersquare,notice_centre_mouse,process_notice_practice,title
 / recorddata = false
 / validresponse = (centersquare)
 / branch = [
-	if (values.response_counter > 1){
-		values.response_counter = values.response_counter - 1;
-		trial.response_practice
-		}
+	if (values.order_practice == 9){
+		trial.EndPracticeTrail
+	}
 ]
 </trial>
 

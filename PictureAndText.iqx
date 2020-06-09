@@ -94,7 +94,7 @@
 
 <picture P1_cue>
 / items = ("arrow.png")
-/ size = (values.cue_height*values.peripheral_scale,values.cue_width*values.peripheral_scale)
+/ size = (values.cue_height,values.cue_width)
 
 / hposition = expressions.a_3_cue
 / vposition = expressions.b_3_cue
@@ -103,7 +103,7 @@
 
 <shape P1_cue_remover>
 / shape = rectangle
-/ size = (values.cue_height*values.peripheral_scale,values.cue_width*values.peripheral_scale)
+/ size = (values.cue_height,values.cue_width)
 / color = (values.screen_color,values.screen_color,values.screen_color)
 / hposition = expressions.a_3_cue
 / vposition = expressions.b_3_cue
@@ -112,14 +112,14 @@
 
 <shape P2>
 / shape = circle
-/ size = (2 * values.R_P, 2 * values.R_P)
+/ size = (2 * values.R_P,2 * values.R_P)
 / hposition = expressions.a_4
 / vposition = expressions.b_4
 </shape>
 
 <shape P2_remover>
 / shape = circle
-/ size = (2 * values.R_P, 2 * values.R_P)
+/ size = (2 * values.R_P,2 * values.R_P)
 / color = (values.screen_color,values.screen_color,values.screen_color)
 / hposition = expressions.a_4
 / vposition = expressions.b_4
@@ -213,7 +213,7 @@
 
 <picture P3_cue>
 / items = ("arrow.png")
-/ size = (values.cue_height*values.peripheral_scale,values.cue_width*values.peripheral_scale)
+/ size = (values.cue_height,values.cue_width)
 
 / hposition = expressions.a_7_cue
 / vposition = expressions.b_7_cue
@@ -222,7 +222,7 @@
 
 <shape P3_cue_remover>
 / shape = rectangle
-/ size = (values.cue_height*values.peripheral_scale,values.cue_width*values.peripheral_scale)
+/ size = (values.cue_height,values.cue_width)
 / color = (values.screen_color,values.screen_color,values.screen_color)
 / hposition = expressions.a_7_cue
 / vposition = expressions.b_7_cue
@@ -246,14 +246,12 @@
 
 <picture P4_cue>
 / items = ("arrow.png")
-/ size = (values.cue_height*values.peripheral_scale,values.cue_width*values.peripheral_scale)
+/ size = (values.cue_height,values.cue_width)
 
 / hposition = expressions.a_8_cue
 / vposition = expressions.b_8_cue
 / rotation = values.angle_8_cue
 </picture>
-
-
 
 ***************************************************************************************************
 ***************************************************************************************************
