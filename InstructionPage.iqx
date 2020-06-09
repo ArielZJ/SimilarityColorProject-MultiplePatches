@@ -52,7 +52,7 @@ of the screen.
 </text>
 
 <video Instruction_Page_1_gif>
-/ items = ("Instruction_page_1_multiple.gif")
+/ items = ("6stim_1compare_after.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -76,7 +76,7 @@ After choosing, move your cursor back to the centre and click the green box to c
 
 
 <video Instruction_Page_2_gif>
-/ items = ("Instruction_page_2_multiple.gif")
+/ items = ("6stim_1compare_after.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
