@@ -43,7 +43,7 @@ Operation Instruction Page 1:
 <text Instruction_Page_1>
 / items = ("Throughout the experiment, focus on the cross at the centre
 of the screen.
-4 circles will flash out quickly somewhere on the screen")
+6 circles will flash out quickly somewhere on the screen")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
