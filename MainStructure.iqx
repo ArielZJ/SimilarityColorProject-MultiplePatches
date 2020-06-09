@@ -60,14 +60,16 @@
 /number_of_patch = 243
 /number_of_patch_practice = 9
 
-/patch_timeout = 1000
-/stim_cue_gap = 200
-/cue_time = 300
+/patch_timeout = 250
+/stim_cue_gap = 100
+/cue_time = 250
 
 /response_stim_x = 50
 /response_stim_y = 50
 /response_stim_height = 225
 /response_stim_width = 225
+
+/peripheral_scale = 3
 </values>
 
 
