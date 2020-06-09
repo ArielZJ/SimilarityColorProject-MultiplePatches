@@ -60,13 +60,14 @@ of the screen.
 </video>
 
 <text Instruction_Page_2>
-/ items = ("On this page, please decide the dissimilarity level of the colour of the 2 circles that were marked by black arrows. 
+/ items = ("n this page, please decide the dissimilarity level of the colour of the circle that was marked with an arrow 
+to the colour of the circle in the centre now.  
 Ignore any size differences.
 
 0 => most similar colour (least dissimilar colour)
 7 => most dissimilar colour (least similar colour)
 
-After choosing, move your cursor back to the centre and click the green box to continue")
+After choosing, move your cursor back to the centre and click the black rectangle to continue")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
