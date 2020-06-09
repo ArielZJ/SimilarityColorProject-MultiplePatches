@@ -60,7 +60,7 @@ of the screen.
 </video>
 
 <text Instruction_Page_2>
-/ items = ("On this page, please decide the dissimilarity level of the colour of the 2 circles with a BLACK edge. 
+/ items = ("On this page, please decide the dissimilarity level of the colour of the 2 circles that were marked by black arrows. 
 Ignore any size differences.
 
 0 => most similar colour (least dissimilar colour)
