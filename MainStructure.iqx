@@ -36,14 +36,13 @@
 /color1 = #ff0000
 /color2 = #ffaa00
 /color3 = #aaff00
-/color4 = #00ff00
-/color5 = #00ffa9
-/color6 = #00a9ff
+
+
+
 /color7 = #0000ff
 /color8 = #aa00ff
-/color9 = #ff00aa
 
-/number_of_patch = 243
+/number_of_patch = 288
 /number_of_patch_practice = 9
 
 /patch_timeout = 250
