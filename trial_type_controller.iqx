@@ -1,4 +1,6 @@
-﻿<list trial_sequence>
+﻿** list that provides the ordering of trials in the main experiment
+<list trial_sequence>
+/selectionmode = sequence
 /items = ("after2",
 "during",
 "during",
