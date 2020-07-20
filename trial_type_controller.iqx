@@ -1,214 +1,213 @@
 ﻿** list that provides the ordering of trials in the main experiment
-<list trial_sequence>
-/selectionmode = sequence
-/items = ("after2",
-"during",
-"during",
-"during",
-"during",
-"during",
-"during",
-"during",
-"after1",
-"during",
-"after2",
-"after2",
-"after1",
-"after1",
-"during",
-"during",
-"after2",
-"during",
-"after1",
-"catch",
-"after2",
-"after1",
-"after2",
-"after1",
-"catch",
-"after1",
-"after1",
-"during",
-"after2",
-"after2",
-"during",
-"after1",
-"after1",
-"during",
-"after1",
-"after1",
-"after2",
-"after2",
-"after1",
-"during",
-"during",
-"during",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"during",
-"during",
-"during",
-"during",
-"after2",
-"after1",
-"after1",
-"after1",
-"during",
-"after1",
-"during",
-"catch",
-"during",
-"after2",
-"after1",
-"during",
-"after1",
-"after2",
-"after2",
-"after2",
-"after2",
-"after1",
-"during",
-"after2",
-"after2",
-"catch",
-"during",
-"during",
-"during",
-"after2",
-"after1",
-"after1",
-"during",
-"after1",
-"after1",
-"after1",
-"after1",
-"catch",
-"after1",
-"after1",
-"after1",
-"during",
-"after2",
-"after1",
-"after1",
-"during",
-"after1",
-"during",
-"during",
-"during",
-"after2",
-"during",
-"after1",
-"after1",
-"after1",
-"after2",
-"during",
-"after1",
-"after1",
-"during",
-"after1",
-"after1",
-"after2",
-"after2",
-"after1",
-"after2",
-"after2",
-"during",
-"after2",
-"during",
-"during",
-"catch",
-"after2",
-"during",
-"after2",
-"after2",
-"after1",
-"after1",
-"during",
-"after2",
-"after1",
-"after2",
-"after2",
-"after1",
-"during",
-"after2",
-"after1",
-"after2",
-"after1",
-"catch",
-"after2",
-"after2",
-"after2",
-"after1",
-"after1",
-"after1",
-"after1",
-"after2",
-"after2",
-"after2",
-"during",
-"during",
-"during",
-"during",
-"during",
-"after2",
-"during",
-"after2",
-"during",
-"during",
-"after2",
-"after2",
-"catch",
-"during",
-"during",
-"after2",
-"during",
-"during",
-"during",
-"during",
-"during",
-"during",
-"after2",
-"during",
-"during",
-"during",
-"after2",
-"after2",
-"after2",
-"catch",
-"during",
-"after2",
-"after2",
-"after2",
-"during",
-"after2",
-"during",
-"during",
-"after2",
-"after2",
-"after2",
-"during",
-"during",
-"after2",
-"during",
-"catch",
-"during",
-"during",
-"during",
-"during",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"after2",
-"during",
-"after2")
-</list>
+<item trial_sequence>
+/1 = "after2"
+/2 = "after1"
+/3 = "after1"
+/4 = "after1"
+/5 = "after1"
+/6 = "after2"
+/7 = "during"
+/8 = "catch"
+/9 = "after1"
+/10 = "after1"
+/11 = "after1"
+/12 = "during"
+/13 = "after1"
+/14 = "after2"
+/15 = "during"
+/16 = "after2"
+/17 = "after2"
+/18 = "during"
+/19 = "during"
+/20 = "during"
+/21 = "after2"
+/22 = "during"
+/23 = "after2"
+/24 = "catch"
+/25 = "during"
+/26 = "after1"
+/27 = "during"
+/28 = "after2"
+/29 = "after2"
+/30 = "after2"
+/31 = "after1"
+/32 = "during"
+/33 = "after1"
+/34 = "after1"
+/35 = "after1"
+/36 = "after2"
+/37 = "after2"
+/38 = "after2"
+/39 = "after1"
+/40 = "during"
+/41 = "during"
+/42 = "after1"
+/43 = "after2"
+/44 = "during"
+/45 = "catch"
+/46 = "after1"
+/47 = "after1"
+/48 = "after1"
+/49 = "after2"
+/50 = "after2"
+/51 = "after2"
+/52 = "after1"
+/53 = "after1"
+/54 = "after2"
+/55 = "after2"
+/56 = "after2"
+/57 = "after2"
+/58 = "after2"
+/59 = "during"
+/60 = "during"
+/61 = "after2"
+/62 = "after1"
+/63 = "during"
+/64 = "after2"
+/65 = "after2"
+/66 = "catch"
+/67 = "after2"
+/68 = "after1"
+/69 = "during"
+/70 = "after1"
+/71 = "during"
+/72 = "after1"
+/73 = "after1"
+/74 = "after2"
+/75 = "during"
+/76 = "after2"
+/77 = "after2"
+/78 = "after2"
+/79 = "during"
+/80 = "after1"
+/81 = "during"
+/82 = "during"
+/83 = "after2"
+/84 = "during"
+/85 = "after2"
+/86 = "after2"
+/87 = "catch"
+/88 = "after2"
+/89 = "during"
+/90 = "after1"
+/91 = "after2"
+/92 = "after1"
+/93 = "during"
+/94 = "after1"
+/95 = "during"
+/96 = "during"
+/97 = "during"
+/98 = "during"
+/99 = "after1"
+/100 = "after1"
+/101 = "after2"
+/102 = "after1"
+/103 = "during"
+/104 = "after2"
+/105 = "after1"
+/106 = "after1"
+/107 = "after1"
+/108 = "during"
+/109 = "catch"
+/110 = "during"
+/111 = "during"
+/112 = "during"
+/113 = "after1"
+/114 = "during"
+/115 = "after2"
+/116 = "after2"
+/117 = "after1"
+/118 = "after2"
+/119 = "after1"
+/120 = "after1"
+/121 = "after2"
+/122 = "after1"
+/123 = "after1"
+/124 = "after2"
+/125 = "after1"
+/126 = "after2"
+/127 = "catch"
+/128 = "after1"
+/129 = "during"
+/130 = "after1"
+/131 = "during"
+/132 = "after2"
+/133 = "during"
+/134 = "after2"
+/135 = "after2"
+/136 = "after2"
+/137 = "during"
+/138 = "after2"
+/139 = "after2"
+/140 = "after2"
+/141 = "after1"
+/142 = "during"
+/143 = "after2"
+/144 = "after2"
+/145 = "after1"
+/146 = "during"
+/147 = "after1"
+/148 = "after2"
+/149 = "during"
+/150 = "after2"
+/151 = "catch"
+/152 = "after1"
+/153 = "during"
+/154 = "after1"
+/155 = "after1"
+/156 = "after2"
+/157 = "after2"
+/158 = "after2"
+/159 = "during"
+/160 = "after2"
+/161 = "during"
+/162 = "during"
+/163 = "after2"
+/164 = "during"
+/165 = "during"
+/166 = "after2"
+/167 = "after2"
+/168 = "during"
+/169 = "after2"
+/170 = "after2"
+/171 = "after2"
+/172 = "after2"
+/173 = "during"
+/174 = "during"
+/175 = "during"
+/176 = "catch"
+/177 = "after2"
+/178 = "after2"
+/179 = "after2"
+/180 = "after2"
+/181 = "during"
+/182 = "after2"
+/183 = "after2"
+/184 = "after2"
+/185 = "after2"
+/186 = "after2"
+/187 = "during"
+/188 = "during"
+/189 = "during"
+/190 = "during"
+/191 = "after2"
+/192 = "during"
+/193 = "during"
+/194 = "during"
+/195 = "during"
+/196 = "during"
+/197 = "during"
+/198 = "during"
+/199 = "during"
+/200 = "during"
+/201 = "during"
+/202 = "during"
+/203 = "during"
+/204 = "during"
+/205 = "during"
+/206 = "during"
+/207 = "catch"
+/208 = "during"
+/209 = "during"
+/210 = "during"
+</item>

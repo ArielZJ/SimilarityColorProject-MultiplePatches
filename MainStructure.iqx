@@ -95,18 +95,24 @@
 	values.trial_type = "";
 	values.catch_vals = "";
 ]
-/ branch = [
-	if(list.trial_sequence.value == "during"){
+/ branch = [ // changing this just for testing purposes
+	if(item.trial_sequence.item(counter.sequence.selectedvalue) == "PENIS"){ // working
 		trial.present_during
-	} else if(list.trial_sequence.value == "after1"){
+	} else if(item.trial_sequence.item(counter.sequence.selectedvalue) == "PENIS"){ // broken
 		trial.present_after1
-	} else if(list.trial_sequence.value == "after2"){
+	} else if(item.trial_sequence.item(counter.sequence.selectedvalue) == "PENIS"){ // broken
 		trial.present_after2
 	} else {
-		trial.catch
+		trial.catch // weirdly seems to be working?
 	}
 ]
 </trial>
+
+** counter to run the whole experiment
+<counter sequence>
+/ select = noreplace(1-210)
+/ selectionrate = block
+</counter>
 
 ** counter to make sure we do every trial for each trial type
 ** from 1 to stimuli^2 * condition number (e.g. 3 for FF, FP, PP)
@@ -234,7 +240,7 @@ centersquare,notice_centre_mouse,process_notice]
 <expt Main>
 / preinstructions = (start)
 / postinstructions = (end)
-/ blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-10 = Throughout] // TESTING, removed practice trials for now
+/ blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-100 = Throughout] // TESTING, removed practice trials for now
 // blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-12 = Throughout_practice; 13-255 = Throughout; 256 = followup]
 </expt>
 

@@ -1823,7 +1823,7 @@ expressions.validresponse_disks
 
 <trial response_options_catch> // special options just for this, pick a random response for them to return
 / ontrialbegin = [
-	values.catch_vals = counter.order_catch_vals.selectedvalue
+	values.catch_vals = counter.order_catch_vals.selectedvalue - 1
 ]
 
 / stimulusframes = [
