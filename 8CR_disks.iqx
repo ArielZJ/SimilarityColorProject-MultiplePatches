@@ -23,41 +23,7 @@ picture reveal>
 / position = (50,50)
 </picture>
 
-<picture greenL_instruction>
-/ items = ("greenLeft.png")
-/ position = (38,50)
-/ size = (5.5%, 5.5%)
-</picture>
 
-<picture part_of_Image>
-/ items = ("PartofFigure.jpg")
-/ position = (65,50)
-/ size = (10%, 10%)
-</picture>
-
-<picture Not_part_of_Image>
-/ items = ("NotPartofFigure.jpg")
-/ position = (35,50)
-/ size = (10%, 10%)
-</picture>
-
-<picture redL_instruction>
-/ items = ("redLeft.png")
-/ position = (62,50)
-/ size = (5.5%, 5.5%)
-</picture>
-
-<picture highC_instruction>
-/ items = ("highconfidence.png")
-/ position = (50,30)
-/ size = (29.6%, 6.8%)
-</picture>
-
-<picture lowC_instruction>
-/ items = ("lowconfidence.png")
-/ position = (50,70)
-/ size = (29.6%, 6.8%)
-</picture>
 
 picture response_blank>
 / items = ("response/response_blank.png")

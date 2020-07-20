@@ -102,3 +102,11 @@
 / txbgcolor = (127,127,127)
 / position = (50,80)
 </text>
+
+<text catch_instructions>
+/ items = 
+("Special trial! Please just select: <%item.catch_vals.item(counter.order_catch_vals.selectedvalue)%>")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ position = (50,80)
+</text>

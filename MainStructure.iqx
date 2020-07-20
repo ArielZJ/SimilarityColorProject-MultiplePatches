@@ -18,6 +18,8 @@
 </include>
 
 <values>
+/screen_color = 127
+
 /trial_number = 0
 /Cross_position = 0
 /Circle_1 = 0
@@ -35,24 +37,37 @@
 /response_time = 0
 /temp = 0
 
+// need to limit the colours displayed for this test, come back to this
 /color1 = #ff0000
 /color2 = #ffaa00
 /color3 = #aaff00
-
-
-
+/color4 = #00ff00
+/color5 = #00ffa9
+/color6 = #00a9ff
 /color7 = #0000ff
 /color8 = #aa00ff
+/color9 = #ff00aa
+
+// specify how big we want the stimulus on the response screen to be, for after1
+/response_stim_x = 50
+/response_stim_y = 50
+/response_stim_height = 225
+/response_stim_width = 225
+
 
 /number_of_patch = 210
 /number_of_patch_practice = 9
 
+// timing & display control
 /patch_timeout = 250
-/highlight_timeout = 50
+/stim_cue_gap = 100
+/cue_time = 250
 
 /peripheral_scale = 3
 
 /trial_type = ""
+
+/catch_vals = -1
 </values>
 
 
@@ -78,6 +93,7 @@
 	values.Color_4 = 0;
 	values.response = 0;
 	values.trial_type = "";
+	values.catch_vals = "";
 ]
 / branch = [
 	if(list.trial_sequence.value == "during"){
@@ -87,7 +103,7 @@
 	} else if(list.trial_sequence.value == "after2"){
 		trial.present_after2
 	} else {
-		trial.present_catch
+		trial.catch
 	}
 ]
 </trial>
@@ -112,6 +128,18 @@
 / selectionrate = block
 </counter>
 
+** catch - 10 trials
+<counter order_catch>
+/ select = noreplace(1-10)
+/ selectionrate = block
+</counter>
+
+** 8 different possible catch vals
+<counter order_catch_vals>
+/ select = replace(1-8)
+/ selectionrate = block
+</counter>
+
 ** counters to control the random colours of the other stimuli
 <counter rand_color_1>
 / select = noreplace(1-9)
@@ -119,6 +147,16 @@
 </counter>
 
 <counter rand_color_2>
+/ select = noreplace(1-9)
+/ resetinterval = 1
+</counter>
+
+<counter rand_color_3>
+/ select = noreplace(1-9)
+/ resetinterval = 1
+</counter>
+
+<counter rand_color_4>
 / select = noreplace(1-9)
 / resetinterval = 1
 </counter>
@@ -142,7 +180,7 @@ Responses
 <trial response_options>
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
-highC_instruction, p_response_instructions
+ p_response_instructions, centersquare // centersquare might be an issue in after1 trials
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -160,7 +198,7 @@ expressions.validresponse_disks
 
 <trial centermouse>
 / stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
-highC_instruction,centersquare,notice_centre_mouse,process_notice]
+centersquare,notice_centre_mouse,process_notice]
 / inputdevice = mouse
 / recorddata = true
 / validresponse = (centersquare)
@@ -196,12 +234,15 @@ highC_instruction,centersquare,notice_centre_mouse,process_notice]
 <expt Main>
 / preinstructions = (start)
 / postinstructions = (end)
-/ blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-12 = Throughout_practice; 13-255 = Throughout; 256 = followup]
+/ blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-10 = Throughout] // TESTING, removed practice trials for now
+// blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-12 = Throughout_practice; 13-255 = Throughout; 256 = followup]
 </expt>
 
 <data>
 / columns=[subject,values.trial_number, values.trial_type,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
 values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.p_confidence,values.response_time,
-values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue]
+values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue,
+values.catch_vals
+]
 / separatefiles = true
 </data>

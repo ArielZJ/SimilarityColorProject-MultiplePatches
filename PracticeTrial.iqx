@@ -185,7 +185,7 @@ If you are ready, please press SPACE button to start the experiment.")
 <trial peripheral_response_practice>
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
-highC_instruction, p_response_instructions,title, similar_reminder, dissimilar_reminder
+ p_response_instructions,title, similar_reminder, dissimilar_reminder
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -203,7 +203,7 @@ expressions.validresponse_disks
 
 <trial centermouse_practice>
 / stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
-highC_instruction,centersquare,notice_centre_mouse,process_notice_practice,title, similar_reminder, dissimilar_reminder]
+centersquare,notice_centre_mouse,process_notice_practice,title, similar_reminder, dissimilar_reminder]
 / inputdevice = mouse
 / recorddata = false
 / validresponse = (centersquare)
