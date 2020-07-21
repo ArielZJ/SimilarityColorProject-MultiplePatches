@@ -1,4 +1,17 @@
-﻿<item present_during_eccen>
+﻿<item practice_eccen>
+/1 = "FF"
+/2 = "PP"
+/3 = "FP"
+/4 = "FP"
+/5 = "FP"
+/6 = "PP"
+/7 = "FP"
+/8 = "FF"
+/9 = "FF"
+/10 = "PP"
+</item>
+
+<item present_during_eccen>
 /1 = "PP"
 /2 = "FF"
 /3 = "FP"

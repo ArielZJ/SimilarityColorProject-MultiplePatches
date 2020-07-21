@@ -35,186 +35,24 @@ If you are ready, please press SPACE button to start the experiment.")
 /order_practice = 0
 </values>
 
-<trial Fixiation_practice>
+<trial fixation_practice>
 / stimulusframes = [1 = cross]
 / timeout = 500
 / recorddata = false
-/ ontrialend = [
-	values.order_practice += 1;
-]
 / branch = [
-	trial.PresentCircles_practice
-]
-</trial>
-
-<counter PracticeCounter>
-/ select = noreplace(1-9)
-/ selectionrate = block
-</counter>
-
-<trial PresentCircles_practice>
-/ ontrialbegin = [
-	values.angle_1 = rand(-180,180);
-	values.angle_2 = values.angle_1 + 180;
-	values.angle_3 = values.angle_1 + 90;
-	values.angle_4 = values.angle_3 + 180;
-	
-	values.angle_1_cue = values.angle_1+90;
-	values.angle_2_cue = values.angle_2+90;
-	values.angle_3_cue = values.angle_3+90;
-	values.angle_4_cue = values.angle_4+90;
-	
-	if(counter.PracticeCounter.selectedvalue == 1 ||counter.PracticeCounter.selectedvalue == 2||counter.PracticeCounter.selectedvalue == 3){
-		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
-
-		trial.PresentCircles_practice.insertstimulusframe(picture.F1_cue,1);
-		trial.PresentCircles_practice.insertstimulusframe(picture.F2_cue,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-
-		
-
-						
-		if(counter.PracticeCounter.selectedvalue == 1){
-			shape.F1.color = values.color1;
-			shape.F2.color = values.color9;
-			shape.P1.color = values.color3;
-			shape.P2.color = values.color7;
-						
-		}else if(counter.PracticeCounter.selectedvalue == 2){
-			shape.F1.color = values.color2;
-			shape.F2.color = values.color8;
-			shape.P1.color = values.color1;
-			shape.P2.color = values.color9;
-			
-		}else if(counter.PracticeCounter.selectedvalue == 3){
-			shape.F1.color = values.color3;
-			shape.F2.color = values.color7;
-			shape.P1.color = values.color2;
-			shape.P2.color = values.color8;
-			
-		}
-		
-
-		
-	}else if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
-		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(picture.F1_cue,1);
-		trial.PresentCircles_practice.insertstimulusframe(picture.P1_cue,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-		
-		if(counter.PracticeCounter.selectedvalue == 4 ||counter.PracticeCounter.selectedvalue == 5||counter.PracticeCounter.selectedvalue == 6){
-			trial.PresentCircles_practice.insertstimulusframe(shape.F2,1);
-		} else {
-			trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
-		}
-		
-		
-		
-		if(counter.PracticeCounter.selectedvalue == 4){
-			shape.F1.color = values.color4;
-			shape.P1.color = values.color6;
-			shape.F2.color = values.color5;
-			shape.P2.color = values.color5;
-		}else if(counter.PracticeCounter.selectedvalue == 5){
-			shape.F1.color = values.color5;
-			shape.P1.color = values.color5;
-			shape.F2.color = values.color4;
-			shape.P2.color = values.color6;
-		}else if(counter.PracticeCounter.selectedvalue == 6){
-			shape.F1.color = values.color6;
-			shape.P1.color = values.color4;
-			shape.F2.color = values.color4;
-			shape.P2.color = values.color6;
-		}
-		
-
-		
-	}else{
-		trial.PresentCircles_practice.insertstimulusframe(text.cross,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(picture.P1_cue,1);
-		trial.PresentCircles_practice.insertstimulusframe(picture.P2_cue,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(shape.P1,1);
-		trial.PresentCircles_practice.insertstimulusframe(shape.P2,1);
-		
-		trial.PresentCircles_practice.insertstimulusframe(shape.F1,1);
-
-		
-
-		
-		if(counter.PracticeCounter.selectedvalue == 7){
-			shape.P1.color = values.color7;
-			shape.P2.color = values.color3;
-			shape.F1.color = values.color8;
-			shape.F2.color = values.color2;
-		}else if(counter.PracticeCounter.selectedvalue == 8){
-			shape.P1.color = values.color8;
-			shape.P2.color = values.color2;
-			shape.F1.color = values.color9;
-			shape.F2.color = values.color1;
-		}else if(counter.PracticeCounter.selectedvalue == 9){
-			shape.P1.color = values.color9;
-			shape.P2.color = values.color1;
-			shape.F1.color = values.color7;
-			shape.F2.color = values.color3;
-		}
-	
-		
-	}
-]
-/ stimulusframes = []
-/ timeout = values.patch_timeout
-/ ontrialend = [
-	trial.PresentCircles_practice.clearstimulusframes();
-]
-/ recorddata = false
-
-/ branch = [trial.peripheral_response_practice]
-</trial>
-
-* NB: the 'timeout' variable above is what controls the SOA. Note you have to set the practice trial one separately
-
-<trial peripheral_response_practice>
-/ stimulusframes = [
-	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
- p_response_instructions,title, similar_reminder, dissimilar_reminder
-]
-/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
-/ inputdevice = mouse
-/ isvalidresponse = [if (trial.peripheral_response_practice.response == "response_blank") false; else
-expressions.validresponse_disks
-]
-/ recorddata = false
-/ ontrialend = [
-	values.response_time = trial.peripheral_response_practice.latency;
-]
-/ branch = [
-	trial.centermouse_practice
-]
-</trial>
-
-<trial centermouse_practice>
-/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
-centersquare,notice_centre_mouse,process_notice_practice,title, similar_reminder, dissimilar_reminder]
-/ inputdevice = mouse
-/ recorddata = false
-/ validresponse = (centersquare)
-/ branch = [
-	if (values.order_practice == 9){
-		trial.EndPracticeTrail
+	if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "during"){ 
+		trial.present_during
+	} else if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "after1"){ 
+		trial.present_after1
+	} else if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "after2"){ 
+		trial.present_after2
+	} else {
+		trial.catch 
 	}
 ]
 </trial>
 
-<trial EndPracticeTrail>
+<trial end_practice_trial>
 / stimulusframes = [1 = EndPractice]
 / validresponse = (57)
 </trial>

@@ -1,4 +1,18 @@
-﻿** list that provides the ordering of trials in the main experiment
+﻿** list that provides the ordering of trials in the practice trials
+<item practice_sequence>
+/1 = "during"
+/2 = "during"
+/3 = "after2"
+/4 = "after1"
+/5 = "catch"
+/6 = "after2"
+/7 = "during"
+/8 = "after1"
+/9 = "after2"
+/10 = "after1"
+</item>
+
+** list that provides the ordering of trials in the main experiment
 <item trial_sequence>
 /1 = "after2"
 /2 = "after1"

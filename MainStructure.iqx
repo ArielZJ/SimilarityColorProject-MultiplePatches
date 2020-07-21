@@ -73,7 +73,7 @@
 
 ** modified to add Circle_3 and Circle_4 at Position_3 and Position_4 with Color_3 and Color_4
 ** added a list to specify the trial types to be chosen out of the mixed trial format
-<trial Fixiation>
+<trial fixation>
 / stimulusframes = [1 = cross]
 / timeout = 500
 / recorddata = false
@@ -108,7 +108,13 @@
 ]
 </trial>
 
-** counter to run the whole experiment
+** counter to run the practice trials
+<counter sequence_practice>
+/ select = noreplace(1-10)
+/ selectionrate = block
+</counter>
+
+** counter to run the main trials
 <counter sequence>
 / select = noreplace(1-210)
 / selectionrate = block
@@ -186,7 +192,7 @@ Responses
 <trial response_options>
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
- p_response_instructions, centersquare // centersquare might be an issue in after1 trials
+ during_after2_response_instructions
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -224,11 +230,15 @@ centersquare,notice_centre_mouse,process_notice]
 </block>
 
 <block Throughout>
-/ trials = [1 = Fixiation]
+/ trials = [1 = fixation]
+</block>
+
+<block end_practice>
+/ trials = [1 = end_practice_trial]
 </block>
 
 <block Throughout_practice>
-/ trials = [1 = Fixiation_practice]
+/ trials = [1 = fixation_practice]
 </block>
 
 
@@ -240,8 +250,7 @@ centersquare,notice_centre_mouse,process_notice]
 <expt Main>
 / preinstructions = (start)
 / postinstructions = (end)
-/ blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-100 = Throughout] // TESTING, removed practice trials for now
-// blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-12 = Throughout_practice; 13-255 = Throughout; 256 = followup]
+/ blocks = [1 = consent; 2 = calibration; 3 = Instruction; 4-13 = Throughout_practice; 14 = end_practice;  15-224 = Throughout; 225 = followup]
 </expt>
 
 <data>

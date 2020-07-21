@@ -852,7 +852,7 @@
 ]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
- p_response_instructions,title, similar_reminder, dissimilar_reminder, F2 // note F2 gets included on the response screen
+ after1_response_instructions, similar_reminder, dissimilar_reminder, F2 // note F2 gets included on the response screen
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -876,7 +876,7 @@ expressions.validresponse_disks
 ]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
- p_response_instructions,title, similar_reminder, dissimilar_reminder,P2	// Note P2
+ after1_response_instructions, similar_reminder, dissimilar_reminder,P2	// Note P2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
@@ -1849,7 +1849,7 @@ expressions.validresponse_disks
 
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
- p_response_instructions,title, similar_reminder, dissimilar_reminder,
+ similar_reminder, dissimilar_reminder,
  catch_instructions							// added for this version. Located on 'ResponseStep.iqx'
  ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)

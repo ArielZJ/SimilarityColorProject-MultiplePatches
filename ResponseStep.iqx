@@ -93,9 +93,20 @@
 / color = (white)
 </text>
 
-<text p_response_instructions>
+<text during_after2_response_instructions>
 / items = 
-("Please choose the dissimilarity level of previous 2 circles
+("Please choose the dissimilarity level of previously 2 cued circles
+		0 => Most Similar
+		7 => Most Dissimilar")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ position = (50,80)
+</text>
+
+<text after1_response_instructions>
+/ items = 
+("Please choose the dissimilarity level of the previously cued circle
+and the circle on screen now.
 		0 => Most Similar
 		7 => Most Dissimilar")
 / fontstyle = ("Arial", 2.8%, true)
