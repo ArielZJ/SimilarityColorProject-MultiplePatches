@@ -43,7 +43,7 @@ Operation Instruction Page 1:
 <text Instruction_Page_1>
 / items = ("Throughout the experiment, focus on the cross at the centre
 of the screen.
-4 circles will flash out quickly somewhere on the screen")
+3 circles will flash out quickly somewhere on the screen")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
@@ -60,13 +60,13 @@ of the screen.
 </video>
 
 <text Instruction_Page_2>
-/ items = ("On this page, please decide the dissimilarity level of the colour of the 2 circles that were marked by the black arrows. 
-Ignore any size differences.
+/ items = ("Sometimes you will need to decide the dissimilarity level of the colour of the 2 circles that were marked
+by the black arrows. Ignore any size differences.
 
 0 => most similar colour (least dissimilar colour)
 7 => most dissimilar colour (least similar colour)
 
-After choosing, move your cursor back to the centre and click the green box to continue")
+After choosing, move your cursor back to the centre and click the  box to continue")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
@@ -83,8 +83,41 @@ After choosing, move your cursor back to the centre and click the green box to c
 / size = (40%,40%)
 </video>
 
-
 <text Instruction_Page_3>
+/ items = ("Sometimes you will need to decide the dissimilarity level of the colour of the circle that was marked
+with an arrow to the colour of the circle in the centre now. 
+
+0 => most similar colour (least dissimilar colour)
+7 => most dissimilar colour (least similar colour)
+
+After choosing, move your cursor back to the centre and click the  box to continue")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+
+<video Instruction_Page_3_gif>
+/ items = ("3stim_1compare_after.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+<text Instruction_Page_4>
+/ items = ("Sometimes there will be special trials where you will just be asked to click on a particular value.
+Please just click the value on that trial, ignoring the circles you saw.")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text Instruction_Page_5>
 / items = ("During the test, you will see these 9 colors below")
 / hposition = 50%
 / vposition = 20%
@@ -164,21 +197,39 @@ After choosing, move your cursor back to the centre and click the green box to c
 
 
 
-<trial Instruction_1>
+<trial Instruction_1> // 3 circles instruction
 / stimulusframes = [1 = Instruction_Page_1,Instruction_Page_1_gif,Next_button,quit_notice]
 / validresponse = (57)
 / branch = [
 	trial.Instruction_2
 ]
 </trial>
-<trial Instruction_2>
+
+<trial Instruction_2> // during/after2
 / stimulusframes = [1 = Instruction_Page_2,Instruction_Page_2_gif,Next_button,quit_notice]
 / validresponse = (57)
 / branch = [
 	trial.Instruction_3
 ]
 </trial>
-<trial Instruction_3>
+
+<trial Instruction_3> // after 1
+/ stimulusframes = [1 = Instruction_Page_3,Instruction_Page_3_gif,Next_button,quit_notice]
+/ validresponse = (57)
+/ branch = [
+	trial.Instruction_4
+]
+</trial>
+
+<trial Instruction_4> // catch
+/ stimulusframes = [1 = Instruction_Page_4,Next_button,quit_notice]
+/ validresponse = (57)
+/ branch = [
+	trial.Instruction_5
+]
+</trial>
+
+<trial Instruction_5> // display of possible gamut of colours
 / ontrialbegin = [
 	values.color_position_1 = counter.instruction_3_color.selectedvalue;
 	values.color_position_2 = counter.instruction_3_color.selectedvalue;
@@ -371,7 +422,7 @@ After choosing, move your cursor back to the centre and click the green box to c
 	}
 	
 ]
-/ stimulusframes = [1 = Instruction_Page_3,circle_1_instruction,circle_2_instruction,circle_3_instruction,
+/ stimulusframes = [1 = Instruction_Page_5,circle_1_instruction,circle_2_instruction,circle_3_instruction,
 circle_4_instruction,circle_5_instruction,circle_6_instruction,circle_7_instruction,circle_8_instruction,circle_9_instruction,quit_notice]
 / validresponse = (57)
 / branch = [

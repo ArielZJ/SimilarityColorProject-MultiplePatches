@@ -116,8 +116,9 @@ and the circle on screen now.
 
 <text catch_instructions>
 / items = 
-("Special trial! Please just select: <%item.catch_vals.item(counter.order_catch_vals.selectedvalue)%>")
-/ fontstyle = ("Arial", 2.8%, true)
+("SPECIAL TRIAL! PLEASE JUST SELECT: <%item.catch_vals.item(counter.order_catch_vals.selectedvalue)%>")
+/ fontstyle = ("Arial", 3.2%, true)
+/ txcolor = black
 / txbgcolor = (127,127,127)
 / position = (50,80)
 </text>

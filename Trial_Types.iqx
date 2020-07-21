@@ -1849,7 +1849,7 @@ expressions.validresponse_disks
 
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
- similar_reminder, dissimilar_reminder,
+ similar_reminder, dissimilar_reminder, centersquare
  catch_instructions							// added for this version. Located on 'ResponseStep.iqx'
  ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
