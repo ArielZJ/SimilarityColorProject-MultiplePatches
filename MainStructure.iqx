@@ -51,8 +51,9 @@
 // specify how big we want the stimulus on the response screen to be, for after1
 /response_stim_x = 50
 /response_stim_y = 50
-/response_stim_height = 225
-/response_stim_width = 225
+//response_stim_height = 6%
+//response_stim_width = 6%
+/after1_response_scale = 3.5 // chosen to fit over the center square
 
 
 /number_of_patch = 210

@@ -847,8 +847,8 @@
 / ontrialbegin = [
 	shape.F2.hposition = values.response_stim_x;
 	shape.F2.vposition = values.response_stim_y;
-	shape.F2.height = values.response_stim_height;
-	shape.F2.width = values.response_stim_width;
+	shape.F2.height = values.r_F*values.after1_response_scale; // aiming to cover the centre square area
+	shape.F2.width = values.r_F*values.after1_response_scale;
 ]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
@@ -871,8 +871,8 @@ expressions.validresponse_disks
 / ontrialbegin = [
 	shape.P2.hposition = values.response_stim_x;
 	shape.P2.vposition = values.response_stim_y;
-	shape.P2.height = values.response_stim_height;
-	shape.P2.width = values.response_stim_width;
+	shape.P2.height = values.r_F*values.after1_response_scale;
+	shape.P2.width = values.r_F*values.after1_response_scale;
 ]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
