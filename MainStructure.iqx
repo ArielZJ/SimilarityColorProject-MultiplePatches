@@ -37,6 +37,9 @@
 /response_time = 0
 /temp = 0
 
+/sequence_number = -1 // debugging aid
+/order_num = -1 // debugging aid
+
 // need to limit the colours displayed for this test, come back to this
 /color1 = #ff0000
 /color2 = #ffaa00
@@ -97,6 +100,7 @@
 	values.catch_vals = "";
 ]
 / branch = [ // working properly now
+	values.sequence_number = counter.sequence.selectedvalue; // debugging aid
 	if(item.trial_sequence.item(counter.sequence.selectedvalue) == "during"){ // working & integrated
 		trial.present_during
 	} else if(item.trial_sequence.item(counter.sequence.selectedvalue) == "after1"){ // working & integrated
@@ -255,7 +259,7 @@ centersquare,notice_centre_mouse,process_notice]
 </expt>
 
 <data>
-/ columns=[subject,values.trial_number, values.trial_type,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
+/ columns=[subject,values.trial_number, values.sequence_number, values.order_num, values.trial_type,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
 values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.p_confidence,values.response_time,
 values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue,
 values.catch_vals

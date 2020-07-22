@@ -21,6 +21,7 @@
 / ontrialbegin = [
 	
 	values.trial_type = "during";
+	values.order_num = counter.order_during.selectedvalue; // debugging aid
 	
 	// initialise a random angle to place the first stimulus at, all other stimuli will be 
 	// place with reference to that initial choice
@@ -496,6 +497,7 @@
 / ontrialbegin = [
 	
 	values.trial_type = "after1";
+	values.order_num = counter.order_after1.selectedvalue; // debugging aid
 	
 	// initialise a random angle to place the first stimulus at, all other stimuli will be 
 	// place with reference to that initial choice
@@ -899,6 +901,7 @@ expressions.validresponse_disks
 / ontrialbegin = [
 	
 	values.trial_type = "after2";
+	values.order_num = counter.order_after2.selectedvalue; // debugging aid
 	
 	// initialise a random angle to place the first stimulus at, all other stimuli will be 
 	// place with reference to that initial choice
@@ -1391,6 +1394,7 @@ expressions.validresponse_disks
 / ontrialbegin = [
 	
 	values.trial_type = "catch";
+	values.order_num = counter.order_catch.selectedvalue; // debugging aid
 	
 	// initialise a random angle to place the first stimulus at, all other stimuli will be 
 	// place with reference to that initial choice
