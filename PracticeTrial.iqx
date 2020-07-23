@@ -41,13 +41,13 @@ If you are ready, please press SPACE button to start the experiment.")
 / recorddata = false
 / branch = [
 	if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "during"){ 
-		trial.present_during
+		trial.present_during_practice
 	} else if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "after1"){ 
-		trial.present_after1
+		trial.present_after1_practice
 	} else if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "after2"){ 
-		trial.present_after2
+		trial.present_after2_practice
 	} else {
-		trial.catch 
+		trial.catch_practice
 	}
 ]
 </trial>

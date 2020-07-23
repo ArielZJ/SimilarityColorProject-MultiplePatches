@@ -151,6 +151,32 @@
 / selectionrate = block
 </counter>
 
+*********** practice trial versions of the counters
+<counter order_during_practice>
+/ select = noreplace(1-75)
+/ selectionrate = block
+</counter>
+
+** after 1
+<counter order_after1_practice>
+/ select = noreplace(1-50)
+/ selectionrate = block
+</counter>
+
+** after 2
+<counter order_after2_practice>
+/ select = noreplace(1-75)
+/ selectionrate = block
+</counter>
+
+** catch - 10 trials
+<counter order_catch_practice>
+/ select = noreplace(1-10)
+/ selectionrate = block
+</counter>
+
+***********************************
+
 ** 8 different possible catch vals
 <counter order_catch_vals>
 / select = replace(1-8)
