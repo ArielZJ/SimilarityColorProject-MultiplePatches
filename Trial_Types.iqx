@@ -1925,13 +1925,13 @@ expressions.validresponse_disks
 	if(item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "FF"){ // starting with Fovea-Fovea
 	
 		// insert the stimuli immediately upon trial commencement, no delay
-		trial.present_during.insertstimulusframe(text.cross,1);
+		trial.present_during_practice.insertstimulusframe(text.cross,1);
 		
-		trial.present_during.insertstimulusframe(picture.F1_cue,1);
-		trial.present_during.insertstimulusframe(picture.F2_cue,1);
+		trial.present_during_practice.insertstimulusframe(picture.F1_cue,1);
+		trial.present_during_practice.insertstimulusframe(picture.F2_cue,1);
 		
-		trial.present_during.insertstimulusframe(shape.F1,1);
-		trial.present_during.insertstimulusframe(shape.F2,1);
+		trial.present_during_practice.insertstimulusframe(shape.F1,1);
+		trial.present_during_practice.insertstimulusframe(shape.F2,1);
 		
 		// record that the stimuli were both placed foveally
 		values.Circle_1 = -1;
@@ -1939,7 +1939,7 @@ expressions.validresponse_disks
 		values.Position_1 = values.angle_1;
 		values.Position_2 = values.angle_2;
 		
-		trial.present_during.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
+		trial.present_during_practice.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
 
 		values.Position_3 = values.angle_3;
 		values.Position_4 = values.angle_4; // I think this one is unnecessary and a leftover, delete
@@ -2064,13 +2064,13 @@ expressions.validresponse_disks
 		}
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery	
 	}else if (item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "FP"){
-		trial.present_during.insertstimulusframe(text.cross,1);
+		trial.present_during_practice.insertstimulusframe(text.cross,1);
 		
-		trial.present_during.insertstimulusframe(picture.F1_cue,1);
-		trial.present_during.insertstimulusframe(picture.P1_cue,1);
+		trial.present_during_practice.insertstimulusframe(picture.F1_cue,1);
+		trial.present_during_practice.insertstimulusframe(picture.P1_cue,1);
 		
-		trial.present_during.insertstimulusframe(shape.F1,1);
-		trial.present_during.insertstimulusframe(shape.P1,1);
+		trial.present_during_practice.insertstimulusframe(shape.F1,1);
+		trial.present_during_practice.insertstimulusframe(shape.P1,1);
 		values.Circle_1 = -1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_1;
@@ -2079,10 +2079,10 @@ expressions.validresponse_disks
 		// want to randomly choose the irrelevant stimulus to be in the fovea or periphery
 		// counter.binarise is just used to randomly select F or P
 			if(counter.binarise.selectedvalue == 1){
-			trial.present_during.insertstimulusframe(shape.F2,1);
+			trial.present_during_practice.insertstimulusframe(shape.F2,1);
 		}
 		else {
-			trial.present_during.insertstimulusframe(shape.P2,1);
+			trial.present_during_practice.insertstimulusframe(shape.P2,1);
 		}
 		values.Position_3 = values.angle_2;
 		values.Position_4 = values.angle_4;
@@ -2204,20 +2204,20 @@ expressions.validresponse_disks
 	
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery
 	}else if (item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "PP"){
-		trial.present_during.insertstimulusframe(text.cross,1);
+		trial.present_during_practice.insertstimulusframe(text.cross,1);
 		
-		trial.present_during.insertstimulusframe(picture.P1_cue,1);
-		trial.present_during.insertstimulusframe(picture.P2_cue,1);
+		trial.present_during_practice.insertstimulusframe(picture.P1_cue,1);
+		trial.present_during_practice.insertstimulusframe(picture.P2_cue,1);
 		
 		
-		trial.present_during.insertstimulusframe(shape.P1,1);
-		trial.present_during.insertstimulusframe(shape.P2,1);
+		trial.present_during_practice.insertstimulusframe(shape.P1,1);
+		trial.present_during_practice.insertstimulusframe(shape.P2,1);
 		values.Circle_1 = 1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_3;
 		values.Position_2 = values.angle_4;
 		
-		trial.present_during.insertstimulusframe(shape.F1,1);
+		trial.present_during_practice.insertstimulusframe(shape.F1,1);
 
 		values.Position_3 = values.angle_1;
 		values.Position_4 = values.angle_2;
@@ -2346,7 +2346,7 @@ expressions.validresponse_disks
 / timeout = values.patch_timeout // how long the trial lasts for, specified in 'MainStructure.iqx'
 / recorddata = false
 / ontrialend = [
-	trial.present_during.clearstimulusframes(); // not sure if this is strictly necessary
+	trial.present_during_practice.clearstimulusframes(); // not sure if this is strictly necessary
 ]
 / branch = [trial.response_options] // display the various response options. Back on 'MainStructure.iqx'
 </trial>
@@ -2401,21 +2401,21 @@ expressions.validresponse_disks
 	if(item.present_after1_eccen.item(counter.order_after1_practice.selectedvalue) == "FF"){ // starting with Fovea-Fovea
 	
 		// insert the stimuli
-		trial.present_after1.insertstimulusframe(text.cross,1);
+		trial.present_after1_practice.insertstimulusframe(text.cross,1);
 		
 		// stimuli presented immediately
-		trial.present_after1.insertstimulusframe(shape.F1,1);
-		trial.present_after1.insertstimulusframe(shape.F2,1);
-		trial.present_after1.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
+		trial.present_after1_practice.insertstimulusframe(shape.F1,1);
+		trial.present_after1_practice.insertstimulusframe(shape.F2,1);
+		trial.present_after1_practice.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
 
 		// stimuli removed after timeout
-		trial.present_after1.insertstimulustime(shape.P1_remover,values.patch_timeout);
-		trial.present_after1.insertstimulustime(shape.P2_remover,values.patch_timeout);
-		trial.present_after1.insertstimulustime(shape.F1_remover,values.patch_timeout);
-		trial.present_after1.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		
 		// single cue presented after a gap
-		trial.present_after1.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after1_practice.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
 		
 		// record that the stimuli were both placed foveally
 		values.Circle_1 = -1;
@@ -2549,21 +2549,21 @@ expressions.validresponse_disks
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Periphery-Periphery
 	}else if (item.present_after1_eccen.item(counter.order_after1_practice.selectedvalue) == "PP"){
 		// insert the stimuli
-		trial.present_after1.insertstimulusframe(text.cross,1);
+		trial.present_after1_practice.insertstimulusframe(text.cross,1);
 		
 		// stimuli presented immediately
-		trial.present_after1.insertstimulusframe(shape.P1,1);
-		trial.present_after1.insertstimulusframe(shape.P2,1);
-		trial.present_after1.insertstimulusframe(shape.F1,1); // add a foveal irrelevant stimulus
+		trial.present_after1_practice.insertstimulusframe(shape.P1,1);
+		trial.present_after1_practice.insertstimulusframe(shape.P2,1);
+		trial.present_after1_practice.insertstimulusframe(shape.F1,1); // add a foveal irrelevant stimulus
 
 		// stimuli removed after timeout
-		trial.present_after1.insertstimulustime(shape.P1_remover,values.patch_timeout);
-		trial.present_after1.insertstimulustime(shape.P2_remover,values.patch_timeout);
-		trial.present_after1.insertstimulustime(shape.F1_remover,values.patch_timeout);
-		trial.present_after1.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
+		trial.present_after1_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		
 		// single cue presented after a gap
-		trial.present_after1.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after1_practice.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
 		values.Circle_1 = 1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_3;
@@ -2695,7 +2695,7 @@ expressions.validresponse_disks
 / timeout = values.patch_timeout // how long the trial lasts for, specified in 'MainStructure.iqx'
 / recorddata = false
 / ontrialend = [
-	trial.present_after1.clearstimulusframes(); // not sure if this is strictly necessary
+	trial.present_after1_practice.clearstimulusframes(); // not sure if this is strictly necessary
 ]
 // This gets its own special response_options because we're going to be
 // displaying the comparison stimulus on the response page
@@ -2758,20 +2758,20 @@ expressions.validresponse_disks
 	if(item.present_after2_eccen.item(counter.order_after2_practice.selectedvalue) == "FF"){ // starting with Fovea-Fovea
 	
 		// insert the stimuli immediately upon trial commencement, no delay
-		trial.present_after2.insertstimulusframe(text.cross,1);
-		trial.present_after2.insertstimulusframe(shape.F1,1);
-		trial.present_after2.insertstimulusframe(shape.F2,1);
-		trial.present_after2.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
+		trial.present_after2_practice.insertstimulusframe(text.cross,1);
+		trial.present_after2_practice.insertstimulusframe(shape.F1,1);
+		trial.present_after2_practice.insertstimulusframe(shape.F2,1);
+		trial.present_after2_practice.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
 
 		// get rid of the stimuli after values.patch_timeout, done by placing a grey patch over the top of them
-		trial.present_after2.insertstimulustime(shape.P1_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.P2_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.F1_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		
 		// after the stimuli have been displayed and a stimulus-cue gap has elapsed, display the cues
-		trial.present_after2.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.present_after2.insertstimulustime(picture.F2_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after2_practice.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after2_practice.insertstimulustime(picture.F2_cue,values.patch_timeout + values.stim_cue_gap);
 		
 
 		
@@ -2905,24 +2905,24 @@ expressions.validresponse_disks
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery	
 	}else if (item.present_after2_eccen.item(counter.order_after2_practice.selectedvalue) == "FP"){
 	
-		trial.present_after2.insertstimulusframe(text.cross,1);
+		trial.present_after2_practice.insertstimulusframe(text.cross,1);
 		
-		trial.present_after2.insertstimulusframe(shape.F1,1);
-		trial.present_after2.insertstimulusframe(shape.P1,1);
+		trial.present_after2_practice.insertstimulusframe(shape.F1,1);
+		trial.present_after2_practice.insertstimulusframe(shape.P1,1);
 		if(counter.binarise.selectedvalue == 1){
-			trial.present_after2.insertstimulusframe(shape.F2,1);
+			trial.present_after2_practice.insertstimulusframe(shape.F2,1);
 		}
 		else {
-			trial.present_after2.insertstimulusframe(shape.P2,1);
+			trial.present_after2_practice.insertstimulusframe(shape.P2,1);
 		}
 		
-		trial.present_after2.insertstimulustime(shape.P1_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.P2_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.F1_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 
-		trial.present_after2.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.present_after2.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after2_practice.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after2_practice.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
 
 		values.Circle_1 = -1;
 		values.Circle_2 = 1;
@@ -3048,28 +3048,26 @@ expressions.validresponse_disks
 	
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Periphery-Periphery
 	}else if (item.present_after2_eccen.item(counter.order_after2_practice.selectedvalue) == "PP"){
-		trial.present_after2.insertstimulusframe(text.cross,1);
+		trial.present_after2_practice.insertstimulusframe(text.cross,1);
 
-		trial.present_after2.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.present_after2.insertstimulustime(picture.P2_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after2_practice.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.present_after2_practice.insertstimulustime(picture.P2_cue,values.patch_timeout + values.stim_cue_gap);
 
 		
-		trial.present_after2.insertstimulusframe(shape.F1,1);
+		trial.present_after2_practice.insertstimulusframe(shape.F1,1);
 
-		trial.present_after2.insertstimulusframe(shape.P1,1);
-		trial.present_after2.insertstimulusframe(shape.P2,1);
-		trial.present_after2.insertstimulustime(shape.P1_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.P2_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.F1_remover,values.patch_timeout);
-		trial.present_after2.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulusframe(shape.P1,1);
+		trial.present_after2_practice.insertstimulusframe(shape.P2,1);
+		trial.present_after2_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
+		trial.present_after2_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		
 		values.Circle_1 = 1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_3;
 		values.Position_2 = values.angle_4;
 		
-		trial.present_after2.insertstimulusframe(shape.F1,1);
-
 		values.Position_3 = values.angle_1;
 		values.Position_4 = values.angle_2;
 
@@ -3197,7 +3195,7 @@ expressions.validresponse_disks
 / timeout = values.patch_timeout // how long the trial lasts for, specified in 'MainStructure.iqx'
 / recorddata = false
 / ontrialend = [
-	trial.present_after2.clearstimulusframes(); // not sure if this is strictly necessary
+	trial.present_after2_practice.clearstimulusframes(); // not sure if this is strictly necessary
 ]
 / branch = [trial.response_options] // display the various response options. Back on 'MainStructure.iqx'
 </trial>
@@ -3251,20 +3249,20 @@ expressions.validresponse_disks
 	if(item.catch_eccen.item(counter.order_catch_practice.selectedvalue) == "FF"){ // starting with Fovea-Fovea
 	
 		// insert the stimuli immediately upon trial commencement, no delay
-		trial.catch.insertstimulusframe(text.cross,1);
-		trial.catch.insertstimulusframe(shape.F1,1);
-		trial.catch.insertstimulusframe(shape.F2,1);
-		trial.catch.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
+		trial.catch_practice.insertstimulusframe(text.cross,1);
+		trial.catch_practice.insertstimulusframe(shape.F1,1);
+		trial.catch_practice.insertstimulusframe(shape.F2,1);
+		trial.catch_practice.insertstimulusframe(shape.P1,1); // add a peripheral irrelevant stimulus
 
 		// get rid of the stimuli after values.patch_timeout, done by placing a grey patch over the top of them
-		trial.catch.insertstimulustime(shape.P1_remover,values.patch_timeout);
-		trial.catch.insertstimulustime(shape.P2_remover,values.patch_timeout);
-		trial.catch.insertstimulustime(shape.F1_remover,values.patch_timeout);
-		trial.catch.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		
 		// after the stimuli have been displayed and a stimulus-cue gap has elapsed, display the cues
-		trial.catch.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.catch.insertstimulustime(picture.F2_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.catch_practice.insertstimulustime(picture.F1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.catch_practice.insertstimulustime(picture.F2_cue,values.patch_timeout + values.stim_cue_gap);
 		
 
 		
@@ -3368,13 +3366,13 @@ expressions.validresponse_disks
 		
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery	
 	}else if (item.catch_eccen.item(counter.order_catch_practice.selectedvalue) == "FP"){
-		trial.catch.insertstimulusframe(text.cross,1);
+		trial.catch_practice.insertstimulusframe(text.cross,1);
 		
-		trial.catch.insertstimulusframe(picture.F1_cue,1);
-		trial.catch.insertstimulusframe(picture.P1_cue,1);
+		trial.catch_practice.insertstimulusframe(picture.F1_cue,1);
+		trial.catch_practice.insertstimulusframe(picture.P1_cue,1);
 		
-		trial.catch.insertstimulusframe(shape.F1,1);
-		trial.catch.insertstimulusframe(shape.P1,1);
+		trial.catch_practice.insertstimulusframe(shape.F1,1);
+		trial.catch_practice.insertstimulusframe(shape.P1,1);
 		values.Circle_1 = -1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_1;
@@ -3383,10 +3381,10 @@ expressions.validresponse_disks
 		// want to randomly choose the irrelevant stimulus to be in the fovea or periphery
 		// counter.binarise is just used to randomly select F or P
 			if(counter.binarise.selectedvalue == 1){
-			trial.catch.insertstimulusframe(shape.F2,1);
+			trial.catch_practice.insertstimulusframe(shape.F2,1);
 		}
 		else {
-			trial.catch.insertstimulusframe(shape.P2,1);
+			trial.catch_practice.insertstimulusframe(shape.P2,1);
 		}
 		values.Position_3 = values.angle_2;
 		values.Position_4 = values.angle_4;
@@ -3508,27 +3506,27 @@ expressions.validresponse_disks
 	
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Periphery-Periphery
 	}else if (item.catch_eccen.item(counter.order_catch_practice.selectedvalue) == "PP"){
-		trial.catch.insertstimulusframe(text.cross,1);
+		trial.catch_practice.insertstimulusframe(text.cross,1);
 
-		trial.catch.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
-		trial.catch.insertstimulustime(picture.P2_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.catch_practice.insertstimulustime(picture.P1_cue,values.patch_timeout + values.stim_cue_gap);
+		trial.catch_practice.insertstimulustime(picture.P2_cue,values.patch_timeout + values.stim_cue_gap);
 
 		
-		trial.catch.insertstimulusframe(shape.F1,1);
+		trial.catch_practice.insertstimulusframe(shape.F1,1);
 
-		trial.catch.insertstimulusframe(shape.P1,1);
-		trial.catch.insertstimulusframe(shape.P2,1);
-		trial.catch.insertstimulustime(shape.P1_remover,values.patch_timeout);
-		trial.catch.insertstimulustime(shape.P2_remover,values.patch_timeout);
-		trial.catch.insertstimulustime(shape.F1_remover,values.patch_timeout);
-		trial.catch.insertstimulustime(shape.F2_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulusframe(shape.P1,1);
+		trial.catch_practice.insertstimulusframe(shape.P2,1);
+		trial.catch_practice.insertstimulustime(shape.P1_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulustime(shape.P2_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulustime(shape.F1_remover,values.patch_timeout);
+		trial.catch_practice.insertstimulustime(shape.F2_remover,values.patch_timeout);
 		
 		values.Circle_1 = 1;
 		values.Circle_2 = 1;
 		values.Position_1 = values.angle_3;
 		values.Position_2 = values.angle_4;
 		
-		trial.catch.insertstimulusframe(shape.F1,1);
+		trial.catch_practice.insertstimulusframe(shape.F1,1);
 
 		values.Position_3 = values.angle_1;
 		values.Position_4 = values.angle_2;
@@ -3657,7 +3655,7 @@ expressions.validresponse_disks
 / timeout = values.patch_timeout // how long the trial lasts for, specified in 'MainStructure.iqx'
 / recorddata = false
 / ontrialend = [
-	trial.catch.clearstimulusframes(); // not sure if this is strictly necessary
+	trial.catch_practice.clearstimulusframes(); // not sure if this is strictly necessary
 ]
 / branch = [trial.response_options_catch] // special catch trial response options
 </trial>
