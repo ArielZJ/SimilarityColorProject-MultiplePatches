@@ -1,0 +1,361 @@
+﻿***************************************************************************
+***************************************************************************
+			Online Experiment Viewing Distance Calibration
+***************************************************************************
+***************************************************************************
+
+
+Written by: Ariel Zeleznikow-Johnston (ariel.zeleznikow-johnston@monash.edu)
+
+Last updated: 2020-02-12 by Ariel Zeleznikow-Johnston
+
+Modified from code released by Millisecond Software written by Katja Borchert
+Link to original: https://www.millisecond.com/forums/Topic14608.aspx?Keywords=absoulte%20sizing
+
+Inspired by and stimulus borrowed from code by Qiseng Li
+https://github.com/QishengLi/virtual_chinrest/
+
+******************************************************************************************************************
+*******************************************************************************************************************
+	BACKGROUND INFO
+*******************************************************************************************************************
+*******************************************************************************************************************
+										*SCRIPT PURPOSE*
+
+This script runs a "mm to px" calibration procedure: It calculates how many pixels are needed
+on the current monitor (they differ) per mm and can be used to produce stimuli of absolute sizes on any computer screen.
+
+The procedure can be incorporated via the INCLUDE element into other scripts.
+Once this script is included, all its elements (e.g. block.calibration and expressions.ratio_pxpermm) are accessible 
+to the main script (see SizingDemo.iqx for an example).
+
+
+											*TASK* (modified from original)
+A line of a specified pixel length (default: 1000) is presented on the computer screen.
+The line is then adjusted to the size of a variety of known household objects
+Pressing '>' will increase the line by 2 pixels
+Pressing '<' will decrease the line by 2 pixels
+
+The script then calculates how many pixels are needed per mm (-> expressions.ratio_pxpermm) for the current monitor.
+
+
+Stimuli that require absolute sizing should be declared the following way:
+Example square with height = 3cm = 30mm
+
+/width = 1px * 30 * expressions.ratio_pxpermm 
+/height = 1px * 30 * expressions.ratio_pxpermm
+
+width and height are explicitly specified in pixels therefore start with: 1px * (length in mm) * calibrationratio
+
+***************************************************************************
+***************************************************************************
+Code
+***************************************************************************
+***************************************************************************
+
+// We have to choose an initial value for the size (width) of our calibration image
+// Need to then save the adjusted value later
+<values>
+/imagewidth_px = 550px
+/increment_px = 5px
+
+/radians_to_degrees = 57.2958
+
+// values for positioning (mm)
+/ thumb_size = 20
+/ line_size = 1px *  999 // just an initialisation value 
+/ calibration_image_size = values.line_size / ((2/19.44) / 1.40) //I honestly don't know how this was chosen
+
+// values for the blindspot calculations
+
+/blindspot_angle = 13.5 // empirically derived from previous studies
+
+/square_size = 7.5
+/square_x = 80%
+/square_y = 50%
+
+/circle_size = 7.5
+/circle_x_initial = 75%
+/circle_x = 45%
+/circle_y = 50%
+/increment_circle = 0.3%
+/blindspot_progress = 0
+
+// values we're trying to obtain
+/screen_size_x = -999
+/screen_size_y = -999
+/viewer_distance = -999
+</values>
+
+
+// This expression is used for calculating the ratio of pixels to mm
+// It relies on the fact that a standard wallet card is 85.6 mm wide
+<expressions>
+/ratio_pxpermm = values.imagewidth_px/85.6
+</expressions>
+
+*******************************
+Instructions
+******************************
+
+********** sizing *******
+
+<item instructions_size>
+/1 = "First, we need to determine the size of your screen.
+Take a credit card (or a drivers license, library card, any equivalent card),
+press it to the screen and adjust the image on your screen to be the same size as the card
+
+To increase the image width: press '>' on your keyboard
+To decrease the image width: press '<' on your keyboard
+
+When you are done, press <ENTER>."
+</item>
+
+<text instructions_size>
+/items = instructions_size
+/position = (50%, 85%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+</text>
+
+<item size_title>
+/1 = "Size Calibration"
+</item>
+
+<text size_title>
+/items = size_title
+/position = (50%, 25%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = blue
+/erase = false
+</text>
+
+******* initial positioning ***********
+
+<text Calibration_Instruction_txt>
+/ items = ("Next, we need to get you to keep your head a fixed distance from the screen.
+This will ensure future images are the right size for your screen. On the next screen please:
+
+1. Keeping your arm straight, please touch your thumb to the centre of the screen in the oval
+2. While keeping your head in the same position, lower your arm.
+3. Please keep your head in this position for the remainder of the experiment.
+
+Press SPACE to continue.")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txcolor = yellow
+/ txbgcolor = (127,127,127)
+</text>
+
+<text Next_key>
+/ items = ("Press SPACE to continue")
+/ position = (80%,85%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txcolor = yellow
+/ txbgcolor = (127,127,127)
+</text>
+
+<item positioning_title>
+/1 = "Position Calibration"
+</item>
+
+<text positioning_title>
+/items = positioning_title
+/position = (50%, 90%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = blue
+/erase = false
+</text>
+
+<text calibration_position_instructions>
+/ items = ("
+1. While keeping your arm straight touch your thumb to the centre of the screen in the oval
+2. Keep your head in the same position, but lower and relax your arm.
+3. Please keep your head in this position for the remainder of the experiment.
+4. Press SPACE button to continue when you finish")
+/ fontstyle = ("Arial", 3%, true)
+/ position = (50%,15%)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+
+******* angle determination ***********
+
+<item instructions_blindspot>
+/1 = " Lastly, we need to know how far away your head is from the screen. Please:
+
+1. Put your finger on <ENTER> on the keyboard.
+2. Close your right eye. (Tips: it might be easier to cover your right eye by hand)
+3. Stare at the middle of the screen, keeping your head in the same position as before.
+4. Without moving your head or face, use your left eye to focus on the black square.
+5. The red ball will disappear as it moves from right to left. 
+6. Press the <ENTER> key as soon as the ball disappears from your eye sight."
+</item>
+
+<text instructions_blindspot>
+/items = instructions_blindspot
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+/erase = false
+</text>
+
+<item blindspot_title>
+/1 = "Angle Calibration"
+</item>
+
+<text blindspot_title>
+/items = blindspot_title
+/position = (50%, 25%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = blue
+/erase = false
+</text>
+
+<text blindspot_progress>
+/items = ("<%values.blindspot_progress%> of 3 angle calibrations complete")
+/position = (50%, 95%)
+/erase = false
+</text>
+
+*****************************
+Stimuli
+*****************************
+
+************ sizing *********
+
+// Using a credit card
+<picture card>
+ // caption = "Please press your card to this picture and adjust until they match in size"
+ / size = (values.imagewidth_px, values.imagewidth_px*0.62) // 0.62 is ratio of height:width for a standard card
+ / items=("card.png")
+ / position = (10%, 50%)
+ / halign = left
+ </picture>
+ 
+************ initial positioning *****
+
+<video Calibration_Instruction_Page1_gif>
+/ items = ("CalibrationInstruction.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+<shape calibration_image>
+/ position = (50%,50%)
+/ shape = rectangle
+/ color = grey
+/ height = values.calibration_image_size
+/ width = values.calibration_image_size
+</shape>
+
+<shape calibration_line>
+/ position = (50%,50%)
+/ shape = rectangle
+/ color = black
+/ width = values.line_size 
+/ height = 20px
+</shape>
+
+<picture calibration_line_pic>
+/ position = (50%,53%)
+/ items = ("CalibrationLine.png")
+/ width = values.line_size
+/ height = values.line_size * 3
+</picture>
+
+************ blind spot ********* 
+
+<shape square>
+/ position = (values.square_x, values.square_y)
+/ shape = rectangle
+/ color = black
+// size = (1px * values.square_size * expressions.ratio_pxperm, 1px * values.square_size * expressions.ratio_pxperm)
+/width = 1px * values.square_size * expressions.ratio_pxpermm 
+/height = 1px * values.square_size * expressions.ratio_pxpermm
+/erase = false // needed to prevent flickering
+
+</shape>
+
+<shape circle>
+/position = (values.circle_x, values.circle_y)
+/shape = circle
+/ color = red
+// size = (1px * values.circle_size * expressions.ratio_pxperm, 1px * values.circle_size * expressions.ratio_pxperm)
+/width = 1px * values.circle_size * expressions.ratio_pxpermm 
+/height = 1px * values.circle_size * expressions.ratio_pxpermm
+</shape>
+*****************************
+Trials
+*****************************
+
+<trial changesizes>
+/ stimulusframes = [1 = card, instructions_size, size_title]
+/validresponse = (52,51,28)
+/ontrialend = [if (trial.changesizes.response == 51) {values.imagewidth_px -= values.increment_px};
+	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
+/ontrialend = [if (trial.changesizes.response == 52) {values.imagewidth_px += values.increment_px}; 
+	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
+/branch = [if (trial.changesizes.response != 28) {
+	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.canvaswidth;
+	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.canvasheight;
+	values.line_size = values.thumb_size * expressions.ratio_pxpermm;
+	trial.changesizes;
+}]
+</trial>
+
+<trial initial_positioning1>
+/ stimulusframes = [1 = Calibration_Instruction_Page1_gif,Calibration_Instruction_txt,Next_key,positioning_title]
+/ validresponse = (57)
+/ branch = [clearscreen; trial.initial_positioning2]
+</trial>
+
+<trial initial_positioning2>
+/ stimulusframes = [1 = calibration_position_instructions,positioning_title, calibration_line_pic]
+/ validresponse = (57)
+</trial>
+
+<trial findblindspot>
+/ ontrialbegin = [
+	if (values.circle_x != 0){
+			values.circle_x -= values.increment_circle
+	} else {
+		values.circle_x = values.circle_x_initial // return it to it's initial position
+	}
+	
+]
+/validresponse = (28)
+/stimulusframes = [1 = circle, square, instructions_blindspot, blindspot_title, blindspot_progress]
+/ trialduration = 50
+/branch = [if (trial.findblindspot.response != 28) {
+	trial.findblindspot;
+	} else {
+		values.viewer_distance = (((values.square_x - values.circle_x)*display.canvaswidth/100) / 
+			expressions.ratio_pxpermm) / 
+			tan(values.blindspot_angle/values.radians_to_degrees);
+		values.circle_x = values.circle_x_initial; // return it to the starting position
+		values.blindspot_progress +=1;
+		}
+	]
+</trial>
+
+*****************************
+Blocks
+*****************************
+<block calibration>
+/trials = [1 = changesizes; 2 = initial_positioning1; 3-5 = findblindspot]
+</block>
+
+************************
+Data
+***********************
+
+
+*******************************************************************************************************************
+												End of File
+*******************************************************************************************************************
+
