@@ -1,0 +1,63 @@
+﻿***************************************************************************
+***************************************************************************
+			Color Similarity Across Retinal Eccentricity
+			2 stimuli, fixed vs. scaled size patches, during
+			Post-experiment survey
+***************************************************************************
+***************************************************************************
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	QUESTIONS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<textbox free_response>
+/caption = "Any other comments?"
+/required = false
+</textbox>
+
+<textbox strategy_text>
+/caption = "If you selected 'another strategy', please describe your strategy. Otherwise, skip this question."
+/required = false
+</textbox>
+
+<checkboxes  strategy>
+/caption= "Did you base your judgements on any of the following strategies?"
+/required = true
+/options = ("colour categories (e.g. 'red','blue','green')","colour opponency axes (e.g. 'red to green','blue to yellow')","another strategy","no particular strategy")
+</checkboxes>
+
+<textbox colour_response>
+/caption = "If you have colour vision impairment, please describe the type (e.g. 'red-green colour blind'). Otherwise, skip this question."
+/required = false
+</textbox>
+
+<checkboxes colourq>
+/caption = "Do you have any colour vision impairment?"
+/required = true
+/options = ("no","yes")
+</checkboxes>
+
+<checkboxes acuityq>
+/caption = "Do you have normal visual acuity, or corrected-to-normal wearing glasses or contact lenses?"
+/required = true
+/options = ("no","yes")
+</checkboxes>
+
+** ask them if they have any vision impairments
+<surveypage followup_page>
+/caption = "Please answer the following questions:"
+/questions = [1 = acuityq; 2 = colourq; 3 = colour_response; 4 = strategy; 5 = strategy_text; 6 = free_response]
+</surveypage>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	RUN SURVEY
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<survey followup>
+/pages=[1=followup_page]
+/showbackbutton=false
+</survey>

@@ -1,0 +1,143 @@
+﻿***************************************************************************
+***************************************************************************
+			Color Similarity Across Retinal Eccentricity
+			2 stimuli, fixed vs. scaled size patches, during
+			Response Page Controls
+***************************************************************************
+***************************************************************************
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	STIMULI
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<text feedback_present>
+/ items = ()
+/ color = yellow
+/ txbgcolor = (127, 127, 127)
+/ fontstyle = ("Arial",20%)
+/ position = (50%,50%)
+</text>
+
+<text you_press_present>
+/ items = ()
+/ color = yellow
+/ txbgcolor = (127, 127, 127)
+/ fontstyle = ("Arial",5%)
+/ position = (50%,10%)
+</text>
+
+<text feedback_resource>
+/ items = ("Dissimilar: 0","Dissimilar: 1","Dissimilar: 2","Dissimilar: 3","Dissimilar: 4","Dissimilar: 5","Dissimilar: 6","Dissimilar: 7")
+/ color = yellow
+/ txbgcolor = (127, 127, 127)
+/ position = (50%,50%)
+</text>
+
+<shape centersquare>
+/ shape = rectangle
+/ size = (5%, 5%)
+/ position = (50%, 50%)
+/ color = (green)
+</shape>
+
+<text notice_centre_mouse>
+/ items = ("Please click the green rectangle to continue")
+/ fontstyle = ("Arial", 3%, true)
+/ position = (50%,80%)
+/ txbgcolor = (127,127,127)
+</text>
+
+<text process_notice>
+/ items = ("You have finished <%values.trial_number%> of <%values.number_of_patch%> Questions")
+/ fontstyle = ("Arial", 2.8%, true)
+/ position = (50%,85%)
+/ txbgcolor = (127,127,127)
+</text>
+
+<text process_notice_practice>
+/ items = ("You have finished <%values.order_practice%> of <%values.number_of_patch_practice%> Questions")
+/ fontstyle = ("Arial", 2.8%, true)
+/ position = (50%,85%)
+/ txbgcolor = (127,127,127)
+</text>
+
+<text similar_reminder>
+/ items = ("Similar")
+/ fontstyle = ("Arial", 2.5%, true)
+/ txbgcolor = (127,127,127)
+/ position = (35,50)
+/ color = (white)
+</text>
+
+<text dissimilar_reminder>
+/ items = ("Dissimilar")
+/ fontstyle = ("Arial", 2.5%, true)
+/ txbgcolor = (127,127,127)
+/ position = (65,50)
+/ color = (white)
+</text>
+
+<text during_after2_response_instructions>
+/ items = 
+("Please choose the dissimilarity level of previously 2 cued circles
+		0 => Most Similar
+		7 => Most Dissimilar")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ position = (50,80)
+</text>
+
+<text after1_response_instructions>
+/ items = 
+("Please choose the dissimilarity level of the previously cued circle
+and the circle on screen now.
+		0 => Most Similar
+		7 => Most Dissimilar")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ position = (50,80)
+</text>
+
+<text catch_instructions>
+/ items = 
+("SPECIAL TRIAL! PLEASE JUST SELECT: <%item.catch_vals.item(counter.order_catch_vals.selectedvalue)%>")
+/ fontstyle = ("Arial", 3.2%, true)
+/ txcolor = black
+/ txbgcolor = (127,127,127)
+/ position = (50,80)
+</text>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	TRIALS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<trial response_options>
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+ during_after2_response_instructions
+]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.response_options.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.response_options.latency;
+]
+/ branch = [
+	trial.centermouse
+]
+</trial>
+
+<trial centermouse>
+/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+centersquare,notice_centre_mouse,process_notice]
+/ inputdevice = mouse
+/ recorddata = true
+/ validresponse = (centersquare)
+</trial>

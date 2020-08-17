@@ -1,0 +1,437 @@
+﻿***************************************************************************
+***************************************************************************
+			Color Similarity Across Retinal Eccentricity
+			2 stimuli, fixed vs. scaled size patches, during
+			Participant instructions page
+***************************************************************************
+***************************************************************************
+<include > // requires these other files
+/file = "main.iqx"
+/file = "circle_locations.iqx"
+</include>
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	INITIALIZED VALUES
+*******************************************************************************************************************
+*******************************************************************************************************************
+<values>
+/color_position_1 = 0
+/color_position_2 = 0
+/color_position_3 = 0
+/color_position_4 = 0
+/color_position_5 = 0
+/color_position_6 = 0
+/color_position_7 = 0
+/color_position_8 = 0
+/color_position_9 = 0
+</values>
+
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	STIMULI
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<instruct>
+/ nextkey = (57)
+/ fontstyle = ("Arial", 10%, true)
+/ screencolor = (127,127,127)
+/ txcolor = yellow
+</instruct>
+
+<text quit_notice>
+/ items = ("Press Ctrl + Q to quit the experiment")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txcolor = yellow
+/ txbgcolor = (127,127,127)
+/ position = (80,90)
+</text>
+
+<text Next_button>
+/ items = ("Press SPACE BUTTON to continue")
+/ position = (80%,85%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text Instruction_Page_1>
+/ items = ("Throughout the experiment, focus on the cross at the centre
+of the screen.
+2 circles will flash out quickly somewhere on the screen")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+
+<video Instruction_Page_1_gif> // fix
+/ items = ("3stim_2compare_during.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+
+<text Instruction_Page_2>
+/ items = ("Sometimes you will need to decide the dissimilarity level of the colour of the 2 circles that were marked
+by the black arrows. Ignore any size differences.
+
+0 => most similar colour (least dissimilar colour)
+7 => most dissimilar colour (least similar colour)
+
+After choosing, move your cursor back to the centre and click the  box to continue")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<video Instruction_Page_2_gif> // fix
+/ items = ("3stim_2compare_during.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+<text Instruction_Page_4>
+/ items = ("Sometimes there will be special trials where you will just be asked to click on a particular value.
+Please just click the value on that trial, ignoring the circles you saw.")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text Instruction_Page_5>
+/ items = ("During the test, you will see these 9 colors below")
+/ hposition = 50%
+/ vposition = 20%
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<shape circle_1_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (35%,35%)
+</shape>
+<shape circle_2_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (50%,35%)
+</shape>
+<shape circle_3_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (65%,35%)
+</shape>
+<shape circle_4_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (35%,50%)
+</shape>
+<shape circle_5_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (50%,50%)
+</shape>
+<shape circle_6_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (65%,50%)
+</shape>
+<shape circle_7_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (35%,65%)
+</shape>
+<shape circle_8_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (50%,65%)
+</shape>
+<shape circle_9_instruction>
+/ shape = circle
+/ size = (values.R_P,values.R_P)
+/ position = (65%,65%)
+</shape>
+
+<counter instruction_3_position>
+/ select = noreplace(1-9)
+/ selectionrate = always
+</counter>
+
+<counter instruction_3_color>
+/ select = noreplace(1-9)
+/ selectionrate = always
+</counter>
+
+
+<text StartPractice>
+/ items = ("You are going to do a few practice trials to make you be more familar with the experiment.
+When you ready, please press SPACE button to start the practice trial.")
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+*******************************************************************************************************************
+*******************************************************************************************************************
+	TRIALS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<trial Instruction_main> // initial instructions
+/ stimulusframes = [1 = Instruction_Page_1,Next_button,quit_notice] // add gif
+/ validresponse = (57)
+/ branch = [
+	trial.Instruction_catch
+]
+</trial>
+
+<trial Instruction_catch> // catch
+/ stimulusframes = [1 = Instruction_Page_4,Next_button,quit_notice] // add gif
+/ validresponse = (57)
+/ branch = [
+	trial.Instruction_gamut
+]
+</trial>
+
+<trial Instruction_gamut> // display of possible gamut of colours
+/ ontrialbegin = [
+	values.color_position_1 = counter.instruction_3_color.selectedvalue;
+	values.color_position_2 = counter.instruction_3_color.selectedvalue;
+	values.color_position_3 = counter.instruction_3_color.selectedvalue;
+	values.color_position_4 = counter.instruction_3_color.selectedvalue;
+	values.color_position_5 = counter.instruction_3_color.selectedvalue;
+	values.color_position_6 = counter.instruction_3_color.selectedvalue;
+	values.color_position_7 = counter.instruction_3_color.selectedvalue;
+	values.color_position_8 = counter.instruction_3_color.selectedvalue;
+	values.color_position_9 = counter.instruction_3_color.selectedvalue;
+	if(values.color_position_1 == 1){
+		shape.circle_1_instruction.color = values.color1;
+	}else if(values.color_position_1 == 2){
+		shape.circle_1_instruction.color = values.color2;
+	}else if(values.color_position_1 == 3){
+		shape.circle_1_instruction.color = values.color3;
+	}else if(values.color_position_1 == 4){
+		shape.circle_1_instruction.color = values.color4;
+	}else if(values.color_position_1 == 5){
+		shape.circle_1_instruction.color = values.color5;
+	}else if(values.color_position_1 == 6){
+		shape.circle_1_instruction.color = values.color6;
+	}else if(values.color_position_1 == 7){
+		shape.circle_1_instruction.color = values.color7;
+	}else if(values.color_position_1 == 8){
+		shape.circle_1_instruction.color = values.color8;
+	}else if(values.color_position_1 == 9){
+		shape.circle_1_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_2 == 1){
+		shape.circle_2_instruction.color = values.color1;
+	}else if(values.color_position_2 == 2){
+		shape.circle_2_instruction.color = values.color2;
+	}else if(values.color_position_2 == 3){
+		shape.circle_2_instruction.color = values.color3;
+	}else if(values.color_position_2 == 4){
+		shape.circle_2_instruction.color = values.color4;
+	}else if(values.color_position_2 == 5){
+		shape.circle_2_instruction.color = values.color5;
+	}else if(values.color_position_2 == 6){
+		shape.circle_2_instruction.color = values.color6;
+	}else if(values.color_position_2 == 7){
+		shape.circle_2_instruction.color = values.color7;
+	}else if(values.color_position_2 == 8){
+		shape.circle_2_instruction.color = values.color8;
+	}else if(values.color_position_2 == 9){
+		shape.circle_2_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_3 == 1){
+		shape.circle_3_instruction.color = values.color1;
+	}else if(values.color_position_3 == 2){
+		shape.circle_3_instruction.color = values.color2;
+	}else if(values.color_position_3 == 3){
+		shape.circle_3_instruction.color = values.color3;
+	}else if(values.color_position_3 == 4){
+		shape.circle_3_instruction.color = values.color4;
+	}else if(values.color_position_3 == 5){
+		shape.circle_3_instruction.color = values.color5;
+	}else if(values.color_position_3 == 6){
+		shape.circle_3_instruction.color = values.color6;
+	}else if(values.color_position_3 == 7){
+		shape.circle_3_instruction.color = values.color7;
+	}else if(values.color_position_3 == 8){
+		shape.circle_3_instruction.color = values.color8;
+	}else if(values.color_position_3 == 9){
+		shape.circle_3_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_4 == 1){
+		shape.circle_4_instruction.color = values.color1;
+	}else if(values.color_position_4 == 2){
+		shape.circle_4_instruction.color = values.color2;
+	}else if(values.color_position_4 == 3){
+		shape.circle_4_instruction.color = values.color3;
+	}else if(values.color_position_4 == 4){
+		shape.circle_4_instruction.color = values.color4;
+	}else if(values.color_position_4 == 5){
+		shape.circle_4_instruction.color = values.color5;
+	}else if(values.color_position_4 == 6){
+		shape.circle_4_instruction.color = values.color6;
+	}else if(values.color_position_4 == 7){
+		shape.circle_4_instruction.color = values.color7;
+	}else if(values.color_position_4 == 8){
+		shape.circle_4_instruction.color = values.color8;
+	}else if(values.color_position_4 == 9){
+		shape.circle_4_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_5 == 1){
+		shape.circle_5_instruction.color = values.color1;
+	}else if(values.color_position_5 == 2){
+		shape.circle_5_instruction.color = values.color2;
+	}else if(values.color_position_5 == 3){
+		shape.circle_5_instruction.color = values.color3;
+	}else if(values.color_position_5 == 4){
+		shape.circle_5_instruction.color = values.color4;
+	}else if(values.color_position_5 == 5){
+		shape.circle_5_instruction.color = values.color5;
+	}else if(values.color_position_5 == 6){
+		shape.circle_5_instruction.color = values.color6;
+	}else if(values.color_position_5 == 7){
+		shape.circle_5_instruction.color = values.color7;
+	}else if(values.color_position_5 == 8){
+		shape.circle_5_instruction.color = values.color8;
+	}else if(values.color_position_5 == 9){
+		shape.circle_5_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_6 == 1){
+		shape.circle_6_instruction.color = values.color1;
+	}else if(values.color_position_6 == 2){
+		shape.circle_6_instruction.color = values.color2;
+	}else if(values.color_position_6 == 3){
+		shape.circle_6_instruction.color = values.color3;
+	}else if(values.color_position_6 == 4){
+		shape.circle_6_instruction.color = values.color4;
+	}else if(values.color_position_6 == 5){
+		shape.circle_6_instruction.color = values.color5;
+	}else if(values.color_position_6 == 6){
+		shape.circle_6_instruction.color = values.color6;
+	}else if(values.color_position_6 == 7){
+		shape.circle_6_instruction.color = values.color7;
+	}else if(values.color_position_6 == 8){
+		shape.circle_6_instruction.color = values.color8;
+	}else if(values.color_position_6 == 9){
+		shape.circle_6_instruction.color = values.color9;
+	}
+	
+	
+	if(values.color_position_7 == 1){
+		shape.circle_7_instruction.color = values.color1;
+	}else if(values.color_position_7 == 2){
+		shape.circle_7_instruction.color = values.color2;
+	}else if(values.color_position_7 == 3){
+		shape.circle_7_instruction.color = values.color3;
+	}else if(values.color_position_7 == 4){
+		shape.circle_7_instruction.color = values.color4;
+	}else if(values.color_position_7 == 5){
+		shape.circle_7_instruction.color = values.color5;
+	}else if(values.color_position_7 == 6){
+		shape.circle_7_instruction.color = values.color6;
+	}else if(values.color_position_7 == 7){
+		shape.circle_7_instruction.color = values.color7;
+	}else if(values.color_position_7 == 8){
+		shape.circle_7_instruction.color = values.color8;
+	}else if(values.color_position_7 == 9){
+		shape.circle_7_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_8 == 1){
+		shape.circle_8_instruction.color = values.color1;
+	}else if(values.color_position_8 == 2){
+		shape.circle_8_instruction.color = values.color2;
+	}else if(values.color_position_8 == 3){
+		shape.circle_8_instruction.color = values.color3;
+	}else if(values.color_position_8 == 4){
+		shape.circle_8_instruction.color = values.color4;
+	}else if(values.color_position_8 == 5){
+		shape.circle_8_instruction.color = values.color5;
+	}else if(values.color_position_8 == 6){
+		shape.circle_8_instruction.color = values.color6;
+	}else if(values.color_position_8 == 7){
+		shape.circle_8_instruction.color = values.color7;
+	}else if(values.color_position_8 == 8){
+		shape.circle_8_instruction.color = values.color8;
+	}else if(values.color_position_8 == 9){
+		shape.circle_8_instruction.color = values.color9;
+	}
+	
+	if(values.color_position_9 == 1){
+		shape.circle_9_instruction.color = values.color1;
+	}else if(values.color_position_9 == 2){
+		shape.circle_9_instruction.color = values.color2;
+	}else if(values.color_position_9 == 3){
+		shape.circle_9_instruction.color = values.color3;
+	}else if(values.color_position_9 == 4){
+		shape.circle_9_instruction.color = values.color4;
+	}else if(values.color_position_9 == 5){
+		shape.circle_9_instruction.color = values.color5;
+	}else if(values.color_position_9 == 6){
+		shape.circle_9_instruction.color = values.color6;
+	}else if(values.color_position_9 == 7){
+		shape.circle_9_instruction.color = values.color7;
+	}else if(values.color_position_9 == 8){
+		shape.circle_9_instruction.color = values.color8;
+	}else if(values.color_position_9 == 9){
+		shape.circle_9_instruction.color = values.color9;
+	}
+	
+]
+/ stimulusframes = [1 = Instruction_Page_5,circle_1_instruction,circle_2_instruction,circle_3_instruction,
+circle_4_instruction,circle_5_instruction,circle_6_instruction,circle_7_instruction,circle_8_instruction,circle_9_instruction,quit_notice]
+/ validresponse = (57)
+/ branch = [
+	trial.start_prac
+]
+</trial>
+
+<trial start_prac> // let participants know practice trials are coming up next
+/ stimulusframes = [1 = StartPractice,Next_button]
+/ validresponse = (57)
+</trial>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	BLOCKS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<block instructions>
+/ trials = [1 = Instruction_main]
+</block>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	TESTING
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+*******************************************************************************************************************
+												End of File
+*******************************************************************************************************************
+		
