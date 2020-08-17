@@ -32,6 +32,14 @@ FILL IN
 *******************************************************************************************************************
 <include>
 /file = "calibration_main.iqx"
+/file = "instructions.iqx"
+/file = "circle_locations.iqx"
+/file = "practice.iqx"
+/file = "trial_types.iqx"
+/file = "response.iqx"
+/file = "survey.iqx"
+/file = "general_stimuli.iqx"
+/file = "trial_type_sequencer.iqx"
 </include>
 
 *******************************************************************************************************************
@@ -64,6 +72,39 @@ FILL IN
 /color8 = #aa00ff
 /color9 = #ff00aa
 
+// various counters and such
+/trial_number = 0
+/Cross_position = 0
+/Circle_1 = 0
+/Circle_2 = 0
+/Circle_3 = 0
+/Circle_4 = 0
+/Position_1 = 0
+/Position_2 = 0
+/Position_3 = 0
+/Position_4 = 0
+/Color_1 = 0
+/Color_2 = 0
+/Color_3 = 0
+/Color_4 = 0
+/response_time = 0
+/temp = 0
+
+/number_of_patch = 243
+/number_of_patch_practice = 9
+
+// timing & display control
+/patch_timeout = 250
+/stim_cue_gap = 100
+/cue_time = 250
+
+/trial_type = ""
+
+/catch_vals = -1
+
+// debugging aids
+/sequence_number = -1 // debugging aid
+/order_num = -1 // debugging aid
 </values>
 
 *******************************************************************************************************************
@@ -138,6 +179,11 @@ FILL IN
 / preinstructions = (consent)
 </block>
 
+<block experiment>
+/trials = [ 1-243 = present_during]
+</block>
+
+
 *******************************************************************************************************************
 *******************************************************************************************************************
 	EXPERIMENT
@@ -151,7 +197,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4 = practice]
+/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4 = practice; 5 = experiment; 6 = followup]
 / postinstructions = (end)
 </expt>
 

@@ -5,6 +5,35 @@
 			Response Page Controls
 ***************************************************************************
 ***************************************************************************
+	INCLUDE
+*******************************************************************************************************************
+*******************************************************************************************************************
+<include >
+/file = "main.iqx"
+/file = "general_stimuli.iqx"
+</include>
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	INITIALISED VALUES
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+<values>
+/ similarity = -9
+/ response = ""
+
+/canvaswidthpx = display.canvaswidth
+/canvasheightpx = display.canvasheight
+// Found an issue with Inquisit v6 where display.canvaswidth now gives you a string value with 'px' at the end of it.
+// Need to remove it to make the calculations work
+/canvaswidth = trimright(values.canvaswidthpx, "px")
+/canvasheight = trimright(values.canvasheightpx, "px")
+/responseY = 9
+/responseX = (canvasheight/canvaswidth) * (values.responseY)
+</values>
 
 *******************************************************************************************************************
 *******************************************************************************************************************
@@ -56,7 +85,7 @@
 / txbgcolor = (127,127,127)
 </text>
 
-<text process_notice_practice>
+text process_notice_practice>
 / items = ("You have finished <%values.order_practice%> of <%values.number_of_patch_practice%> Questions")
 / fontstyle = ("Arial", 2.8%, true)
 / position = (50%,85%)
@@ -102,12 +131,217 @@ and the circle on screen now.
 
 <text catch_instructions>
 / items = 
-("SPECIAL TRIAL! PLEASE JUST SELECT: <%item.catch_vals.item(counter.order_catch_vals.selectedvalue)%>")
+("SPECIAL TRIAL! PLEASE JUST SELECT: <%values.catch_vals.item(counter.order_catch_vals.selectedvalue)%>")
 / fontstyle = ("Arial", 3.2%, true)
 / txcolor = black
 / txbgcolor = (127,127,127)
 / position = (50,80)
 </text>
+
+******************** response screen barycentric controls ****************
+
+<picture response1d>
+/ items = ("response1disks.png")
+/ position = ( 50+values.responseX,50-values.responseY )
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture response2d>
+/ items = ("response2disks.png")
+/ position = (50+values.responseX,50-values.responseY)
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture response3d>
+/ items = ("response3disks.png")
+/ position = (50+values.responseX,50+values.responseY)
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture response4d>
+/ items = ("response4disks.png")
+/ position = (50+values.responseX,50+values.responseY)
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture response5d>
+/ items = ("response5disks.png")
+/ position = (50-values.responseX,50 + values.responseY)
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture response6d>
+/ items = ("response6disks.png")
+/ position = (50-values.responseX,50 + values.responseY)
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture response7d>
+/ items = ("response7disks.png")
+/ position = (50-values.responseX,50 - values.responseY)
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture response8d>
+/ items = ("response8disks.png")
+/ position = (50-values.responseX,50 - values.responseY)
+/ size = (15.8%,15.8%)
+</picture>
+
+<picture reveal>
+/ items = ("centre_reveal_hollow.png")
+/ position = (50,50)
+/ size = (4.5%, 4.5%)
+</picture>
+
+<picture response_blank>
+/ items = ("response_blank.png")
+/ position = (50,50)
+/ size = (8%,8%)
+</picture>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	EXPRESSIONS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+8CR equidistant response page
+
+Each of the 8 response triangles are numbered in clockwise order from the 12 o'clock position.
+
+Furthermore, the jth vertex of the ith triangle is defined (xij,yij) in clockwise order from the topmost left vertex (leftness take priority over topness).
+
+ai, bi and ci are the barycentric coordinates of the ith triangle, which lets us perform a 2D triangle test (the cursor is in the ith triangle iff 0 <= ai,bi,ci <= 1) 
+
+Remove the 'response/...' to make this script run on its own (if it is not an inclusion). At the moment this DOES NOT WORK for fixed aspect ratios.
+
+-d added to the end of everything to specify it for the disks response
+
+<expressions 1_redL_4>
+/ x11d = picture.response1d.left
+/ y11d = picture.response1d.top
+/ x12d = picture.response1d.right
+/ y12d = picture.response1d.top
+/ x13d = picture.response1d.left
+/ y13d = picture.response1d.bottom
+/ a1d = ((expressions.y12d - expressions.y13d)*(mouse.x - expressions.x13d) + (expressions.x13d - expressions.x12d)*(mouse.y - expressions.y13d)) / ((expressions.y12d - expressions.y13d)*(expressions.x11d - expressions.x13d)+(expressions.x13d - expressions.x12d)*(expressions.y11d - expressions.y13d))
+/ b1d = ((expressions.y13d - expressions.y11d)*(mouse.x - expressions.x13d) + (expressions.x11d - expressions.x13d)*(mouse.y - expressions.y13d)) / ((expressions.y12d - expressions.y13d)*(expressions.x11d - expressions.x13d)+(expressions.x13d - expressions.x12d)*(expressions.y11d - expressions.y13d))
+/ c1d = 1 - expressions.a1d - expressions.b1d
+</expressions>
+
+<expressions 2_redL_3>
+/ x21d = picture.response2d.left
+/ y21d = picture.response2d.bottom
+/ x22d = picture.response2d.right
+/ y22d = picture.response2d.top
+/ x23d = picture.response2d.right
+/ y23d = picture.response2d.bottom
+/ a2d = ((expressions.y22d - expressions.y23d)*(mouse.x - expressions.x23d) + (expressions.x23d - expressions.x22d)*(mouse.y - expressions.y23d)) / ((expressions.y22d - expressions.y23d)*(expressions.x21d - expressions.x23d)+(expressions.x23d - expressions.x22d)*(expressions.y21d - expressions.y23d))
+/ b2d = ((expressions.y23d - expressions.y21d)*(mouse.x - expressions.x23d) + (expressions.x21d - expressions.x23d)*(mouse.y - expressions.y23d)) / ((expressions.y22d - expressions.y23d)*(expressions.x21d - expressions.x23d)+(expressions.x23d - expressions.x22d)*(expressions.y21d - expressions.y23d))
+/ c2d = 1 - expressions.a2d - expressions.b2d
+</expressions>
+
+<expressions 3_redL_2>
+/ x31d = picture.response3d.left
+/ y31d = picture.response3d.top
+/ x32d = picture.response3d.right
+/ y32d = picture.response3d.top
+/ x33d = picture.response3d.right
+/ y33d = picture.response3d.bottom
+/ a3d = ((expressions.y32d - expressions.y33d)*(mouse.x - expressions.x33d) + (expressions.x33d - expressions.x32d)*(mouse.y - expressions.y33d)) / ((expressions.y32d - expressions.y33d)*(expressions.x31d - expressions.x33d)+(expressions.x33d - expressions.x32d)*(expressions.y31d - expressions.y33d))
+/ b3d = ((expressions.y33d - expressions.y31d)*(mouse.x - expressions.x33d) + (expressions.x31d - expressions.x33d)*(mouse.y - expressions.y33d)) / ((expressions.y32d - expressions.y33d)*(expressions.x31d - expressions.x33d)+(expressions.x33d - expressions.x32d)*(expressions.y31d - expressions.y33d))
+/ c3d = 1 - expressions.a3d - expressions.b3d
+</expressions>
+
+<expressions 4_redL_1>
+/ x41d = picture.response4d.left
+/ y41d = picture.response4d.top
+/ x42d = picture.response4d.right
+/ y42d = picture.response4d.bottom
+/ x43d = picture.response4d.left
+/ y43d = picture.response4d.bottom
+/ a4d = ((expressions.y42d - expressions.y43d)*(mouse.x - expressions.x43d) + (expressions.x43d - expressions.x42d)*(mouse.y - expressions.y43d)) / ((expressions.y42d - expressions.y43d)*(expressions.x41d - expressions.x43d)+(expressions.x43d - expressions.x42d)*(expressions.y41d - expressions.y43d))
+/ b4d = ((expressions.y43d - expressions.y41d)*(mouse.x - expressions.x43d) + (expressions.x41d - expressions.x43d)*(mouse.y - expressions.y43d)) / ((expressions.y42d - expressions.y43d)*(expressions.x41d - expressions.x43d)+(expressions.x43d - expressions.x42d)*(expressions.y41d - expressions.y43d))
+/ c4d = 1 - expressions.a4d - expressions.b4d
+</expressions>
+
+<expressions 5_greenL_1>
+/ x51d = picture.response5d.left
+/ y51d = picture.response5d.bottom
+/ x52d = picture.response5d.right
+/ y52d = picture.response5d.top
+/ x53d = picture.response5d.right
+/ y53d = picture.response5d.bottom
+/ a5d = ((expressions.y52d - expressions.y53d)*(mouse.x - expressions.x53d) + (expressions.x53d - expressions.x52d)*(mouse.y - expressions.y53d)) / ((expressions.y52d - expressions.y53d)*(expressions.x51d - expressions.x53d)+(expressions.x53d - expressions.x52d)*(expressions.y51d - expressions.y53d))
+/ b5d = ((expressions.y53d - expressions.y51d)*(mouse.x - expressions.x53d) + (expressions.x51d - expressions.x53d)*(mouse.y - expressions.y53d)) / ((expressions.y52d - expressions.y53d)*(expressions.x51d - expressions.x53d)+(expressions.x53d - expressions.x52d)*(expressions.y51d - expressions.y53d))
+/ c5d = 1 - expressions.a5d - expressions.b5d
+</expressions>
+
+<expressions 6_greenL_2>
+/ x61d = picture.response6d.left
+/ y61d = picture.response6d.top
+/ x62d = picture.response6d.right
+/ y62d = picture.response6d.top
+/ x63d = picture.response6d.left
+/ y63d = picture.response6d.bottom
+/ a6d = ((expressions.y62d - expressions.y63d)*(mouse.x - expressions.x63d) + (expressions.x63d - expressions.x62d)*(mouse.y - expressions.y63d)) / ((expressions.y62d - expressions.y63d)*(expressions.x61d - expressions.x63d)+(expressions.x63d - expressions.x62d)*(expressions.y61d - expressions.y63d))
+/ b6d = ((expressions.y63d - expressions.y61d)*(mouse.x - expressions.x63d) + (expressions.x61d - expressions.x63d)*(mouse.y - expressions.y63d)) / ((expressions.y62d - expressions.y63d)*(expressions.x61d - expressions.x63d)+(expressions.x63d - expressions.x62d)*(expressions.y61d - expressions.y63d))
+/ c6d = 1 - expressions.a6d - expressions.b6d
+</expressions>
+
+<expressions 7_greenL_3>
+/ x71d = picture.response7d.left
+/ y71d = picture.response7d.top
+/ x72d = picture.response7d.right
+/ y72d = picture.response7d.bottom
+/ x73d = picture.response7d.left
+/ y73d = picture.response7d.bottom
+/ a7d = ((expressions.y72d - expressions.y73d)*(mouse.x - expressions.x73d) + (expressions.x73d - expressions.x72d)*(mouse.y - expressions.y73d)) / ((expressions.y72d - expressions.y73d)*(expressions.x71d - expressions.x73d)+(expressions.x73d - expressions.x72d)*(expressions.y71d - expressions.y73d))
+/ b7d = ((expressions.y73d - expressions.y71d)*(mouse.x - expressions.x73d) + (expressions.x71d - expressions.x73d)*(mouse.y - expressions.y73d)) / ((expressions.y72d - expressions.y73d)*(expressions.x71d - expressions.x73d)+(expressions.x73d - expressions.x72d)*(expressions.y71d - expressions.y73d))
+/ c7d = 1 - expressions.a7d - expressions.b7d
+</expressions>
+
+<expressions 8_greenL_4>
+/ x81d = picture.response8d.left
+/ y81d = picture.response8d.top
+/ x82d = picture.response8d.right
+/ y82d = picture.response8d.top
+/ x83d = picture.response8d.right
+/ y83d = picture.response8d.bottom
+/ a8d = ((expressions.y82d - expressions.y83d)*(mouse.x - expressions.x83d) + (expressions.x83d - expressions.x82d)*(mouse.y - expressions.y83d)) / ((expressions.y82d - expressions.y83d)*(expressions.x81d - expressions.x83d)+(expressions.x83d - expressions.x82d)*(expressions.y81d - expressions.y83d))
+/ b8d = ((expressions.y83d - expressions.y81d)*(mouse.x - expressions.x83d) + (expressions.x81d - expressions.x83d)*(mouse.y - expressions.y83d)) / ((expressions.y82d - expressions.y83d)*(expressions.x81d - expressions.x83d)+(expressions.x83d - expressions.x82d)*(expressions.y81d - expressions.y83d))
+/ c8d = 1 - expressions.a8d - expressions.b8d
+</expressions>
+
+
+<expressions validresponse_disks>
+/ validresponse_disks =
+if (0<=expressions.a1d && expressions.a1d <= 1 && 0 <= expressions.b1d && expressions.b1d <= 1 && 0 <= expressions.c1d && expressions.c1d <= 1){
+values.response = 1; true; values.similarity = 7;
+}
+else if(0<=expressions.a2d && expressions.a2d <= 1 && 0 <= expressions.b2d && expressions.b2d <= 1 && 0 <= expressions.c2d && expressions.c2d <= 1){
+values.response = 1; true; values.similarity = 6;
+}
+else if(0<=expressions.a3d && expressions.a3d <= 1 && 0 <= expressions.b3d && expressions.b3d <= 1 && 0 <= expressions.c3d && expressions.c3d <= 1){
+values.response = 1; true; values.similarity = 5;
+}
+else if(0<=expressions.a4d && expressions.a4d <= 1 && 0 <= expressions.b4d && expressions.b4d <= 1 && 0 <= expressions.c4d && expressions.c4d <= 1){
+values.response = 1; true; values.similarity = 4;
+}
+else if(0<=expressions.a5d && expressions.a5d <= 1 && 0 <= expressions.b5d && expressions.b5d <= 1 && 0 <= expressions.c5d && expressions.c5d <= 1){
+values.response = -1; true; values.similarity = 3;
+}
+else if(0<=expressions.a6d && expressions.a6d <= 1 && 0 <= expressions.b6d && expressions.b6d <= 1 && 0 <= expressions.c6d && expressions.c6d <= 1){
+values.response = -1; true; values.similarity = 2;
+}
+else if(0<=expressions.a7d && expressions.a7d <= 1 && 0 <= expressions.b7d && expressions.b7d <= 1 && 0 <= expressions.c7d && expressions.c7d <= 1){
+values.response = -1; true; values.similarity = 1;
+}
+else if(0<=expressions.a8d && expressions.a8d <= 1 && 0 <= expressions.b8d && expressions.b8d <= 1 && 0 <= expressions.c8d && expressions.c8d <= 1){
+values.response = -1; true; values.similarity = "0";
+}
+</expressions>
 
 *******************************************************************************************************************
 *******************************************************************************************************************
@@ -134,6 +368,28 @@ expressions.validresponse_disks
 ]
 </trial>
 
+<trial response_options_catch> // special options just for this, pick a random response for them to return
+/ ontrialbegin = [
+	values.catch_vals = counter.order_catch_vals.selectedvalue - 1
+]
+
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
+ similar_reminder, dissimilar_reminder, centersquare
+ catch_instructions							// added for this version. Located on 'ResponseStep.iqx'
+ ]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.response_options_catch.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.response_options_catch.latency;
+]
+/ branch = [trial.centermouse]
+</trial>
+
 <trial centermouse>
 / stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
 centersquare,notice_centre_mouse,process_notice]
@@ -141,3 +397,7 @@ centersquare,notice_centre_mouse,process_notice]
 / recorddata = true
 / validresponse = (centersquare)
 </trial>
+
+*******************************************************************************************************************
+									End of File
+*******************************************************************************************************************

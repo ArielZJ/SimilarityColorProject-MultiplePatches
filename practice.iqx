@@ -65,19 +65,10 @@ If you are ready, please press SPACE button to start the experiment.")
 / branch = [
 	if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "during"){ 
 		trial.present_during_practice
-	} else if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "after1"){ 
-		trial.present_after1_practice
-	} else if(item.practice_sequence.item(counter.sequence_practice.selectedvalue) == "after2"){ 
-		trial.present_after2_practice
 	} else {
 		trial.catch_practice
 	}
 ]
-</trial>
-
-<trial end_practice_trial>
-/ stimulusframes = [1 = EndPractice]
-/ validresponse = (57)
 </trial>
 
 ******** During ***********
@@ -94,12 +85,6 @@ If you are ready, please press SPACE button to start the experiment.")
 	values.angle_2 = values.angle_1 + 180;
 	values.angle_3 = values.angle_1 + 90;
 	values.angle_4 = values.angle_3 + 180;
-	
-	// angle_x_cue has 0 at the top (N), i.e. the y-axis
-	values.angle_1_cue = values.angle_1+90;
-	values.angle_2_cue = values.angle_2+90;
-	values.angle_3_cue = values.angle_3+90;
-	values.angle_4_cue = values.angle_4+90;
 	
 	// needed to reset the stimuli after displaying them on the response screen
 	shape.F1.hposition = expressions.a_1;
@@ -127,9 +112,6 @@ If you are ready, please press SPACE button to start the experiment.")
 	
 		// insert the stimuli immediately upon trial commencement, no delay
 		trial.present_during_practice.insertstimulusframe(text.cross,1);
-		
-		trial.present_during_practice.insertstimulusframe(picture.F1_cue,1);
-		trial.present_during_practice.insertstimulusframe(picture.F2_cue,1);
 		
 		trial.present_during_practice.insertstimulusframe(shape.F1,1);
 		trial.present_during_practice.insertstimulusframe(shape.F2,1);
@@ -204,9 +186,6 @@ If you are ready, please press SPACE button to start the experiment.")
 	}else if (item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "FP"){
 		trial.present_during_practice.insertstimulusframe(text.cross,1);
 		
-		trial.present_during_practice.insertstimulusframe(picture.F1_cue,1);
-		trial.present_during_practice.insertstimulusframe(picture.P1_cue,1);
-		
 		trial.present_during_practice.insertstimulusframe(shape.F1,1);
 		trial.present_during_practice.insertstimulusframe(shape.P1,1);
 		values.Circle_1 = -1;
@@ -275,10 +254,6 @@ If you are ready, please press SPACE button to start the experiment.")
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery
 	}else if (item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "PP"){
 		trial.present_during_practice.insertstimulusframe(text.cross,1);
-		
-		trial.present_during_practice.insertstimulusframe(picture.P1_cue,1);
-		trial.present_during_practice.insertstimulusframe(picture.P2_cue,1);
-		
 		
 		trial.present_during_practice.insertstimulusframe(shape.P1,1);
 		trial.present_during_practice.insertstimulusframe(shape.P2,1);
@@ -359,10 +334,27 @@ If you are ready, please press SPACE button to start the experiment.")
 </trial>
 
 *********** Catch *************
+<trial catch_practice>
+/ timeout = 10 //TESTING
+/ branch = [trial.response_options_catch] // special catch trial response options
+</trial>
+
+<trial end_practice_trial>
+/ stimulusframes = [1 = EndPractice]
+/ validresponse = (57)
+</trial>
 
 
 *******************************************************************************************************************
 *******************************************************************************************************************
 	BLOCKS
 *******************************************************************************************************************
+*******************************************************************************************************************
+
+<block practice>
+/ trials = [1-9 = fixation_practice; 10 = end_practice_trial]
+</block>
+
+*******************************************************************************************************************
+						End of File
 *******************************************************************************************************************

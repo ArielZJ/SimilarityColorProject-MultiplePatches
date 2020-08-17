@@ -72,7 +72,7 @@ of the screen.
 
 
 <video Instruction_Page_1_gif> // fix
-/ items = ("3stim_2compare_during.gif")
+/ items = ("2stimuli.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -96,7 +96,7 @@ After choosing, move your cursor back to the centre and click the  box to contin
 </text>
 
 <video Instruction_Page_2_gif> // fix
-/ items = ("3stim_2compare_during.gif")
+/ items = ("2stimuli_response.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -194,7 +194,7 @@ When you ready, please press SPACE button to start the practice trial.")
 *******************************************************************************************************************
 
 <trial Instruction_main> // initial instructions
-/ stimulusframes = [1 = Instruction_Page_1,Next_button,quit_notice] // add gif
+/ stimulusframes = [1 = Instruction_Page_1,Next_button,quit_notice, Instruction_Page_1_gif] // add gif
 / validresponse = (57)
 / branch = [
 	trial.Instruction_catch
