@@ -103,7 +103,7 @@
 </text>
 
 <text dissimilar_reminder>
-/ items = ("Dissimilar")
+/ items = ("Different")
 / fontstyle = ("Arial", 2.5%, true)
 / txbgcolor = (127,127,127)
 / position = (65,50)
@@ -112,9 +112,9 @@
 
 <text during_after2_response_instructions>
 / items = 
-("Please choose the dissimilarity level of previously 2 cued circles
+("Please choose the similarity level of previously 2 cued circles
 		0 => Most Similar
-		7 => Most Dissimilar")
+		7 => Most Different")
 / fontstyle = ("Arial", 2.8%, true)
 / txbgcolor = (127,127,127)
 / position = (50,80)
@@ -122,10 +122,9 @@
 
 <text after1_response_instructions>
 / items = 
-("Please choose the dissimilarity level of the previously cued circle
-and the circle on screen now.
+("Please choose the similarity level of previously 2 cued circles
 		0 => Most Similar
-		7 => Most Dissimilar")
+		7 => Most Different")
 / fontstyle = ("Arial", 2.8%, true)
 / txbgcolor = (127,127,127)
 / position = (50,80)

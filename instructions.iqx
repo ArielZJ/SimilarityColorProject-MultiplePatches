@@ -81,11 +81,10 @@ of the screen.
 
 
 <text Instruction_Page_2>
-/ items = ("Sometimes you will need to decide the dissimilarity level of the colour of the 2 circles that were marked
-by the black arrows. Ignore any size differences.
+/ items = ("Sometimes you will need to decide the similarity level of the colour of the 2 circles. Ignore any size differences.
 
-0 => most similar colour (least dissimilar colour)
-7 => most dissimilar colour (least similar colour)
+0 => most similar colour (least different colour)
+7 => most different colour (least similar colour)
 
 After choosing, move your cursor back to the centre and click the  box to continue")
 / hposition = 50%
