@@ -9,24 +9,25 @@
 
 <include >
 /file = "main.iqx"
+/file = "calibration_main.iqx"
 </include>
 
 
 <values>
 /x = 1px * display.getpixelsx(50,1)
 /y = 1px * display.getpixelsy(50,1)
-/r_F = 1px * display.getpixelsx(2,1)
-/R_P = values.peripheral_scale * values.r_F
-/radius_F = 1px * display.getpixelsy(8,1)
-/radius_P = 1px * display.getpixelsy(50,1) - values.R_P
-/angle_min_F = deg(acos(1 - 2 * pow(values.r_F,2)/pow(values.radius_F,2)))
-/angle_min_P = deg(acos(1 - 2 * pow(values.R_P,2)/pow(values.radius_P,2)))
+/r_F = 1px * display.getpixelsx(2,1) // Need to adjust this
+/R_P = 1px * values.peripheral_scale * values.r_F // Need to adjust this
+
+//angle_min_F = deg(acos(1 - 2 * pow(values.r_F,2)/pow(values.radius_F,2)))
+//angle_min_P = deg(acos(1 - 2 * pow(values.R_P,2)/pow(values.radius_P,2)))
 /angle_1 = 0
 /angle_2 = 0
 /angle_3 = 0
 /angle_4 = 0
 /radius_cue_fovea = 1px * display.getpixelsy(3,1)
 /radius_cue_periphery = 1px * display.getpixelsy(25,1)
+
 
 /angle_1_cue = 0
 /angle_2_cue = 0
@@ -45,6 +46,7 @@
 </counter>
 
 <expressions>
+
 / theta_1 = (values.angle_1)*(m_pi/180)
 / theta_2 = (values.angle_2)*(m_pi/180)
 / theta_3 = (values.angle_3)*(m_pi/180)

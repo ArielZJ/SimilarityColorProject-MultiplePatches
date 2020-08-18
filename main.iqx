@@ -60,6 +60,8 @@ FILL IN
 
 <values>
 /peripheral_scale = 3 // scaling factor for peripheral stimuli, FIX
+/radius_central = 1
+/radius_peripheral = 6
 
 // need to limit the colours displayed for this test, come back to this
 /color1 = #ff0000
@@ -229,10 +231,14 @@ latency: 						the response latency (in ms)
 /columns = [build, date, time, subject, group, blockcode, blocknum, trialcode, trialnum, 
 stimulusitem, response, correct, latency,
  expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
-values.line_size,values.calibration_image_size]
+values.line_size,values.calibration_image_size,
+values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P
+]
  /separatefiles = true
 </data>
 
 *******************************************************************************************************************
 												End of File
 *******************************************************************************************************************
+values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; // Need to adjust this into DVA
+		values.radius_P = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_peripheral; // // Need to adjust this into DVA
