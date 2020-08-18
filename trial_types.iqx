@@ -40,11 +40,43 @@
 *******************************************************************************************************************
 *******************************************************************************************************************
 
+<trial trial_selection>
+/ stimulusframes = [1 = cross]
+/ timeout = 500
+/ recorddata = false
+/ ontrialend = [
+	values.Circle_1 = 0;
+	values.Circle_2 = 0;
+	values.Circle_3 = 0;
+	values.Circle_4 = 0;
+	values.Position_1 = 0;
+	values.Position_2 = 0;
+	values.Position_3 = 0;
+	values.Position_4 = 0;
+	values.Color_1 = 0;
+	values.Color_2 = 0;
+	values.Color_3 = 0;
+	values.Color_4 = 0;
+	values.response = 0;
+	values.trial_type = "";
+	values.catch_vals = "";
+]
+/ branch = [ // working properly now
+	values.sequence_number = counter.sequence.selectedvalue; // debugging aid
+	if(item.sequence.item(counter.sequence.selectedvalue) == "during"){ // working & integrated
+		trial.present_during
+	} else {
+		trial.catch // working & integrated
+	}
+]
+</trial>
+
 ********* During ***********
 
 <trial present_during>
 / ontrialbegin = [
 	
+	values.trial_number += 1;
 	values.trial_type = "during";
 	values.order_num = counter.order_during.selectedvalue; // debugging aid
 	
@@ -312,7 +344,10 @@
 
 ********* Catch *********** // NEEDS TO GENERALLY BE FIXED AS PER NAO'S SUGGESTIONS
 <trial catch>
-/ timeout = 10 //TESTING
+/ ontrialbegin = [
+				trial.catch.insertstimulusframe(text.catch,1);
+				]
+/ timeout = values.patch_timeout
 / branch = [trial.response_options_catch] // special catch trial response options
 </trial>
 

@@ -31,6 +31,14 @@
 	/ fontstyle = ("Arial",50pt)
 </text>
 
+<text catch>
+	/ items = ("SPECIAL TRIAL")
+	/ position = (values.x,values.y)
+	/ color = red
+	/ txbgcolor = (127, 127, 127)
+	/ fontstyle = ("Arial",50pt)
+</text>
+
 <shape F1>
 / shape = circle
 / size = (2 * values.r_F,2 * values.r_F)

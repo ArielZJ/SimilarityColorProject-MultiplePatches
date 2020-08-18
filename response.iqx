@@ -24,6 +24,7 @@
 <values>
 / similarity = -9
 / response = ""
+/catch_vals = -1
 
 /canvaswidthpx = display.canvaswidth
 /canvasheightpx = display.canvasheight
@@ -33,6 +34,7 @@
 /canvasheight = trimright(values.canvasheightpx, "px")
 /responseY = 9
 /responseX = (canvasheight/canvaswidth) * (values.responseY)
+
 </values>
 
 *******************************************************************************************************************
@@ -79,14 +81,14 @@
 </text>
 
 <text process_notice>
-/ items = ("You have finished <%values.trial_number%> of <%values.number_of_patch%> Questions")
+/ items = ("You have finished <%values.trial_number%> of <%values.number_of_patch%> questions")
 / fontstyle = ("Arial", 2.8%, true)
 / position = (50%,85%)
 / txbgcolor = (127,127,127)
 </text>
 
-text process_notice_practice>
-/ items = ("You have finished <%values.order_practice%> of <%values.number_of_patch_practice%> Questions")
+<text process_notice_practice>
+/ items = ("You have finished <%values.trial_number_practice%> of <%values.number_of_patch_practice%>  practice questions")
 / fontstyle = ("Arial", 2.8%, true)
 / position = (50%,85%)
 / txbgcolor = (127,127,127)
@@ -131,7 +133,7 @@ and the circle on screen now.
 
 <text catch_instructions>
 / items = 
-("SPECIAL TRIAL! PLEASE JUST SELECT: <%values.catch_vals.item(counter.order_catch_vals.selectedvalue)%>")
+("SPECIAL TRIAL! PLEASE JUST SELECT: <%values.catch_vals%>") //.item(counter.order_catch_vals.selectedvalue)
 / fontstyle = ("Arial", 3.2%, true)
 / txcolor = black
 / txbgcolor = (127,127,127)
@@ -348,6 +350,58 @@ values.response = -1; true; values.similarity = "0";
 	TRIALS
 *******************************************************************************************************************
 *******************************************************************************************************************
+
+*********** practice version **************
+<trial response_options_practice>
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+ during_after2_response_instructions
+]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.response_options_practice.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.response_options_practice.latency;
+]
+/ branch = [
+	trial.centermouse_practice
+]
+</trial>
+
+<trial response_options_catch_practice> // special options just for this, pick a random response for them to return
+/ ontrialbegin = [
+	values.catch_vals = counter.order_catch_vals.selectedvalue - 1
+]
+
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
+ similar_reminder, dissimilar_reminder, centersquare
+ catch_instructions							// added for this version. Located on 'ResponseStep.iqx'
+ ]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.response_options_catch_practice.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.response_options_catch_practice.latency;
+]
+/ branch = [trial.centermouse_practice]
+</trial>
+
+<trial centermouse_practice>
+/ stimulusframes = [1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+centersquare,notice_centre_mouse,process_notice_practice]
+/ inputdevice = mouse
+/ recorddata = true
+/ validresponse = (centersquare)
+</trial>
+
+*********** main version *******************
 
 <trial response_options>
 / stimulusframes = [

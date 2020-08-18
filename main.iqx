@@ -74,6 +74,7 @@ FILL IN
 
 // various counters and such
 /trial_number = 0
+/trial_number_practice = 0
 /Cross_position = 0
 /Circle_1 = 0
 /Circle_2 = 0
@@ -100,8 +101,6 @@ FILL IN
 
 /trial_type = ""
 
-/catch_vals = -1
-
 // debugging aids
 /sequence_number = -1 // debugging aid
 /order_num = -1 // debugging aid
@@ -115,13 +114,13 @@ FILL IN
 
 ** counter to run the practice trials
 <counter sequence_practice>
-/ select = noreplace(1-10) // change
+/ select = noreplace(1-9)
 / selectionrate = block
 </counter>
 
 ** counter to run the main trials
 <counter sequence>
-/ select = noreplace(1-210) // change
+/ select = noreplace(1-250) 
 / selectionrate = block
 </counter>
 
@@ -129,25 +128,25 @@ FILL IN
 ** from 1 to stimuli^2 * condition number (e.g. 3 for FF, FP, PP)
 ** during
 <counter order_during>
-/ select = noreplace(1-75) // change
+/ select = noreplace(1-243)
 / selectionrate = block
 </counter>
 
 ** catch - 10 trials
 <counter order_catch>
-/ select = noreplace(1-10) // change
+/ select = noreplace(1-10)
 / selectionrate = block
 </counter>
 
 *********** practice trial versions of the counters
 <counter order_during_practice>
-/ select = noreplace(1-75) // change
+/ select = noreplace(1-243) // change
 / selectionrate = block
 </counter>
 
 ** catch - 10 trials
 <counter order_catch_practice>
-/ select = noreplace(1-10) // change
+/ select = noreplace(1-9) // change
 / selectionrate = block
 </counter>
 
@@ -180,7 +179,7 @@ FILL IN
 </block>
 
 <block experiment>
-/trials = [ 1-243 = present_during]
+/trials = [ 1 = trial_selection]
 </block>
 
 
@@ -197,7 +196,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4 = practice; 5 = experiment; 6 = followup]
+/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4-12 = practice; 13 = end_practice; 14-262 = experiment; 263 = followup]
 / postinstructions = (end)
 </expt>
 
@@ -226,7 +225,7 @@ latency: 						the response latency (in ms)
 
 
 <data>
-/file = "calibration_demo_rawdata.iqdat"
+/file = "blah.iqdat"
 /columns = [build, date, time, subject, group, blockcode, blocknum, trialcode, trialnum, 
 stimulusitem, response, correct, latency,
  expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,

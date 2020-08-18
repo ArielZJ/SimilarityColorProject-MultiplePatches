@@ -75,6 +75,7 @@ If you are ready, please press SPACE button to start the experiment.")
 <trial present_during_practice>
 / ontrialbegin = [
 	
+	values.trial_number_practice += 1;
 	values.trial_type = "during";
 	values.order_num = counter.order_during_practice.selectedvalue; // debugging aid
 	
@@ -330,13 +331,18 @@ If you are ready, please press SPACE button to start the experiment.")
 / ontrialend = [
 	trial.present_during_practice.clearstimulusframes(); // not sure if this is strictly necessary
 ]
-/ branch = [trial.response_options] // display the various response options. Back on 'response.iqx'
+/ branch = [trial.response_options_practice] // display the various response options. Back on 'response.iqx'
 </trial>
 
 *********** Catch *************
 <trial catch_practice>
-/ timeout = 10 //TESTING
-/ branch = [trial.response_options_catch] // special catch trial response options
+/ ontrialbegin = [
+					trial.catch_practice.insertstimulusframe(text.catch,1);
+					values.trial_number_practice += 1;
+					]
+
+/ timeout = values.patch_timeout
+/ branch = [trial.response_options_catch_practice] // special catch trial response options
 </trial>
 
 <trial end_practice_trial>
@@ -352,7 +358,11 @@ If you are ready, please press SPACE button to start the experiment.")
 *******************************************************************************************************************
 
 <block practice>
-/ trials = [1-9 = fixation_practice; 10 = end_practice_trial]
+/ trials = [1 = fixation_practice]
+</block>
+
+<block end_practice>
+/ trials = [ 1 = end_practice_trial]
 </block>
 
 *******************************************************************************************************************
