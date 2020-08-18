@@ -60,8 +60,8 @@ FILL IN
 
 <values>
 /peripheral_scale = 3 // scaling factor for peripheral stimuli, FIX
-/radius_central = 1
-/radius_peripheral = 6
+/radius_central = 1 // arbitrarily chosen 1 DVA
+/radius_peripheral = 10 // arbitrarily chosen 10 DVA
 
 // need to limit the colours displayed for this test, come back to this
 /color1 = #ff0000
@@ -227,10 +227,13 @@ latency: 						the response latency (in ms)
 
 
 <data>
-/file = "blah.iqdat"
+/file = "color_eccen_2stim_during.iqdat"
 /columns = [build, date, time, subject, group, blockcode, blocknum, trialcode, trialnum, 
-stimulusitem, response, correct, latency,
- expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
+response, correct, latency,
+subject,values.trial_number, values.sequence_number, values.order_num, values.trial_type,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
+values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.similarity,values.response_time,
+values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue,
+values.catch_vals,expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
 values.line_size,values.calibration_image_size,
 values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P
 ]

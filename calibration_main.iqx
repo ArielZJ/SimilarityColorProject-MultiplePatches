@@ -90,6 +90,9 @@ Code
 
 /radius_F = 1 //initialisation
 /radius_P = 1 // initialisation
+
+/r_F = 1px * display.getpixelsx(1,1) // Need to pick this empirically
+/R_P = 1px * values.peripheral_scale * values.r_F // Need to pick this empirically
 </values>
 
 

@@ -81,11 +81,11 @@ If you are ready, please press SPACE button to start the experiment.")
 	
 	// initialise a random angle to place the first stimulus at, all other stimuli will be 
 	// place with reference to that initial choice
-	// angle_cue has 0 at the right (E), i.e. the x-axis
-	values.angle_1 = rand(-180,180); 
+	// angle_cue has 0 at the right (E), i.e. the x-axis, positive angles go clockwise
+	values.angle_1 = rand(-30,30); // changed to limit stimulus placement
 	values.angle_2 = values.angle_1 + 180;
-	values.angle_3 = values.angle_1 + 90;
-	values.angle_4 = values.angle_3 + 180;
+	values.angle_3 = values.angle_1 + 180;
+	values.angle_4 = values.angle_1;
 	
 	// needed to reset the stimuli after displaying them on the response screen
 	shape.F1.hposition = expressions.a_1;
