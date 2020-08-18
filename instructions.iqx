@@ -418,7 +418,7 @@ When you ready, please press SPACE button to start the practice trial.")
 	
 ]
 / stimulusframes = [1 = Instruction_Page_5,circle_1_instruction,circle_2_instruction,circle_3_instruction,
-circle_4_instruction,circle_5_instruction,circle_6_instruction,circle_7_instruction,circle_8_instruction,circle_9_instruction,quit_notice]
+circle_4_instruction,circle_5_instruction,circle_6_instruction,circle_7_instruction,circle_8_instruction,circle_9_instruction,Next_button]
 / validresponse = (57)
 / branch = [
 	trial.start_prac

@@ -123,7 +123,8 @@ When you are done, press <ENTER>."
 /items = instructions_size
 /position = (50%, 85%)
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
-/ txcolor = (0, 0, 0)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
 </text>
 
 <item size_title>
@@ -206,7 +207,8 @@ Press SPACE to continue.")
 /items = instructions_blindspot
 /position = (50%, 70%)
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
-/ txcolor = (0, 0, 0)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
 /erase = false
 </text>
 
