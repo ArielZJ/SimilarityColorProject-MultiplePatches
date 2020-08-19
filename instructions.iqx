@@ -26,6 +26,9 @@
 /color_position_7 = 0
 /color_position_8 = 0
 /color_position_9 = 0
+
+/instruction_circle_size_x = display.getpixelsx(2, 1)
+/instruction_circle_size_y = display.getpixelsy(2, 1) * (16 / 9)
 </values>
 
 
@@ -131,47 +134,47 @@ Please just click the value on that trial.")
 
 <shape circle_1_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (35%,35%)
 </shape>
 <shape circle_2_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (50%,35%)
 </shape>
 <shape circle_3_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (65%,35%)
 </shape>
 <shape circle_4_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (35%,50%)
 </shape>
 <shape circle_5_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (50%,50%)
 </shape>
 <shape circle_6_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (65%,50%)
 </shape>
 <shape circle_7_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (35%,65%)
 </shape>
 <shape circle_8_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (50%,65%)
 </shape>
 <shape circle_9_instruction>
 / shape = circle
-/ size = (values.R_P,values.R_P)
+/ size = (values.instruction_circle_size_x, values.instruction_circle_size_y)
 / position = (65%,65%)
 </shape>
 
