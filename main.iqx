@@ -239,7 +239,7 @@ values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_
 values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue,
 values.catch_vals,expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
 values.line_size,values.calibration_image_size,
-values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P, values.r_F
+values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P, values.r_F, values.peripheral_scale
 ]
  /separatefiles = true
 </data>
