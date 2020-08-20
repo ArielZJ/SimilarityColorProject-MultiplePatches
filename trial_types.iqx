@@ -346,8 +346,10 @@
 <trial catch>
 / ontrialbegin = [
 				trial.catch.insertstimulusframe(text.catch,1);
+				values.trial_type = "catch";
 				]
 / timeout = values.patch_timeout
+/ recorddata = false
 / branch = [trial.response_options_catch] // special catch trial response options
 </trial>
 
