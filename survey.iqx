@@ -45,10 +45,28 @@
 /options = ("no","yes")
 </checkboxes>
 
+<checkboxes perception_peripheral_q>
+/caption = "Did you have any difficulty in knowing what colour the peripheral circles were?"
+/required = true
+/options = ("no","yes")
+</checkboxes>
+
+<checkboxes perception_central_q>
+/caption = "Did you have any difficulty in knowing what colour the central circles were?"
+/required = true
+/options = ("no","yes")
+</checkboxes>
+
+<checkboxes detectionq>
+/caption = "Did you have any difficulty in seeing the location of the two circles on each trial?"
+/required = true
+/options = ("no","yes")
+</checkboxes>
+
 ** ask them if they have any vision impairments
 <surveypage followup_page>
 /caption = "Please answer the following questions:"
-/questions = [1 = acuityq; 2 = colourq; 3 = colour_response; 4 = strategy; 5 = strategy_text; 6 = free_response]
+/questions = [1 = detectionq; 2 = perception_central_q; 3 = perception_peripheral_q; 4 = acuityq; 5 = colourq; 6 = colour_response; 7 = strategy; 8 = strategy_text; 9 = free_response]
 </surveypage>
 
 *******************************************************************************************************************
