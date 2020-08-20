@@ -342,6 +342,8 @@ If you are ready, please press SPACE button to start the experiment.")
 					]
 
 / timeout = values.patch_timeout
+/ recorddata = false
+
 / branch = [trial.response_options_catch_practice] // special catch trial response options
 </trial>
 

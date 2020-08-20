@@ -202,7 +202,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4-12 = practice; 13 = end_practice; 14-262 = experiment; 263 = followup]
+/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4-12 = practice; 13 = end_practice; 14-266 = experiment; 267 = followup]
 / postinstructions = (end)
 </expt>
 
