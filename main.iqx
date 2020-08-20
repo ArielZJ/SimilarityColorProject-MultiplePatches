@@ -60,7 +60,7 @@ FILL IN
 
 ********** Main factors to be optimised here **************
 <values>
-/peripheral_scale = 1 // scaling factor for peripheral stimuli, chosen based on Freeman & Simoncelli 2011 fig 1.
+/peripheral_scale = 1 // FIXED SIZE VERSION
 /radius_central = 1 // arbitrarily chosen 1 DVA
 /radius_peripheral = 10 // arbitrarily chosen 10 DVA
 /stimulus_size = 0.1 // arbitarily chosen 1 DVA
