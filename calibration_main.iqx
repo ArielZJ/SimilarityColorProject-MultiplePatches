@@ -7,7 +7,7 @@
 
 Written by: Ariel Zeleznikow-Johnston (ariel.zeleznikow-johnston@monash.edu)
 
-Last updated: 2020-02-12 by Ariel Zeleznikow-Johnston
+Last updated: 2020-08-21 by Ariel Zeleznikow-Johnston
 
 Modified from code released by Millisecond Software written by Katja Borchert
 Link to original: https://www.millisecond.com/forums/Topic14608.aspx?Keywords=absoulte%20sizing
@@ -76,7 +76,7 @@ Code
 
 /circle_size = 7.5
 /circle_x_initial = 75%
-/circle_x = 45%
+/circle_x = 75%
 /circle_y = 50%
 /increment_circle = 0.3%
 /blindspot_progress = 0
@@ -193,22 +193,62 @@ Press SPACE to continue.")
 
 
 ******* angle determination ***********
+<item instructions_blindspot_demo>
+/1 = "Lastly, we need to know how far away your head is from the screen.
+Please keep your head in the same position as before.
+On the next screen you will see:
+
+1. A black square on the right. You will have to focus on this while staring at the centre of the screen.
+
+2. A flickering red ball moving from left to right. 
+The flickering ball will appear to disappear from view at some point and then reappear further to the left.
+This page demonstrates what it will look like.
+
+When ready, press SPACE to continue and carefully follow the instructions on the next page.
+"
+</item>
+
+<text instructions_blindspot_demo>
+/items = instructions_blindspot_demo
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text ball_visible>
+/items = ("VISIBLE")
+/position = (50%, 40%)
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ color = green
+</text>
+
+<text ball_invisible>
+/items = ("INVISIBLE")
+/position = (50%, 36%)
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ color = red
+</text>
+
 
 <item instructions_blindspot>
-/1 = " Lastly, we need to know how far away your head is from the screen. Please:
-
+/1 = "
 1. Put your finger on <ENTER> on the keyboard.
 2. Close your right eye. (Tips: it might be easier to cover your right eye by hand)
 3. Stare at the middle of the screen, keeping your head in the same position as before.
 4. Without moving your head or face, use your left eye to focus on the black square.
-5. The red ball will disappear as it moves from right to left. 
-6. Press the <ENTER> key as soon as the ball disappears from your eye sight."
+5. The flickering red ball will disappear as it moves from right to left. Ignore the flickering.
+6. Press the <ENTER> key as soon as the ball disappears properly from your eye sight (not just due to flickering
+or running off the edge of the screen).
+7. You will do this three times so we can make sure we get the right distance. The ball will reset each time."
 </item>
 
 <text instructions_blindspot>
 /items = instructions_blindspot
 /position = (50%, 70%)
-/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 /erase = false
@@ -309,8 +349,12 @@ Trials
 / stimulusframes = [1 = card, instructions_size, size_title]
 /validresponse = (52,51,28)
 /ontrialend = [if (trial.changesizes.response == 51) {values.imagewidth_px -= values.increment_px};
+	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.canvaswidth;
+	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.canvasheight;
 	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
-/ontrialend = [if (trial.changesizes.response == 52) {values.imagewidth_px += values.increment_px}; 
+/ontrialend = [if (trial.changesizes.response == 52) {values.imagewidth_px += values.increment_px};
+	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.canvaswidth;
+	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.canvasheight; 
 	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
 /branch = [if (trial.changesizes.response != 28) {
 	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.canvaswidth;
@@ -331,8 +375,47 @@ Trials
 / validresponse = (57)
 </trial>
 
+<trial findblindspot_demo>
+/ ontrialbegin = [
+	if (values.circle_x != 0){
+			values.circle_x -= values.increment_circle;
+	} else {
+		values.circle_x = values.circle_x_initial; // return it to it's initial position
+	}
+	if ((values.circle_x < 50%) && (values.circle_x > 40%)){
+			text.ball_invisible.textcolor = red;
+			text.ball_visible.textcolor = grey;
+			shape.circle.color = grey;
+	} else {
+			text.ball_invisible.textcolor = grey;
+			text.ball_visible.textcolor = green;
+		shape.circle.color = red;
+	}
+	
+]
+/validresponse = (57)
+/stimulusframes = [1 = circle, square, instructions_blindspot_demo, blindspot_title, ball_invisible, ball_visible]
+/ trialduration = 50
+/branch = [if (trial.findblindspot_demo.response != 57) {
+	trial.findblindspot_demo;
+	} else {
+		values.circle_x = values.circle_x_initial; // return it to the starting position
+		}
+	]
+/ ontrialend = [if (trial.findblindspot_demo.response != 57) {
+	trial.findblindspot_demo;
+	} else {
+		values.circle_x = values.circle_x_initial; // return it to the starting position
+		}
+]
+
+</trial>
+
 <trial findblindspot>
 / ontrialbegin = [
+	// trying to delete the damn instructions at the trial end
+		
+	shape.circle.color = red;
 	if (values.circle_x != 0){
 			values.circle_x -= values.increment_circle
 	} else {
@@ -365,7 +448,7 @@ Trials
 Blocks
 *****************************
 <block calibration>
-/trials = [1 = changesizes; 2 = initial_positioning1; 3-5 = findblindspot]
+/trials = [1 = changesizes; 2 = initial_positioning1; 3 = findblindspot_demo;  4-6 = findblindspot]
 </block>
 
 ************************
