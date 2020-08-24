@@ -247,7 +247,7 @@ When ready, press SPACE to continue and carefully follow the instructions on the
 5. The flickering red ball will disappear as it moves from right to left. Ignore the flickering.
 6. Press the <ENTER> key as soon as the ball disappears properly from your eye sight (not just due to flickering
 or running off the edge of the screen).
-7. You will do this three times so we can make sure we get the right distance. The ball will reset each time."
+7. You will do this five times so we can make sure we get the right distance. The ball will reset each time."
 </item>
 
 <text instructions_blindspot>
@@ -272,7 +272,7 @@ or running off the edge of the screen).
 </text>
 
 <text blindspot_progress>
-/items = ("<%values.blindspot_progress%> of 3 angle calibrations complete")
+/items = ("<%values.blindspot_progress%> of 5 angle calibrations complete")
 /position = (50%, 95%)
 /erase = false
 </text>
