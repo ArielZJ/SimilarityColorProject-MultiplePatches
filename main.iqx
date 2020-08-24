@@ -126,7 +126,7 @@ FILL IN
 
 ** counter to run the main trials
 <counter sequence>
-/ select = noreplace(1-250) 
+/ select = noreplace(1-253)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
 / selectionrate = block
 </counter>
 
