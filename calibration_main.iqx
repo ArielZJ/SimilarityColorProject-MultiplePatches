@@ -104,6 +104,11 @@ Code
 /ratio_pxpermm = values.imagewidth_px/85.6
 </expressions>
 
+// storing responses
+
+<list viewing_distance>
+</list>
+
 *******************************
 Instructions
 ******************************
@@ -394,6 +399,7 @@ Trials
 	
 ]
 /validresponse = (57)
+/ recorddata = false
 /stimulusframes = [1 = circle, square, instructions_blindspot_demo, blindspot_title, ball_invisible, ball_visible]
 / trialduration = 50
 /branch = [if (trial.findblindspot_demo.response != 57) {
@@ -426,12 +432,14 @@ Trials
 /validresponse = (28)
 /stimulusframes = [1 = circle, square, instructions_blindspot, blindspot_title, blindspot_progress]
 / trialduration = 50
+/ recorddata = false
 /branch = [if (trial.findblindspot.response != 28) {
 	trial.findblindspot;
 	} else {
 		values.viewer_distance = (((values.square_x - values.circle_x)*display.canvaswidth/100) / 
 			expressions.ratio_pxpermm) / 
 			tan(values.blindspot_angle/values.radians_to_degrees);
+		list.viewing_distance.appenditem(values.viewer_distance);
 		values.ratio_pxpermm = expressions.ratio_pxpermm * 1;
 		values.circle_x = values.circle_x_initial; // return it to the starting position
 		values.DVA_to_distance = values.viewer_distance*tan(1/values.radians_to_degrees); // converts 1 DVA to X mm
@@ -448,7 +456,17 @@ Trials
 Blocks
 *****************************
 <block calibration>
-/trials = [1 = changesizes; 2 = initial_positioning1; 3 = findblindspot_demo;  4-6 = findblindspot]
+/trials = [1 = changesizes; 2 = initial_positioning1; 3 = findblindspot_demo;  4-8 = findblindspot]
+/ onblockend = [values.viewer_distance = list.viewing_distance.median;
+				values.DVA_to_distance = values.viewer_distance*tan(1/values.radians_to_degrees);
+				values.radius_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; 
+				values.radius_P = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_peripheral;
+				values.r_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.stimulus_size;
+				values.R_P = 1px * values.peripheral_scale * values.r_F;]
+</block>
+
+<block blindspot>
+/trials = [1-5 = findblindspot]
 </block>
 
 ************************
