@@ -59,7 +59,13 @@ Code
 /imagewidth_px = 550px
 /increment_px = 5px
 
+// misc values
 /radians_to_degrees = 57.2958
+/trial_duration = 75 
+/demo_length = 20000
+/demo_trial_count = 0
+/distance_threshold = 300%
+/screen_x_threshold = 230px
 
 // values for positioning (mm)
 / thumb_size = 20
@@ -112,6 +118,26 @@ Code
 *******************************
 Instructions
 ******************************
+
+********** initiation *******
+
+<text initiate_instructions>
+/items = ("Before starting the main experiment, we need to do some quick calibrations to ensure your
+screen is set up correctly.")
+/position = (50%, 25%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text initiate_warning>
+/items = ("Warning! It is critical that these calibrations are done correctly or you will be
+unable to do the experiment and we will be unable to approve your payment!")
+/position = (50%, 75%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = red
+</text>
 
 ********** sizing *******
 
@@ -198,25 +224,31 @@ Press SPACE to continue.")
 
 
 ******* angle determination ***********
-<item instructions_blindspot_demo>
+<item instructions_blindspot_initiate>
 /1 = "Lastly, we need to know how far away your head is from the screen.
 Please keep your head in the same position as before.
-On the next screen you will see:
 
-1. A black square on the right. You will have to focus on this while staring at the centre of the screen.
+Over the next few pages we will explain how we can work out how far you are sitting from the screen.
+Please pay attention and follow all the instructions carefully.
 
-2. A flickering red ball moving from left to right. 
-The flickering ball will appear to disappear from view at some point and then reappear further to the left.
-This page demonstrates what it will look like.
+These first few pages will be INSTRUCTIONS ONLY. You will be instructed when the calibrations start.
 
 When ready, press SPACE to continue and carefully follow the instructions on the next page.
 "
 </item>
 
-<text instructions_blindspot_demo>
-/items = instructions_blindspot_demo
-/position = (50%, 70%)
-/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+<text instructions_only>
+/items = ("INSTRUCTIONS ONLY")
+/position = (50%, 20%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text instructions_blindspot_initiate>
+/items = instructions_blindspot_initiate
+/position = (50%, 40%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
@@ -224,7 +256,7 @@ When ready, press SPACE to continue and carefully follow the instructions on the
 <text ball_visible>
 /items = ("VISIBLE")
 /position = (50%, 40%)
-/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
 / color = green
 </text>
@@ -232,31 +264,124 @@ When ready, press SPACE to continue and carefully follow the instructions on the
 <text ball_invisible>
 /items = ("INVISIBLE")
 /position = (50%, 36%)
-/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
 / color = red
 </text>
 
+<text press_enter_now>
+/items = ("Press <ENTER> now!")
+/position = (50%, 75%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ color = grey
+</text>
 
-<item instructions_blindspot>
-/1 = "
-1. Put your finger on <ENTER> on the keyboard.
-2. Close your right eye. (Tips: it might be easier to cover your right eye by hand)
-3. Stare at the middle of the screen, keeping your head in the same position as before.
-4. Without moving your head or face, use your left eye to focus on the black square.
-5. The flickering red ball will disappear as it moves from right to left. Ignore the flickering.
-6. Press the <ENTER> key as soon as the ball disappears properly from your eye sight (not just due to flickering
-or running off the edge of the screen).
-7. You will do this five times so we can make sure we get the right distance. The ball will reset each time."
-</item>
+<text fixation_centre>
+	/ items = ("+")
+	/ position = (50%,50%)
+	/ color = snow
+	/ txbgcolor = (127, 127, 127)
+	/ fontstyle = ("Arial",50pt)
+</text>
 
-<text instructions_blindspot>
-/items = instructions_blindspot
+<text keyboard>
+/items = ("1. Put a finger on <ENTER> on the keyboard.")
 /position = (50%, 70%)
-/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
 / txcolor = yellow
-/erase = false
+</text>
+
+<text close_eye>
+/items = ("2. Close your right eye.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text fixation>
+/items = ("3. Stare at the middle of the screen, keeping your head in the same position as before.
+  Keep your right eye closed.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text square_focus>
+/items = ("4. Without moving your head or face, use your left eye to focus on the black square.
+  Keep your right eye closed and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text moving_ball>
+/items = ("5. During the calibration task, a flickering red ball will disappear as it moves from right to left. 
+Ignore the flickering.
+Keep your right eye closed, stare at the black square and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text ball_arrow>
+/items = ("<---- Ball movement")
+/position = (values.circle_x_initial, 45%)
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = black
+</text>
+
+<text stare_square>
+/items = ("Stare at the square")
+/position = (values.square_x, 45%)
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = black
+</text>
+
+<text disappear>
+/items = ("6. Press the <ENTER> key as soon as the ball disappears properly from your eye sight (not just due to flickering)
+or running off the edge of the screen).
+ Keep your right eye closed, stare at the black square and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text repeat>
+/items = ("7. The next page will show a demonstration of the calibration task for a few seconds.
+During the actual calibration, you will need to press <ENTER> when the ball disappears.
+ 
+You will do this five times so we can make sure we get the right distance. 
+The ball will reset each time.
+ 
+Keep your right eye closed, stare at the black square and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text findblindspot_initiate>
+/items = ("NEXT WILL BE THE ACTUAL CALIBRATION.
+ 
+ Remember to keep your right eye closed, stare at the black square and don't move your head.
+ 
+ Press the <ENTER> key as soon as the ball disappears properly from your eye sight (not just due to flickering
+or running off the edge of the screen).
+
+When ready, press SPACE to start the viewing distance calibration.")
+/position = (50%, 20%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
 </text>
 
 <item blindspot_title>
@@ -275,6 +400,30 @@ or running off the edge of the screen).
 /items = ("<%values.blindspot_progress%> of 5 angle calibrations complete")
 /position = (50%, 95%)
 /erase = false
+</text>
+
+<text success>
+/items = ("The calibrations were successful!
+
+Your viewing distance is <%round(list.viewing_distance.median)/10%> cm.
+
+Press SPACE to continue.")
+/position = (50%, 50%)
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
+/ txcolor = green
+/ txbgcolor = grey
+</text>
+
+<text failure>
+/items = ("Unfortunately the calibrations were unsuccessful.
+
+Your viewing distance is calculated as <%round(list.viewing_distance.median)/10%> cm.
+
+Please press CTRL-Q to quit the experiment.")
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
+/position = (50%, 50%)
+/ txcolor = red
+/ txbgcolor = grey
 </text>
 
 *****************************
@@ -349,6 +498,10 @@ Stimuli
 *****************************
 Trials
 *****************************
+<trial initiate>
+/stimulusframes = [1 = initiate_instructions, initiate_warning, Next_key]
+/validresponse = (57)
+</trial>
 
 <trial changesizes>
 / stimulusframes = [1 = card, instructions_size, size_title]
@@ -370,13 +523,61 @@ Trials
 </trial>
 
 <trial initial_positioning1>
-/ stimulusframes = [1 = Calibration_Instruction_Page1_gif,Calibration_Instruction_txt,Next_key,positioning_title]
+/ stimulusframes = [1 = Calibration_Instruction_Page1_gif,Calibration_Instruction_txt,Next_key]
 / validresponse = (57)
 / branch = [clearscreen; trial.initial_positioning2]
 </trial>
 
 <trial initial_positioning2>
-/ stimulusframes = [1 = calibration_position_instructions,positioning_title, calibration_line_pic]
+/ stimulusframes = [1 = calibration_position_instructions, calibration_line_pic]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_blindspot_initiate>
+/ stimulusframes = [1 = instructions_blindspot_initiate, Next_key]
+/branch = [trial.instructions_keyboard_1]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_keyboard_1>
+/ stimulusframes = [1 = keyboard, Next_key,instructions_only]
+/branch = [trial.instructions_close_eye_2]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_close_eye_2>
+/ stimulusframes = [1 = close_eye, Next_key,instructions_only]
+/branch = [trial.instructions_fixation_3]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_fixation_3>
+/ stimulusframes = [1 = fixation, Next_key, fixation_centre,instructions_only]
+/branch = [trial.instructions_square_focus_4]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_square_focus_4>
+/ stimulusframes = [1 = square_focus, square, Next_key, fixation_centre, stare_square,instructions_only]
+/branch = [trial.instructions_moving_ball_5]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_moving_ball_5>
+/ stimulusframes = [1 = moving_ball, circle, Next_key, fixation_centre, square, ball_arrow,instructions_only]
+/branch = [trial.instructions_disappear_6]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_disappear_6>
+/ stimulusframes = [1 = disappear, Next_key, fixation_centre, square,instructions_only]
+/branch = [trial.instructions_repeat_7]
+/ validresponse = (57)
+</trial>
+
+<trial instructions_repeat_7>
+/ stimulusframes = [1 = repeat, Next_key,instructions_only]
+/branch = [trial.findblindspot_demo]
 / validresponse = (57)
 </trial>
 
@@ -391,18 +592,20 @@ Trials
 			text.ball_invisible.textcolor = red;
 			text.ball_visible.textcolor = grey;
 			shape.circle.color = grey;
+			text.press_enter_now.textcolor = green;
 	} else {
 			text.ball_invisible.textcolor = grey;
 			text.ball_visible.textcolor = green;
-		shape.circle.color = red;
+			text.press_enter_now.textcolor = grey;
+			shape.circle.color = red;
 	}
 	
 ]
-/validresponse = (57)
 / recorddata = false
-/stimulusframes = [1 = circle, square, instructions_blindspot_demo, blindspot_title, ball_invisible, ball_visible]
-/ trialduration = 50
-/branch = [if (trial.findblindspot_demo.response != 57) {
+/stimulusframes = [1 = circle, square, ball_invisible, ball_visible, press_enter_now] //instructions_blindspot_demo, 
+/ trialduration = values.trial_duration
+/branch = [if (values.demo_length > values.demo_trial_count) { // make them sit through the demo for as long as we feel, then progress
+	values.demo_trial_count += values.trial_duration; // add the trial length
 	trial.findblindspot_demo;
 	} else {
 		values.circle_x = values.circle_x_initial; // return it to the starting position
@@ -417,10 +620,13 @@ Trials
 
 </trial>
 
+<trial findblindspot_initiate> // pause before starting next phase
+/validresponse = (57)
+/ stimulusframes = [1 = findblindspot_initiate, initiate_warning, Next_key]
+</trial>
+
 <trial findblindspot>
-/ ontrialbegin = [
-	// trying to delete the damn instructions at the trial end
-		
+/ ontrialbegin = [		
 	shape.circle.color = red;
 	if (values.circle_x != 0){
 			values.circle_x -= values.increment_circle
@@ -430,8 +636,8 @@ Trials
 	
 ]
 /validresponse = (28)
-/stimulusframes = [1 = circle, square, instructions_blindspot, blindspot_title, blindspot_progress]
-/ trialduration = 50
+/stimulusframes = [1 = circle, square, blindspot_progress]
+/ trialduration = values.trial_duration
 / recorddata = false
 /branch = [if (trial.findblindspot.response != 28) {
 	trial.findblindspot;
@@ -452,11 +658,37 @@ Trials
 	]
 </trial>
 
+<trial feedback>
+/validresponse = (57)
+/ontrialbegin = [
+	if(list.viewing_distance.median > values.distance_threshold){
+		if(values.screen_size_x > values.screen_x_threshold){
+				trial.feedback.insertstimulusframe(text.success, 1);
+				} else {
+					trial.feedback.insertstimulusframe(text.failure, 1);
+				} 
+	} else {
+		trial.feedback.insertstimulusframe(text.failure, 1);
+	}
+]
+/ branch = [
+	if(list.viewing_distance.median > values.distance_threshold){
+		if(values.screen_size_x > values.screen_x_threshold){
+				values.blindspot_progress +=1; // unnecessary
+				} else {
+					trial.feedback;
+				} 
+	} else {
+		trial.feedback;
+	}
+]
+
+</trial>
 *****************************
 Blocks
 *****************************
 <block calibration>
-/trials = [1 = changesizes; 2 = initial_positioning1; 3 = findblindspot_demo;  4-8 = findblindspot]
+/trials = [1 = initiate; 2 = changesizes; 3 = initial_positioning1; 4 = instructions_blindspot_initiate; 5 = findblindspot_demo; 6 = findblindspot_initiate;  7-11 = findblindspot; 12 = feedback]
 / onblockend = [values.viewer_distance = list.viewing_distance.median;
 				values.DVA_to_distance = values.viewer_distance*tan(1/values.radians_to_degrees);
 				values.radius_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; 
@@ -465,9 +697,6 @@ Blocks
 				values.R_P = 1px * values.peripheral_scale * values.r_F;]
 </block>
 
-<block blindspot>
-/trials = [1-5 = findblindspot]
-</block>
 
 ************************
 Data
