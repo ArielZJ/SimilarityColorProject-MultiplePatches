@@ -338,7 +338,6 @@
 / recorddata = false
 / ontrialend = [
 	trial.present_during.clearstimulusframes(); // not sure if this is strictly necessary
-	values.trial_type = "catch";
 ]
 / branch = [trial.response_options] // display the various response options. Back on 'response.iqx'
 </trial>
@@ -346,6 +345,7 @@
 ********* Catch *********** // NEEDS TO GENERALLY BE FIXED AS PER NAO'S SUGGESTIONS
 <trial catch>
 / ontrialbegin = [
+				values.trial_type = "catch";
 				trial.catch.insertstimulusframe(text.catch,1);
 				]
 / timeout = values.patch_timeout
