@@ -112,17 +112,7 @@
 
 <text during_after2_response_instructions>
 / items = 
-("Please choose the similarity level of previously 2 cued circles
-		0 => Most Similar
-		7 => Most Different")
-/ fontstyle = ("Arial", 2.8%, true)
-/ txbgcolor = (127,127,127)
-/ position = (50,80)
-</text>
-
-<text after1_response_instructions>
-/ items = 
-("Please choose the similarity level of previously 2 cued circles
+("Please choose the similarity level of the two coloured circles
 		0 => Most Similar
 		7 => Most Different")
 / fontstyle = ("Arial", 2.8%, true)
@@ -351,24 +341,56 @@ values.response = -1; true; values.similarity = "0";
 *******************************************************************************************************************
 
 *********** practice version **************
-<trial response_options_practice>
+<trial response_options_FF_practice>
+/ ontrialbegin = [
+	shape.F2.hposition = values.response_stim_x;
+	shape.F2.vposition = values.response_stim_y;
+	shape.F2.height = values.response_stim_height;
+	shape.F2.width = values.response_stim_width;
+]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
- during_after2_response_instructions
+ during_after2_response_instructions, F2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
-/ isvalidresponse = [if (trial.response_options_practice.response == "response_blank") false; else
+/ isvalidresponse = [if (trial.response_options_FF_practice.response == "response_blank") false; else
 expressions.validresponse_disks
 ]
 / recorddata = false
 / ontrialend = [
-	values.response_time = trial.response_options_practice.latency;
+	values.response_time = trial.response_options_FF_practice.latency;
 ]
 / branch = [
 	trial.centermouse_practice
 ]
 </trial>
+
+<trial response_options_PP_practice>
+/ ontrialbegin = [
+	shape.P2.hposition = values.response_stim_x;
+	shape.P2.vposition = values.response_stim_y;
+	shape.P2.height = values.response_stim_height;
+	shape.P2.width = values.response_stim_width;
+]
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+ during_after2_response_instructions, P2
+]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.response_options_PP_practice.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.response_options_PP_practice.latency;
+]
+/ branch = [
+	trial.centermouse_practice
+]
+</trial>
+
 
 <trial response_options_catch_practice> // special options just for this, pick a random response for them to return
 / ontrialbegin = [
@@ -402,24 +424,57 @@ centersquare,notice_centre_mouse,process_notice_practice]
 
 *********** main version *******************
 
-<trial response_options>
+<trial response_options_FF>
+/ ontrialbegin = [
+	shape.F2.hposition = values.response_stim_x;
+	shape.F2.vposition = values.response_stim_y;
+	shape.F2.height = values.response_stim_height;
+	shape.F2.width = values.response_stim_width;
+]
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
- during_after2_response_instructions
+ during_after2_response_instructions, F2
 ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
 / inputdevice = mouse
-/ isvalidresponse = [if (trial.response_options.response == "response_blank") false; else
+/ isvalidresponse = [if (trial.response_options_FF.response == "response_blank") false; else
 expressions.validresponse_disks
 ]
 / recorddata = false
 / ontrialend = [
-	values.response_time = trial.response_options.latency;
+	values.response_time = trial.response_options_FF.latency;
 ]
 / branch = [
 	trial.centermouse
 ]
 </trial>
+
+<trial response_options_PP>
+/ ontrialbegin = [
+	shape.P2.hposition = values.response_stim_x;
+	shape.P2.vposition = values.response_stim_y;
+	shape.P2.height = values.response_stim_height;
+	shape.P2.width = values.response_stim_width;
+]
+/ stimulusframes = [
+	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, response_blank,
+ during_after2_response_instructions, P2
+]
+/ validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
+/ inputdevice = mouse
+/ isvalidresponse = [if (trial.response_options_PP.response == "response_blank") false; else
+expressions.validresponse_disks
+]
+/ recorddata = false
+/ ontrialend = [
+	values.response_time = trial.response_options_PP.latency;
+]
+/ branch = [
+	trial.centermouse
+]
+</trial>
+
+
 
 <trial response_options_catch> // special options just for this, pick a random response for them to return
 / ontrialbegin = [

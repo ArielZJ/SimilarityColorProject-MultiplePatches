@@ -65,7 +65,7 @@
 <text Instruction_Page_1>
 / items = ("Throughout the experiment, focus on the cross at the centre
 of the screen.
-2 circles will flash out quickly somewhere on the screen")
+A circle will flash out quickly somewhere on the screen")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
@@ -75,7 +75,7 @@ of the screen.
 
 
 <video Instruction_Page_1_gif> // fix
-/ items = ("2stimuli.gif")
+/ items = ("1stimuli.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -84,7 +84,8 @@ of the screen.
 
 
 <text Instruction_Page_2>
-/ items = ("Sometimes you will need to decide the similarity level of the colour of the 2 circles. Ignore any size differences.
+/ items = ("Sometimes you will need to decide the similarity level of the previous circle to a circle on the next screen.
+Ignore any size differences.
 
 0 => most similar colour (least different colour)
 7 => most different colour (least similar colour)
@@ -98,7 +99,7 @@ After choosing, move your cursor back to the centre and click the  box to contin
 </text>
 
 <video Instruction_Page_2_gif> // fix
-/ items = ("2stimuli_response.gif")
+/ items = ("1stimuli_async_response.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true

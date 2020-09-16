@@ -94,12 +94,14 @@ Code
 /ratio_pxpermm = -999
 /DVA_to_distance = 1 //initialisation
 
+
 /radius_F = 1 //initialisation
 /radius_P = 1 // initialisation
 /r_F = 10000 // initialisation for stimulus size
 /R_P = 10000 // initialisation for scaled peripheral stimulus size
 
-
+/response_stim_height = 999 //initialisation
+/response_stim_width = 999 //initialisation
 
 </values>
 
@@ -577,7 +579,6 @@ Trials
 
 <trial instructions_repeat_7>
 / stimulusframes = [1 = repeat, Next_key,instructions_only]
-/branch = [trial.findblindspot_demo]
 / validresponse = (57)
 </trial>
 
@@ -653,6 +654,8 @@ Trials
 		values.radius_P = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_peripheral;
 		values.r_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.stimulus_size;
 		values.R_P = 1px * values.peripheral_scale * values.r_F;
+		values.response_stim_height = 2 * values.r_F * values.response_stim_scale;
+		values.response_stim_width = 2 * values.r_F * values.response_stim_scale;
 		values.blindspot_progress +=1;
 		}
 	]
@@ -688,7 +691,7 @@ Trials
 Blocks
 *****************************
 <block calibration>
-/trials = [1 = initiate; 2 = changesizes; 3 = initial_positioning1; 4 = instructions_blindspot_initiate; 5 = findblindspot_demo; 6 = findblindspot_initiate;  7-11 = findblindspot; 12 = feedback]
+/trials = [1 = initiate; 2 = changesizes; 3 = initial_positioning1; 4 = instructions_blindspot_initiate; 5 = findblindspot_demo; 6 = findblindspot_initiate; 7-11 = findblindspot; 12 = feedback]
 / onblockend = [values.viewer_distance = list.viewing_distance.median;
 				values.DVA_to_distance = values.viewer_distance*tan(1/values.radians_to_degrees);
 				values.radius_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; 
