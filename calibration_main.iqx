@@ -57,7 +57,7 @@ Code
 // Need to then save the adjusted value later
 <values>
 /imagewidth_px = 550px
-/increment_px = 5px
+/increment_px = 5px 
 
 // misc values
 /radians_to_degrees = 57.2958
@@ -136,7 +136,7 @@ unable to do the experiment and we will be unable to approve your payment!")
 /position = (50%, 75%)
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
-/ txcolor = red
+/ txcolor = black
 </text>
 
 ********** sizing *******
@@ -146,8 +146,8 @@ unable to do the experiment and we will be unable to approve your payment!")
 Take a credit card (or a drivers license, library card, any equivalent card),
 press it to the screen and adjust the image on your screen to be the same size as the card
 
-To increase the image width: press '>' on your keyboard
-To decrease the image width: press '<' on your keyboard
+To decrease the image width: press 'f' on your keyboard
+To increase the image width: press 'j' on your keyboard
 
 When you are done, press <ENTER>."
 </item>
@@ -258,7 +258,7 @@ When ready, press SPACE to continue and carefully follow the instructions on the
 /position = (50%, 40%)
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
-/ color = green
+/ color = white
 </text>
 
 <text ball_invisible>
@@ -266,7 +266,7 @@ When ready, press SPACE to continue and carefully follow the instructions on the
 /position = (50%, 36%)
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
 / txbgcolor = (127,127,127)
-/ color = red
+/ color = black
 </text>
 
 <text press_enter_now>
@@ -422,7 +422,7 @@ Your viewing distance is calculated as <%round(list.viewing_distance.median)/10%
 Please press CTRL-Q to quit the experiment.")
 / fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
 /position = (50%, 50%)
-/ txcolor = red
+/ txcolor = black
 / txbgcolor = grey
 </text>
 
@@ -505,12 +505,12 @@ Trials
 
 <trial changesizes>
 / stimulusframes = [1 = card, instructions_size, size_title]
-/validresponse = (52,51,28)
-/ontrialend = [if (trial.changesizes.response == 51) {values.imagewidth_px -= values.increment_px};
+/validresponse = (33,36,28)
+/ontrialend = [if (trial.changesizes.response == 33) {values.imagewidth_px -= values.increment_px};
 	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.canvaswidth;
 	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.canvasheight;
 	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
-/ontrialend = [if (trial.changesizes.response == 52) {values.imagewidth_px += values.increment_px};
+/ontrialend = [if (trial.changesizes.response == 36) {values.imagewidth_px += values.increment_px};
 	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.canvaswidth;
 	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.canvasheight; 
 	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
@@ -589,13 +589,13 @@ Trials
 		values.circle_x = values.circle_x_initial; // return it to it's initial position
 	}
 	if ((values.circle_x < 50%) && (values.circle_x > 40%)){
-			text.ball_invisible.textcolor = red;
+			text.ball_invisible.textcolor = black;
 			text.ball_visible.textcolor = grey;
 			shape.circle.color = grey;
-			text.press_enter_now.textcolor = green;
+			text.press_enter_now.textcolor = white;
 	} else {
 			text.ball_invisible.textcolor = grey;
-			text.ball_visible.textcolor = green;
+			text.ball_visible.textcolor = white;
 			text.press_enter_now.textcolor = grey;
 			shape.circle.color = red;
 	}
