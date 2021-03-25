@@ -59,12 +59,19 @@ Code
 // misc values
 /radians_to_degrees = 57.2958
 
+// ******************************************************************
+// ********** VALUES THAT MAY NEED TO BE CHANGED ********************
+
 // stuff defined by Yasunori
 /screen_size_x = 1600 // 1600 pixels as per diagram
 /screen_size_y = 900  // 900 pixels as per diagram
 /viewer_distance = 1359 // 1359 mm as per diagram
 /horizontal_DVA_bound = 180 // DVA bounds of screen
-/vertical_DVA_bound = 109.4
+/vertical_DVA_bound = 109.4 // DVA bounds of screen
+
+// ********** END OF VALUES THAT MAY NEED TO BE CHANGED *************
+// ******************************************************************
+
 /ratio_pxperDVA = values.screen_size_x/values.horizontal_DVA_bound 
 //DVA_to_distance = 1 //initialisation
 
