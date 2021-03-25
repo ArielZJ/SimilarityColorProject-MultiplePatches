@@ -48,7 +48,8 @@ FILL IN
 *******************************************************************************************************************
 *******************************************************************************************************************
 <defaults>
-/ canvasaspectratio = (16,9)
+/ canvasaspectratio = (16,9) // Should be correct for Panoworks, based on 1600 * 900 px resolution
+/ canvassize = (1600px,900px) // Should be correct for Panoworks, based on 1600 * 900 px resolution
 / screencolor = (127,127,127)
 </defaults>
 
@@ -60,12 +61,23 @@ FILL IN
 
 ********** Main factors to be optimised here **************
 <values>
-/peripheral_scale = 4.5 // scaling factor for peripheral stimuli, chosen based on Freeman & Simoncelli 2011 fig 1.
-/radius_central = 1 // arbitrarily chosen 1 DVA
-/radius_peripheral = 10 // arbitrarily chosen 10 DVA
-/stimulus_size = 0.5 // arbitarily chosen 0.5 DVA
+
+// These three factors are what need to be adjusted for a specific experiment
+
+/radius_central = 1 // chosen 1 DVA as it's still within the fovea
+/radius_peripheral = 60 // maximum of what Panoworks should be capable of without horizontal occlusion
+/stimulus_size = 1 // arbitarily chosen 1 DVA
+
+
+// This factor can be adjusted if you want to play with the peripheral scaling factor
+/magnify = true // set to 'true' if you want scaling, 'false' if you don't want peripheral scaling
+
+/peripheral_scaling_factor = 0.45 // scaling factor for peripheral stimuli, chosen based on Freeman & Simoncelli 2011 fig 1.
+
 
 // ************* main factors to be optimised above ************
+
+/peripheral_scale = -999		// initialised, but updated in calibration_main.iqx for radius_peripheral
 
 // need to limit the colours displayed for this test, come back to this
 /color1 = #ff0000
@@ -110,6 +122,11 @@ FILL IN
 // debugging aids
 /sequence_number = -1 // debugging aid
 /order_num = -1 // debugging aid
+
+/test1 = -999
+/test2 = -999
+/test3 = -999
+/test4 = -999
 </values>
 
 *******************************************************************************************************************
@@ -237,9 +254,8 @@ response, correct, latency,
 subject,values.trial_number, values.sequence_number, values.order_num, values.trial_type,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
 values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.similarity,values.response_time,
 values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue,
-values.catch_vals,expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
-values.line_size,values.calibration_image_size,
-values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P, values.r_F, values.peripheral_scale
+values.catch_vals,values.ratio_pxperDVA, values.screen_size_x, values.screen_size_y, values.viewer_distance,
+values.radius_F, values.radius_P, values.r_F, values.peripheral_scale, values.bound
 ]
  /separatefiles = true
 </data>

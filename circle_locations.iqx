@@ -14,8 +14,6 @@
 
 
 <values>
-/x = 1px * display.getpixelsx(50,1)
-/y = 1px * display.getpixelsy(50,1)
 
 /angle_1 = 0
 /angle_2 = 0

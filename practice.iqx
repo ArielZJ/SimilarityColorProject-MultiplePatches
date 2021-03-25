@@ -82,7 +82,7 @@ If you are ready, please press SPACE button to start the experiment.")
 	// initialise a random angle to place the first stimulus at, all other stimuli will be 
 	// place with reference to that initial choice
 	// angle_cue has 0 at the right (E), i.e. the x-axis, positive angles go clockwise
-	values.angle_1 = rand(-30,30); // changed to limit stimulus placement
+	values.angle_1 = rand(-values.bound,values.bound); // changed to limit stimulus placement
 	values.angle_2 = values.angle_1 + 180;
 	values.angle_3 = values.angle_1 + 180;
 	values.angle_4 = values.angle_1;
@@ -112,7 +112,7 @@ If you are ready, please press SPACE button to start the experiment.")
 	if(item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "FF"){ // starting with Fovea-Fovea
 	
 		// insert the stimuli immediately upon trial commencement, no delay
-		trial.present_during_practice.insertstimulusframe(text.cross,1);
+		//trial.present_during_practice.insertstimulusframe(text.cross,1);
 		
 		trial.present_during_practice.insertstimulusframe(shape.F1,1);
 		trial.present_during_practice.insertstimulusframe(shape.F2,1);
@@ -185,7 +185,7 @@ If you are ready, please press SPACE button to start the experiment.")
 		}
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery	
 	}else if (item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "FP"){
-		trial.present_during_practice.insertstimulusframe(text.cross,1);
+		//trial.present_during_practice.insertstimulusframe(text.cross,1);
 		
 		trial.present_during_practice.insertstimulusframe(shape.F1,1);
 		trial.present_during_practice.insertstimulusframe(shape.P1,1);
@@ -254,7 +254,7 @@ If you are ready, please press SPACE button to start the experiment.")
 	
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery
 	}else if (item.present_during_eccen.item(counter.order_during_practice.selectedvalue) == "PP"){
-		trial.present_during_practice.insertstimulusframe(text.cross,1);
+		//trial.present_during_practice.insertstimulusframe(text.cross,1);
 		
 		trial.present_during_practice.insertstimulusframe(shape.P1,1);
 		trial.present_during_practice.insertstimulusframe(shape.P2,1);
