@@ -4,8 +4,14 @@
   
 Project in progress. Run 'main.iqx' to run the experiment.  
 
+<<<<<<< HEAD
 Main parameters are controlled in 'main.iqx' in the \<values\> object.
 
+=======
+Main parameters are controlled in 'main.iqx' in the /<values/> object.
+ * 'stimulus_size' sets the radius of the central stimulus
+ * 'peripheral_scale' sets the magnification factor for peripherally presented stimuli relative to centrally presented stimuli
+>>>>>>> parent of f9a5032 (Update README.md)
  * 'radius_central' sets the radius at which central stimuli are presented in degrees of visual angle (DVA)
  * 'radius_peripheral' sets the radius at which peripheral stimuli are presented in DVA
  * 'stimulus_size' sets the radius of the central stimulus circle  
