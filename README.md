@@ -14,3 +14,5 @@ Main parameters are controlled in 'main.iqx' in the \<values\> object.
  * 'peripheral_scaling_factor' sets the magnification factor for peripherally presented stimuli relative to centrally presented stimuli  
   This is a function of eccentricity. For example, a stimulus at 10DVA with a scaling factor of 0.45 will be 4.5 times larger than the
   central stimulus  
+
+More values that may need to be changed to make this work are on 'calibration_main.iqx' and should be self-explanatory.
