@@ -8,7 +8,7 @@
 
 Written by: Ariel Zeleznikow-Johnston (ariel.zeleznikow-johnston@monash.edu)
 
-Last updated: 2020-08-18 by Ariel Zeleznikow-Johnston
+Last updated: 2021-06-15 by Ariel Zeleznikow-Johnston
 
 ******************************************************************************************************************
 *******************************************************************************************************************
@@ -189,6 +189,8 @@ FILL IN
 
 <htmlpage consent>
 / file = "consent_form.html"
+/ position = (50, 30)
+/ size = (30%, 30%)
 </htmlpage>
 
 
@@ -212,20 +214,9 @@ FILL IN
 *******************************************************************************************************************
 *******************************************************************************************************************
 
-<page start>
-^Welcome to the experiment!
-^^This will take about 30 minutes
-</page>
-
 <expt main>
-/ preinstructions = (start)
-/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4-12 = practice; 13 = end_practice; 14-266 = experiment; 267 = followup]
-/ postinstructions = (end)
+/ blocks = [1 = calibration; 2 = instructions; 3-11 = practice; 12 = end_practice; 13-265 = experiment; 266 = followup]
 </expt>
-
-<page end>
-^^Thank you for your participation!
-</page>
 
 *******************************************************************************************************************
 *******************************************************************************************************************

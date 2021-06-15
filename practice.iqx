@@ -36,18 +36,19 @@
 *******************************************************************************************************************
 <text title>
 / items = ("Practice Trial")
-/ position = (50%,5%)
-/ fontstyle = ("Arial", 2.8%, true)
+/ position = (50%,15%) // closer for panoworks
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
+
 
 <text EndPractice>
 / items = ("You have finished the practice trial.
 Next page will be the formal test. 
 If you are ready, please press SPACE button to start the experiment.")
-/ position = (50%,50%)
-/ fontstyle = ("Arial", 2.8%, true)
+/ position = (50,100*values.vertical_offset)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>

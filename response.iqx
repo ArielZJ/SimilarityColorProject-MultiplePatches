@@ -32,7 +32,7 @@
 // Need to remove it to make the calculations work
 /canvaswidth = trimright(values.canvaswidthpx, "px")
 /canvasheight = trimright(values.canvasheightpx, "px")
-/responseY = 9
+/responseY = 6 // not sure how this value got chosen
 /responseX = (canvasheight/canvaswidth) * (values.responseY)
 
 </values>
@@ -55,8 +55,8 @@
 / items = ()
 / color = yellow
 / txbgcolor = (127, 127, 127)
-/ fontstyle = ("Arial",5%)
-/ position = (50%,10%)
+/ fontstyle = ("Arial",2%) // smaller for panoworks
+/ position = (50%,24%) // moved closer for panoworks
 </text>
 
 <text feedback_resource>
@@ -68,56 +68,41 @@
 
 <shape centersquare>
 / shape = rectangle
-/ size = (5%, 5%)
-/ position = (50%, 50%)
+/ size = (3%, 5%)
+/ position = (50, 100*values.vertical_offset)
 / color = (green)
 </shape>
 
 <text notice_centre_mouse>
 / items = ("Please click the green rectangle to continue")
-/ fontstyle = ("Arial", 3%, true)
-/ position = (50%,80%)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
+/ position = (50%,70%) // closer for panoworks
 / txbgcolor = (127,127,127)
 </text>
 
 <text process_notice>
 / items = ("You have finished <%values.trial_number%> of <%values.number_of_patch%> questions")
-/ fontstyle = ("Arial", 2.8%, true)
-/ position = (50%,85%)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
+/ position = (50%,73%) // closer for panoworks
 / txbgcolor = (127,127,127)
 </text>
 
 <text process_notice_practice>
 / items = ("You have finished <%values.trial_number_practice%> of <%values.number_of_patch_practice%>  practice questions")
-/ fontstyle = ("Arial", 2.8%, true)
-/ position = (50%,85%)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
+/ position = (50%,73%) // closer for panoworks
 / txbgcolor = (127,127,127)
 </text>
 
-<text similar_reminder>
-/ items = ("Similar")
-/ fontstyle = ("Arial", 2.5%, true)
-/ txbgcolor = (127,127,127)
-/ position = (35,50)
-/ color = (white)
-</text>
-
-<text dissimilar_reminder>
-/ items = ("Different")
-/ fontstyle = ("Arial", 2.5%, true)
-/ txbgcolor = (127,127,127)
-/ position = (65,50)
-/ color = (white)
-</text>
 
 <text during_after2_response_instructions>
 / items = 
 ("Please choose the similarity level of the previously displayed circles
 		0 => Most Similar
 		7 => Most Different")
-/ fontstyle = ("Arial", 2.8%, true)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
-/ position = (50,80)
+/ position = (50,75) // closer for panoworks
 </text>
 
 <text after1_response_instructions>
@@ -125,18 +110,18 @@
 ("Please choose the similarity level of previously displayed circles
 		0 => Most Similar
 		7 => Most Different")
-/ fontstyle = ("Arial", 2.8%, true)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
-/ position = (50,80)
+/ position = (50,75) // closer for panoworks
 </text>
 
 <text catch_instructions>
 / items = 
 ("SPECIAL TRIAL! PLEASE JUST SELECT: <%values.catch_vals%>") //.item(counter.order_catch_vals.selectedvalue)
-/ fontstyle = ("Arial", 3.2%, true)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txcolor = black
 / txbgcolor = (127,127,127)
-/ position = (50,80)
+/ position = (50,75) // closer for panoworks
 </text>
 
 <text very_similar>
@@ -144,11 +129,11 @@
 ("You selected: <%values.similarity%>
 
 You found the circles: VERY SIMILAR"
-) //.item(counter.order_catch_vals.selectedvalue)
-/ fontstyle = ("Arial", 3.2%, true)
+) 
+/ fontstyle = ("Arial", 1%, true)
 / txcolor = black
 / txbgcolor = (127,127,127)
-/ position = (50,50)
+/ position = (50,100*values.vertical_offset)
 </text>
 
 <text similar>
@@ -156,11 +141,11 @@ You found the circles: VERY SIMILAR"
 ("You selected: <%values.similarity%>
 
 You found the circles: SIMILAR"
-) //.item(counter.order_catch_vals.selectedvalue)
-/ fontstyle = ("Arial", 3.2%, true)
+) 
+/ fontstyle = ("Arial", 1%, true)
 / txcolor = black
 / txbgcolor = (127,127,127)
-/ position = (50,50)
+/ position = (50,100*values.vertical_offset)
 </text>
 
 <text different>
@@ -168,11 +153,11 @@ You found the circles: SIMILAR"
 ("You selected: <%values.similarity%>
 
 You found the circles: DIFFERENT"
-) //.item(counter.order_catch_vals.selectedvalue)
-/ fontstyle = ("Arial", 3.2%, true)
+) 
+/ fontstyle = ("Arial", 1%, true)
 / txcolor = black
 / txbgcolor = (127,127,127)
-/ position = (50,50)
+/ position = (50,100*values.vertical_offset)
 </text>
 
 <text very_different>
@@ -180,73 +165,73 @@ You found the circles: DIFFERENT"
 ("You selected: <%values.similarity%>
 
 You found the circles: VERY DIFFERENT"
-) //.item(counter.order_catch_vals.selectedvalue)
-/ fontstyle = ("Arial", 3.2%, true)
+) 
+/ fontstyle = ("Arial", 1%, true)
 / txcolor = black
 / txbgcolor = (127,127,127)
-/ position = (50,50)
+/ position = (50,100*values.vertical_offset)
 </text>
 
 ******************** response screen barycentric controls ****************
 
 <picture response1d>
 / items = ("response1disks.png")
-/ position = ( 50+values.responseX,50-values.responseY )
-/ size = (15.8%,15.8%)
+/ position = ( 50+values.responseX,100*values.vertical_offset-values.responseY )
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture response2d>
 / items = ("response2disks.png")
-/ position = (50+values.responseX,50-values.responseY)
-/ size = (15.8%,15.8%)
+/ position = (50+values.responseX,100*values.vertical_offset-values.responseY)
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture response3d>
 / items = ("response3disks.png")
-/ position = (50+values.responseX,50+values.responseY)
-/ size = (15.8%,15.8%)
+/ position = (50+values.responseX,100*values.vertical_offset+values.responseY)
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture response4d>
 / items = ("response4disks.png")
-/ position = (50+values.responseX,50+values.responseY)
-/ size = (15.8%,15.8%)
+/ position = (50+values.responseX,100*values.vertical_offset+values.responseY)
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture response5d>
 / items = ("response5disks.png")
-/ position = (50-values.responseX,50 + values.responseY)
-/ size = (15.8%,15.8%)
+/ position = (50-values.responseX,100*values.vertical_offset + values.responseY)
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture response6d>
 / items = ("response6disks.png")
-/ position = (50-values.responseX,50 + values.responseY)
-/ size = (15.8%,15.8%)
+/ position = (50-values.responseX,100*values.vertical_offset + values.responseY)
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture response7d>
 / items = ("response7disks.png")
-/ position = (50-values.responseX,50 - values.responseY)
-/ size = (15.8%,15.8%)
+/ position = (50-values.responseX,100*values.vertical_offset - values.responseY)
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture response8d>
 / items = ("response8disks.png")
-/ position = (50-values.responseX,50 - values.responseY)
-/ size = (15.8%,15.8%)
+/ position = (50-values.responseX,100*values.vertical_offset - values.responseY)
+/ size = (10.5%,10.5%) // smaller for panoworks
 </picture>
 
 <picture reveal>
 / items = ("centre_reveal_hollow.png")
-/ position = (50,50)
-/ size = (4.5%, 4.5%)
+/ position = (50,100*values.vertical_offset)
+/ size = (3%, 3%) // smaller for panoworks
 </picture>
 
 <picture response_blank>
 / items = ("response_blank.png")
-/ position = (50,50)
-/ size = (8%,8%)
+/ position = (50,100*values.vertical_offset)
+/ size = (5.3%,5.3%) // smaller for panoworks
 </picture>
 
 *******************************************************************************************************************
@@ -425,7 +410,6 @@ expressions.validresponse_disks
 
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
- similar_reminder, dissimilar_reminder, centersquare
  catch_instructions							// added for this version. Located on 'ResponseStep.iqx'
  ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)
@@ -498,7 +482,6 @@ expressions.validresponse_disks
 
 / stimulusframes = [
 	1  = response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d, 
- similar_reminder, dissimilar_reminder, centersquare
  catch_instructions							// added for this version. Located on 'ResponseStep.iqx'
  ]
 / validresponse = (response_blank, response1d, response2d, response3d, response4d, response5d, response6d, response7d, response8d)

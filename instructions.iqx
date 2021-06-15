@@ -41,23 +41,16 @@
 
 <instruct>
 / nextkey = (57)
-/ fontstyle = ("Arial", 10%, true)
+/ fontstyle = ("Arial", 4%, true) // smaller for panoworks
 / screencolor = (127,127,127)
 / txcolor = yellow
 </instruct>
 
-<text quit_notice>
-/ items = ("Press Ctrl + Q to quit the experiment")
-/ fontstyle = ("Arial", 2.8%, true)
-/ txcolor = yellow
-/ txbgcolor = (127,127,127)
-/ position = (80,90)
-</text>
 
 <text Next_button>
 / items = ("Press SPACE BUTTON to continue")
-/ position = (80%,85%)
-/ fontstyle = ("Arial", 2.8%, true)
+/ position = (53%,70%) // smaller for panoworks
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
@@ -67,8 +60,8 @@
 of the screen.
 2 circles will flash out quickly somewhere on the screen")
 / hposition = 50%
-/ vposition = 70%
-/ fontstyle = ("Arial", 3%, true)
+/ vposition = 63% // smaller for panoworks
+/ fontstyle = ("Arial", 1%, true)
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
@@ -77,9 +70,9 @@ of the screen.
 <video Instruction_Page_1_gif> // fix
 / items = ("2stimuli.gif")
 / hposition = 50%
-/ vposition = 30%
+/ vposition = 33% // closer for panoworks
 / loop = true
-/ size = (40%,40%)
+/ size = (40%,40%) // smaller for panoworks
 </video>
 
 
@@ -93,8 +86,8 @@ Please use the full range of possible responses.
 
 After choosing, move your cursor back to the centre and click the  box to continue")
 / hposition = 50%
-/ vposition = 70%
-/ fontstyle = ("Arial", 3%, true)
+/ vposition = 63% // closer for panoworks
+/ fontstyle = ("Arial", 1%, true) // closer for panoworks
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
@@ -102,25 +95,25 @@ After choosing, move your cursor back to the centre and click the  box to contin
 <video Instruction_Page_2_gif> // fix
 / items = ("2stimuli_response.gif")
 / hposition = 50%
-/ vposition = 30%
+/ vposition = 33% // smaller for panoworks
 / loop = true
-/ size = (40%,40%)
+/ size = (40%,40%) // smaller for panoworks
 </video>
 
 <video catch_gif> 
 / items = ("catch.gif")
 / hposition = 50%
-/ vposition = 30%
+/ vposition = 33%
 / loop = true
-/ size = (40%,40%)
+/ size = (40%,40%) // smaller for panoworks
 </video>
 
 <text Instruction_Page_4>
 / items = ("Sometimes there will be special trials where you will just be asked to click on a particular value.
 Please just click the value on that trial.")
 / hposition = 50%
-/ vposition = 70%
-/ fontstyle = ("Arial", 3%, true)
+/ vposition = 63% // closer for panoworks
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
@@ -128,8 +121,8 @@ Please just click the value on that trial.")
 <text Instruction_Page_5>
 / items = ("During the test, you will see these 9 colors below")
 / hposition = 50%
-/ vposition = 20%
-/ fontstyle = ("Arial", 3%, true)
+/ vposition = 30% // smaller for panoworks
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
@@ -195,7 +188,7 @@ Please just click the value on that trial.")
 / items = ("You are going to do a few practice trials to make you be more familar with the experiment.
 When you ready, please press SPACE button to start the practice trial.")
 / position = (50%,50%)
-/ fontstyle = ("Arial", 2.8%, true)
+/ fontstyle = ("Arial", 1%, true) // smaller for panoworks
 / txbgcolor = (127,127,127)
 / txcolor = yellow
 </text>
@@ -206,7 +199,7 @@ When you ready, please press SPACE button to start the practice trial.")
 *******************************************************************************************************************
 
 <trial Instruction_main> // initial instructions
-/ stimulusframes = [1 = Instruction_Page_1,Next_button,quit_notice, Instruction_Page_1_gif] // 
+/ stimulusframes = [1 = Instruction_Page_1,Next_button, Instruction_Page_1_gif] // 
 / validresponse = (57)
 / branch = [
 	trial.Instruction_response
@@ -214,7 +207,7 @@ When you ready, please press SPACE button to start the practice trial.")
 </trial>
 
 <trial Instruction_response> // initial instructions
-/ stimulusframes = [1 = Instruction_Page_2,Next_button,quit_notice, Instruction_Page_2_gif] // 
+/ stimulusframes = [1 = Instruction_Page_2,Next_button, Instruction_Page_2_gif] // 
 / validresponse = (57)
 / branch = [
 	trial.Instruction_catch
@@ -222,7 +215,7 @@ When you ready, please press SPACE button to start the practice trial.")
 </trial>
 
 <trial Instruction_catch> // catch
-/ stimulusframes = [1 = Instruction_Page_4,Next_button,quit_notice,catch_gif] // add gif
+/ stimulusframes = [1 = Instruction_Page_4,Next_button,catch_gif] // add gif
 / validresponse = (57)
 / branch = [
 	trial.Instruction_gamut

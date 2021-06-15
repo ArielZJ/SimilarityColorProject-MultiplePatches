@@ -106,12 +106,22 @@ Press SPACE to continue.")
 / txcolor = green
 / txbgcolor = grey
 </text>
+
+<text welcome>
+/items = ("Welcome to the experiment!
+
+Press SPACE to continue.")
+/position = (50,100*values.vertical_offset)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = yellow
+/ txbgcolor = grey
+</text>
 *****************************
 Trials
 *****************************
 <trial feedback>
-/ timeout = 50 // used to show feedback, now just a placeholder
-
+/ stimulusframes = [1 = welcome] // 
+/ validresponse = (57)
 </trial>
 *****************************
 Blocks
