@@ -84,10 +84,12 @@ of the screen.
 
 
 <text Instruction_Page_2>
-/ items = ("Sometimes you will need to decide the similarity level of the colour of the 2 circles. Ignore any size differences.
+/ items = ("Sometimes you will need to decide the similarity level of the colour of the 2 circles. Ignore any size or position differences.
 
 0 => most similar colour (least different colour)
 7 => most different colour (least similar colour)
+
+Please use the full range of possible responses.
 
 After choosing, move your cursor back to the centre and click the  box to continue")
 / hposition = 50%

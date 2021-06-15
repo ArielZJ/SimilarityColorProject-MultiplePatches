@@ -112,7 +112,7 @@
 
 <text during_after2_response_instructions>
 / items = 
-("Please choose the similarity level of previously 2 cued circles
+("Please choose the similarity level of the previously displayed circles
 		0 => Most Similar
 		7 => Most Different")
 / fontstyle = ("Arial", 2.8%, true)
@@ -122,7 +122,7 @@
 
 <text after1_response_instructions>
 / items = 
-("Please choose the similarity level of previously 2 cued circles
+("Please choose the similarity level of previously displayed circles
 		0 => Most Similar
 		7 => Most Different")
 / fontstyle = ("Arial", 2.8%, true)
@@ -137,6 +137,54 @@
 / txcolor = black
 / txbgcolor = (127,127,127)
 / position = (50,80)
+</text>
+
+<text very_similar>
+/ items = 
+("You selected: <%values.similarity%>
+
+You found the circles: VERY SIMILAR"
+) //.item(counter.order_catch_vals.selectedvalue)
+/ fontstyle = ("Arial", 3.2%, true)
+/ txcolor = black
+/ txbgcolor = (127,127,127)
+/ position = (50,50)
+</text>
+
+<text similar>
+/ items = 
+("You selected: <%values.similarity%>
+
+You found the circles: SIMILAR"
+) //.item(counter.order_catch_vals.selectedvalue)
+/ fontstyle = ("Arial", 3.2%, true)
+/ txcolor = black
+/ txbgcolor = (127,127,127)
+/ position = (50,50)
+</text>
+
+<text different>
+/ items = 
+("You selected: <%values.similarity%>
+
+You found the circles: DIFFERENT"
+) //.item(counter.order_catch_vals.selectedvalue)
+/ fontstyle = ("Arial", 3.2%, true)
+/ txcolor = black
+/ txbgcolor = (127,127,127)
+/ position = (50,50)
+</text>
+
+<text very_different>
+/ items = 
+("You selected: <%values.similarity%>
+
+You found the circles: VERY DIFFERENT"
+) //.item(counter.order_catch_vals.selectedvalue)
+/ fontstyle = ("Arial", 3.2%, true)
+/ txcolor = black
+/ txbgcolor = (127,127,127)
+/ position = (50,50)
 </text>
 
 ******************** response screen barycentric controls ****************
@@ -366,7 +414,7 @@ expressions.validresponse_disks
 	values.response_time = trial.response_options_practice.latency;
 ]
 / branch = [
-	trial.centermouse_practice
+	trial.practice_feedback
 ]
 </trial>
 
@@ -390,6 +438,28 @@ expressions.validresponse_disks
 	values.response_time = trial.response_options_catch_practice.latency;
 ]
 / branch = [trial.centermouse_practice]
+</trial>
+
+<trial practice_feedback>
+/ ontrialbegin = [
+	if((values.similarity == "0") || (values.similarity == 1)){
+		trial.practice_feedback.insertstimulusframe(text.very_similar, 1)
+	} else if ((values.similarity == 2) || (values.similarity == 3)){
+		trial.practice_feedback.insertstimulusframe(text.similar, 1)
+	} else if ((values.similarity == 4) || (values.similarity == 5)){
+		trial.practice_feedback.insertstimulusframe(text.different, 1)
+	} else if ((values.similarity == 6) || (values.similarity == 7)){
+		trial.practice_feedback.insertstimulusframe(text.very_different, 1)
+	}
+]
+/ ontrialend = [
+	trial.practice_feedback.clearstimulusframes()
+]
+
+/ trialduration = 5000
+/ branch = [
+	trial.centermouse_practice
+]
 </trial>
 
 <trial centermouse_practice>

@@ -110,10 +110,7 @@ Press SPACE to continue.")
 Trials
 *****************************
 <trial feedback>
-/validresponse = (57)
-/ontrialbegin = [
-	trial.feedback.insertstimulusframe(text.success, 1);
-]
+/ timeout = 50 // used to show feedback, now just a placeholder
 
 </trial>
 *****************************
