@@ -114,9 +114,8 @@
 	
 	// counter.order_during picks one of the trials out of the set of trials for this trial type
 	// there are (#stimuli)^2 * # conditions_for_trial_type trials in counter.order_during
-	// in this example there are 5*5*3 = 75 trials to choose from
 
-	if(item.present_during_eccen.item(counter.order_during.selectedvalue) == "FF"){ // starting with Fovea-Fovea
+	if(item.present_during_eccen.item(counter.order_during.selectedvalue) == "LCRC"){ // starting with Fovea-Fovea
 	
 		// insert the stimuli immediately upon trial commencement, no delay
 		//trial.present_during.insertstimulusframe(text.cross,1);
@@ -193,7 +192,7 @@
 		}
 		
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery	
-	}else if (item.present_during_eccen.item(counter.order_during.selectedvalue) == "FP"){
+	}else if (item.present_during_eccen.item(counter.order_during.selectedvalue) == "LCRP"){
 		//trial.present_during.insertstimulusframe(text.cross,1);
 		
 		trial.present_during.insertstimulusframe(shape.F1,1);
@@ -262,7 +261,76 @@
 		}
 		
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery
-	}else if (item.present_during_eccen.item(counter.order_during.selectedvalue) == "PP"){
+	}else if (item.present_during_eccen.item(counter.order_during.selectedvalue) == "LPRC"){
+		//trial.present_during.insertstimulusframe(text.cross,1);
+		
+		trial.present_during.insertstimulusframe(shape.F2,1);
+		trial.present_during.insertstimulusframe(shape.P2,1);
+		values.Circle_1 = 1;
+		values.Circle_2 = -1;
+		values.Position_1 = values.angle_2;
+		values.Position_2 = values.angle_4;
+		
+		if(item.present_during_colour1.item(counter.order_during.selectedvalue) == "1"){
+			shape.F2.color = values.color1;
+			values.Color_1 = 1;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "2"){
+			shape.F2.color = values.color2;
+			values.Color_1 = 2;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "3"){
+			shape.F2.color = values.color3;
+			values.Color_1 = 3;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "4"){
+			shape.F2.color = values.color4;
+			values.Color_1 = 4;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "5"){
+			shape.F2.color = values.color5;
+			values.Color_1 = 5;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "6"){
+			shape.F2.color = values.color6;
+			values.Color_1 = 6;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "7"){
+			shape.F2.color = values.color7;
+			values.Color_1 = 7;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "8"){
+			shape.F2.color = values.color8;
+			values.Color_1 = 8;
+		}else{
+			shape.F2.color = values.color9;
+			values.Color_1 = 9;
+		}
+		
+		if(item.present_during_colour2.item(counter.order_during.selectedvalue) == "1"){
+			shape.P2.color = values.color1;
+			values.Color_2 = 1;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "2"){
+			shape.P2.color = values.color2;
+			values.Color_2 = 2;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "3"){
+			shape.P2.color = values.color3;
+			values.Color_2 = 3;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "4"){
+			shape.P2.color = values.color4;
+			values.Color_2 = 4;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "5"){
+			shape.P2.color = values.color5;
+			values.Color_2 = 5;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "6"){
+			shape.P2.color = values.color6;
+			values.Color_2 = 6;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "7"){
+			shape.P2.color = values.color7;
+			values.Color_2 = 7;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "8"){
+			shape.P2.color = values.color8;
+			values.Color_2 = 8;
+		}else{
+			shape.P2.color = values.color9;
+			values.Color_2 = 9;
+		}
+		
+	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery
+	}else if (item.present_during_eccen.item(counter.order_during.selectedvalue) == "LPRP"){
 		//trial.present_during.insertstimulusframe(text.cross,1);
 		
 		trial.present_during.insertstimulusframe(shape.P1,1);
