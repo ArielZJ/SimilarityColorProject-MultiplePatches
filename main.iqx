@@ -109,7 +109,7 @@ FILL IN
 /response_time = 0
 /temp = 0
 
-/number_of_patch = 243
+/number_of_patch = 243 // change to 324 MARKED NOT YET DONE
 /number_of_patch_practice = 9
 
 // timing & display control
@@ -142,7 +142,7 @@ FILL IN
 </counter>
 
 ** counter to run the main trials
-<counter sequence>
+<counter sequence> // change to 334 MARKED NOT YET DONE
 / select = noreplace(1-253)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
 / selectionrate = block
 </counter>
@@ -151,7 +151,7 @@ FILL IN
 ** from 1 to stimuli^2 * condition number (e.g. 3 for FF, FP, PP)
 ** during
 <counter order_during>
-/ select = noreplace(1-243)
+/ select = noreplace(1-243) // change to 324 MARKED NOT YET DONE
 / selectionrate = block
 </counter>
 
@@ -163,7 +163,7 @@ FILL IN
 
 *********** practice trial versions of the counters
 <counter order_during_practice>
-/ select = noreplace(1-243) // change
+/ select = noreplace(1-243) // change to 324 MARKED NOT YET DONE
 / selectionrate = block
 </counter>
 
