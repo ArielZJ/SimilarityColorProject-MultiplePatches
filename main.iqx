@@ -239,16 +239,18 @@ latency: 						the response latency (in ms)
 
 <data>
 /file = "color_eccen_2stim_during.iqdat"
-/columns = [build, date, time, subject, group, blockcode, blocknum, trialcode, trialnum, 
+/columns = [build, date, time, subject, group, 
+values.radius_central,values.radius_peripheral,values.stimulus_size,values.magnify,values.peripheral_scale,
+blockcode, blocknum, trialcode, trialnum, 
 response, correct, latency,
-subject,values.trial_number, values.sequence_number, values.order_num, values.trial_type,values.Cross_position,
+values.trial_number, values.sequence_number, values.order_num, values.trial_type,values.Cross_position,
 values.Circle_1,values.Position_1,values.Color_1,
 values.Circle_2,values.Position_2,values.Color_2,
 values.Position_3,values.Color_3,values.Position_4,values.Color_4,
 values.similarity,values.response_time,
 values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue,
 values.catch_vals,values.ratio_pxperDVA, values.screen_size_x, values.screen_size_y, values.viewer_distance,
-values.radius_F, values.radius_P, values.r_F, values.peripheral_scale, values.bound
+values.radius_F, values.radius_P, values.r_F, values.bound
 ]
  /separatefiles = true
 </data>
