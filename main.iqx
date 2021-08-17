@@ -60,12 +60,22 @@ FILL IN
 
 ********** Main factors to be optimised here **************
 <values>
-/peripheral_scale = 4.5 // scaling factor for peripheral stimuli, chosen based on Freeman & Simoncelli 2011 fig 1.
-/radius_central = 1 // arbitrarily chosen 1 DVA
-/radius_peripheral = 10 // arbitrarily chosen 10 DVA
-/stimulus_size = 0.5 // arbitarily chosen 0.5 DVA
+
+// These three factors are what need to be adjusted for a specific experiment
+
+/radius_central = 0.05 // chosen 0.05 DVA within the 0.2 DVA S-cone scotoma
+/radius_peripheral = 1 // chosen 1 DVA outside the S-cone scotoma
+/stimulus_size = 0.0375 // want the stimuli to be comfortably within the scotomoa
+
+// This factor can be adjusted if you want to play with the peripheral scaling factor
+/magnify = true // set to 'true' if you want scaling, 'false' if you don't want peripheral scaling
+
+/peripheral_scaling_factor = 4.5 // scaling factor for peripheral stimuli, chosen based on Freeman & Simoncelli 2011 fig 1.
 
 // ************* main factors to be optimised above ************
+
+/peripheral_scale = -999		// initialised, but updated in calibration_main.iqx for radius_peripheral
+
 
 // need to limit the colours displayed for this test, come back to this
 /color1 = #ff0000

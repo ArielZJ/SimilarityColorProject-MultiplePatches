@@ -649,6 +649,11 @@ Trials
 		values.ratio_pxpermm = expressions.ratio_pxpermm * 1;
 		values.circle_x = values.circle_x_initial; // return it to the starting position
 		values.DVA_to_distance = values.viewer_distance*tan(1/values.radians_to_degrees); // converts 1 DVA to X mm
+		if(values.magnify == true){ // magnify in the periphery as the task demands
+					values.peripheral_scale = values.radius_peripheral * values.peripheral_scaling_factor; // doesn't really apply for foveal stimuli, but holds approximately outside
+				} else {
+					values.peripheral_scale = 1
+				}
 		values.radius_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; 
 		values.radius_P = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_peripheral;
 		values.r_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.stimulus_size;

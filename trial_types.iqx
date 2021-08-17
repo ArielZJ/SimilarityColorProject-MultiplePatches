@@ -119,7 +119,6 @@
 	if(item.present_during_eccen.item(counter.order_during.selectedvalue) == "FF"){ // starting with Fovea-Fovea
 	
 		// insert the stimuli immediately upon trial commencement, no delay
-		trial.present_during.insertstimulusframe(text.cross,1);
 		
 		trial.present_during.insertstimulusframe(shape.F1,1);
 		trial.present_during.insertstimulusframe(shape.F2,1);
@@ -194,7 +193,6 @@
 		
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery	
 	}else if (item.present_during_eccen.item(counter.order_during.selectedvalue) == "FP"){
-		trial.present_during.insertstimulusframe(text.cross,1);
 		
 		trial.present_during.insertstimulusframe(shape.F1,1);
 		trial.present_during.insertstimulusframe(shape.P1,1);
@@ -263,7 +261,6 @@
 		
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery
 	}else if (item.present_during_eccen.item(counter.order_during.selectedvalue) == "PP"){
-		trial.present_during.insertstimulusframe(text.cross,1);
 		
 		trial.present_during.insertstimulusframe(shape.P1,1);
 		trial.present_during.insertstimulusframe(shape.P2,1);
