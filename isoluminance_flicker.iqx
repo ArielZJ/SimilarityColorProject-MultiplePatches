@@ -1,0 +1,833 @@
+﻿<usermanual>
+___________________________________________________________________________________________________________________
+				HETEROCHROMATIC FLICKER: Determining isoluminant RGB values
+___________________________________________________________________________________________________________________
+Ariel Zeleznikow-Johnston
+2021-08-27
+ariel.zeleznikow-johnston@monash.edu
+
+Modified from base Inquisit's "staircasemethod.iqx"
+___________________________________________________________________________________________________________________
+BACKGROUND INFO
+This script implements a staircase method to find the point of minimal flicker using heterochromatic stimuli. This
+enables the detection of R, G & B values that are perceptually isoluminant.
+
+See https://www.researchgate.net/publication/300634510_Colour_vision_experimental_studies_in_teaching_of_optometry
+for background details.
+
+___________________________________________________________________________________________________________________
+TASK DESCRIPTION	
+___________________________________________________________________________________________________________________
+
+
+___________________________________________________________________________________________________________________	
+DURATION 
+___________________________________________________________________________________________________________________	
+About 2 minutes
+___________________________________________________________________________________________________________________	
+DATA FILE INFORMATION 
+___________________________________________________________________________________________________________________
+
+___________________________________________________________________________________________________________________	
+INSTRUCTIONS 
+___________________________________________________________________________________________________________________
+see section Editable Instructions
+
+___________________________________________________________________________________________________________________	
+EDITABLE CODE 
+___________________________________________________________________________________________________________________	
+
+
+</usermanual>
+
+**************************************************************************************************************
+**************************************************************************************************************
+	EDITABLE PARAMETERS: change editable parameters here
+**************************************************************************************************************
+**************************************************************************************************************
+
+<parameters>
+/responsekey_more = "F"
+/responsekey_less = "J"
+
+/step = 20 // increase for faster calibration, lower accuracy
+/initial_step = 50
+/subsequent_step = 10
+
+/max_reversals = 2 // increase for higher accuracy, slower calibration
+/staircase_order = "alternate"
+</parameters>
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+	EDITABLE STIMULI: change editable stimuli here
+**************************************************************************************************************
+**************************************************************************************************************
+
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+	EDITABLE INSTRUCTIONS: change instructions here
+**************************************************************************************************************
+**************************************************************************************************************
+
+<page generalintro>
+^For the following task you will be presented with a flickering circle.
+
+^^Your task is to decide when the flickering of the circle is becoming more or less intense after pressing
+a button. 
+
+^^If it becomes more intense -> Press the <%parameters.responsekey_more%> 
+^If it becomes less intense -> Press the <%parameters.responsekey_less%> 
+
+^^^The closer the flickering is to being minimal or gone entirely, the more difficult the task.
+</page>
+
+
+<item instructions>
+/1 = "Was the flickering more or less intense than last time?"
+/2 = "MORE -> Press the '<%parameters.responsekey_more%>'
+LESS  -> Press the '<%parameters.responsekey_less%>'"
+</item>
+
+"""
+<instruct>
+/ fontstyle = ("Arial", 2.80%, false, false, false, false, 5, 1)
+</instruct>
+
+"""
+
+
+**************************************************************************************************************
+								Inclusions
+**************************************************************************************************************
+<include>
+/file = "main.iqx"
+/file = "calibration_main.iqx"
+</include>
+
+**************************************************************************************************************
+**************************************************************************************************************
+	DEFAULTS
+**************************************************************************************************************
+**************************************************************************************************************
+script requires Inquisit 6.1.0.0 or higher
+
+"""
+<defaults>
+/canvasaspectratio = (4,3)
+/minimumversion = "6.1.0.0"
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/txbgcolor = (127,127,127)
+/ screencolor = (127,127,127)
+/ txcolor = black
+</defaults>
+"""
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	VALUES: automatically updated
+*******************************************************************************************************************
+*******************************************************************************************************************
+/cycles:							stores the number of staircase cycles run
+/baseline_value:					stores the color target tone of the current base
+/generic_colour_up:					stores the color target tone of the current target Color in the DOWN staircase
+/generic_colour_down:					stores the color target tone of the current target Color in the UP staircase
+/change_up:							stores the adjustment change (based on parameters.step) for the UP staircase
+/change_down:						stores the adjustment change (based on parameters.step) for the DOWN staircase
+/staircase:							1 = staircase DOWN; 2 = staircase UP
+/nextstaircase:						1 = staircase DOWN; 2 = staircase UP
+/run_up-							
+/run_down:							checks wether any trials have been run in the up/down staircase of the given cycle
+
+/direction_down:					1 = target lighter; 2 = target darker for staircase DOWN
+/direction_up:						1 = target lighter; 2 = target darker for staircase UP
+/direction_helper:					direction helper variable
+/countreversals_down:				count number of direction reversal for staircase DOWN
+/countreversals_up:					count number of direction reversal for staircase UP
+/helper:							helper variable
+/ReversalThreshold:					estimated Threshold at Reversal point (midpoint between last two target values)
+/sum_DiffThreshold_down:			adds the difference thresholds for staircase DOWN
+/sum_DiffThreshold_up:				adds the difference thresholds for staircase UP
+/DiffThreshold1:					stores the Difference Threshold of the first staircase cycle
+
+/flicker_x							x-axis position of flickering stimulus
+/flicker_y							y-axis position of flickering stimulus
+/change_colour_down					increment by which to adjust the R, G or B value of the changing stimulus
+
+
+<values>
+/cycles = 0
+/baseline_value = 0
+/generic_colour_down = 255
+/generic_colour_up = 0
+/change_up = 0
+/change_down = 0
+
+/change_up_initial = 0
+/change_down_initial = 255
+
+/staircase = 0
+/nextstaircase = 0
+/run_up = 0
+/run_down = 0
+/direction_down = 0
+/direction_up = 0
+/direction_helper = 0
+/countreversals_down = 0
+/countreversals_up = 0
+/helper = 0
+/reversalthreshold = -999
+/sum_DiffThreshold_down= 0
+/sum_DiffThreshold_up = 0
+/DiffThreshold1 = 0
+
+/flicker_x = 50
+/flicker_y = 50
+/change_colour_down = 5
+/change_colour_up = 5
+
+/base_colour_R = 0
+/base_colour_G = 0
+/base_colour_B = 0
+/change_colour_R = 0
+/change_colour_G = 0
+/change_colour_B = 0
+
+/n_flick = 0
+/flicker_number = 2
+
+/initial = true
+
+/mode = "GB" // start with green vs. blue
+
+/ReversalThreshold_GR = -999
+/ReversalThreshold_GB = -999
+/ReversalThreshold_RB = -999
+
+/B_setting = 250
+/Rnorm = -99.9
+/Gnorm = -99.9
+/Bnorm = -99.9
+
+// need to limit the colours displayed for this test, come back to this
+/color1 = #000000
+/color2 = #000000
+/color3 = #000000
+/color4 = #000000
+/color5 = #000000
+/color6 = #000000
+/color7 = #000000
+/color8 = #000000
+/color9 = #000000
+</values>
+
+
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	EXPRESSIONS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+/DiffThreshold_up:		mean reversal thresholds for UP Staircase 
+						(thresholds: midpoint between the last two target values before reversal response)
+/DiffThreshold_down:	mean reversal thresholds for DOWN Staircase 
+						(thresholds: midpoint between the last two target values before reversal response)
+/DiffThreshold:			mean threshold based on DiffThreshold_up and DiffThreshold_Down
+
+<expressions>
+/DiffThreshold_up = values.sum_DiffThreshold_up/parameters.max_reversals
+/DiffThreshold_down = values.sum_diffthreshold_down/parameters.max_reversals
+/DiffThreshold = (expressions.diffthreshold_down + expressions.diffthreshold_up)/2
+</expressions>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	INSTRUCTIONS
+*******************************************************************************************************************
+*******************************************************************************************************************
+<text taskinstruct1>
+/items = instructions
+/select = 1
+/position = (50%, 10%)
+/ fontstyle = ("Arial", 3%, true, false, false, false, 5, 1)
+/ txcolor = black
+</text>
+
+<text taskinstruct2>
+/items = instructions
+/select = 2
+/position = (50%, 20%)
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = black
+</text>
+
+<text luminant>
+/items = ("Please verify these stimuli look equally luminant.
+Press SPACE to continue.")
+/position = (50%, 85%)
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = white
+/ txbgcolor = grey
+</text>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	STIMULI
+*******************************************************************************************************************
+*******************************************************************************************************************
+<shape base>
+/shape = circle
+/color = (values.base_colour_R, values.base_colour_G, values.base_colour_B)
+/size = (10%*3/4, 10%)
+/position = (values.flicker_x, values.flicker_y)
+</shape>
+
+<shape change>
+/shape = circle
+/color = (values.change_colour_R, values.change_colour_G, values.change_colour_B)
+/size = (10%*3/4, 10%)
+/position = (values.flicker_x, values.flicker_y)
+</shape>
+
+***********************************
+Stimuli for the equiluminance check
+***********************************
+
+<shape stim1>
+/shape = circle
+/color = (floor( (0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.99 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (25,25)
+</shape>
+
+<shape stim2>
+/shape = circle
+/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.88 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (50,25)
+</shape>
+
+<shape stim3>
+/shape = circle
+/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.77 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (75,25)
+</shape>
+
+<shape stim4>
+/shape = circle
+/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.66 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (25,50)
+</shape>
+
+<shape stim5> //problem
+/shape = circle
+/color = (floor((0.5 *values.B_setting)* values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.55 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (50,50)
+</shape>
+
+<shape stim6> //problem
+/shape = circle
+/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.44 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (75,50)
+</shape>
+
+<shape stim7>
+/shape = circle
+/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.33 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (25,75)
+</shape>
+
+<shape stim8> //problem
+/shape = circle
+/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.22 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (50,75)
+</shape>
+
+<shape stim9> //problem
+/shape = circle
+/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.11 *values.B_setting) * values.Bnorm ))
+/size = (10%*3/4, 10%)
+/position = (75,75)
+</shape>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	LISTS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+Note: list.randomstaircase randomly selects the next staircase 1 = DOWN, 2 = UP
+<list randomstaircase>
+/items = (1, 2)
+/replace = true
+</list>
+
+<list down_reversals_GR>
+</list>
+<list up_reversals_GR>
+</list>
+
+<list down_reversals_GB>
+</list>
+<list up_reversals_GB>
+</list>
+
+<list down_reversals_RB>
+</list>
+<list up_reversals_RB>
+</list>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	TRIALS: run one interweaved staircase cycle
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+Sequence: trial.staircaseselection - > trial.staircase_down/trial.staircase_up 
+as long as number of reversals in each of the staircases < parameters.max_reversals
+
+Note: trial.staircaseselection
+* selects the next staircase (up or down) either randomly or in alternate fashion (depending on parameters.staircase_order)
+* if the number of reversals of one of the staircases has reached the predetermined number (parameters.max_reversals)
+only the second staircase is run until the number of reversals for that staircase also reaches the predetermined number
+* if both staircases have reached the predetermined number of reversals trial.thresholds is called
+<trial staircaseselection>
+/ontrialbegin = [
+	if (values.nextstaircase == 1) {
+		values.helper = 2;
+	} else {
+		values.helper = 1;
+	};
+
+	if (parameters.staircase_order == "random") {
+		values.helper = list.randomstaircase.nextvalue;
+	};
+]
+/trialduration = 0
+/ontrialend = [
+	values.nextstaircase = values.helper;
+	if (values.countreversals_down >= parameters.max_reversals && values.countreversals_up < parameters.max_reversals && values.helper == 1) {
+		values.nextstaircase = 2;
+	} else if (values.countreversals_down < parameters.max_reversals && 
+	values.countreversals_up >= parameters.max_reversals && values.helper == 2) {
+		values.nextstaircase = 1;
+	};
+]
+/branch = [
+	if (values.countreversals_down >= parameters.max_reversals && values.countreversals_up >= parameters.max_reversals){
+		trial.thresholds;
+	} else if (values.nextstaircase == 1 && values.run_down == 0) {
+		trial.start_staircasedown;
+	} else if (values.nextstaircase == 2 && values.run_up == 0) {
+		trial.start_staircaseup;
+	} 
+]
+
+/recorddata = true // for testing purposes
+</trial>
+
+*************************************************
+Threshold: Selects calibration to perform, records data
+*************************************************
+
+Notes: stores thresholds into data file
+<trial thresholds>
+/ ontrialbegin = [
+	if(values.mode == "GR"){
+		values.ReversalThreshold_GR = (list.down_reversals_GR.median + list.up_reversals_GR.median) / 2;
+	} else if(values.mode == "GB"){
+		values.ReversalThreshold_GB = (list.down_reversals_GB.median + list.up_reversals_GB.median) / 2;
+	} else if(values.mode == "RB"){
+		values.ReversalThreshold_RB = (list.down_reversals_RB.median + list.up_reversals_RB.median) / 2;
+	}
+]
+
+/trialduration = 0
+/recorddata = true
+</trial>
+
+*************************************************
+Staircase DOWN: changing value starts brighter
+*************************************************
+
+Note: trial.start_staircasedown
+* is called before the very first staircase down trial is called (trial.staircase_down) 
+* it sets the startsvalues for the down staircase
+<trial start_staircasedown>
+/ontrialbegin = [
+	values.run_down = 1;
+	values.initial = true;
+
+
+	// set the changing stimulus colour for the start of this staircase trial
+	if(values.mode == "GR"){
+		values.base_colour_R = 255;
+		values.base_colour_G = 0;
+		values.base_colour_B = 0;
+		values.change_colour_R = 0;
+		values.change_colour_G = 255;
+		values.change_colour_B = 0;
+	} else if(values.mode == "GB"){
+		values.base_colour_R = 0;
+		values.base_colour_G = 0;
+		values.base_colour_B = 255;
+		values.change_colour_R = 0;
+		values.change_colour_G = 255;
+		values.change_colour_B = 0;
+	} else if(values.mode == "RB"){
+		values.base_colour_R = 0;
+		values.base_colour_G = 0;
+		values.base_colour_B = 255;
+		values.change_colour_R = 255;
+		values.change_colour_G = 0;
+		values.change_colour_B = 0;
+	}
+	
+	values.change_down = 0;
+	values.generic_colour_down = 255;
+	values.direction_down = 1;
+]
+/timeout = 0
+/branch = [return trial.staircase_down;]
+</trial>
+
+Note:
+- staircase for targets that start out brighter than the base
+- decreases the bright changing colour luminance until a reversal
+then the changing colour luminance increases again
+- stores threshold values = reversal values (midpoint between the last two targetvalues) in list.thresholds_down
+- tracks number of reversals for staircase_down
+
+<trial staircase_down>
+/ontrialbegin = [
+	values.staircase = 1;
+	if (values.direction_down == 1) { // Stimulus brighter than base. Increment the stimulus brightness down
+		values.generic_colour_down -= values.change_down;
+	} else {							// Stimulus dimmer than base. Increment the stimulus brightness up
+		values.generic_colour_down += values.change_down;
+	};
+	// set the changing stimulus colour for the start of this individual trial
+	if(values.mode == "GR"){
+		values.change_colour_G = values.generic_colour_down
+	} else if(values.mode == "GB"){
+		values.change_colour_G = values.generic_colour_down
+	} else if(values.mode == "RB"){
+		values.change_colour_R = values.generic_colour_down
+	}
+]
+/timeout = 0
+
+/ontrialend = [
+	values.change_down = parameters.step; // check the increment value
+	
+	values.direction_helper = values.direction_down;
+	
+	
+
+]
+
+/branch = [return trial.flicker;]
+</trial>
+
+*************************************************
+Staircase UP: target value starts darker
+*************************************************
+Note: trial.start_staircaseup
+* is called before the very first staircase up trial is called (trial.staircase_up) 
+* it sets the startsvalues for the up staircase
+<trial start_staircaseup>
+/ontrialbegin = [
+	values.run_up = 1;
+	values.initial = true;
+	
+	// set the changing stimulus colour for the start of this staircase trial
+	if(values.mode == "GR"){
+		values.base_colour_R = 255;
+		values.base_colour_G = 0;
+		values.base_colour_B = 0;
+		values.change_colour_R = 0;
+		values.change_colour_G = 0;
+		values.change_colour_B = 0;
+	} else if(values.mode == "GB"){
+		values.base_colour_R = 0;
+		values.base_colour_G = 0;
+		values.base_colour_B = 255;
+		values.change_colour_R = 0;
+		values.change_colour_G = 0;
+		values.change_colour_B = 0;
+	} else if(values.mode == "RB"){
+		values.base_colour_R = 0;
+		values.base_colour_G = 0;
+		values.base_colour_B = 255;
+		values.change_colour_R = 0;
+		values.change_colour_G = 0;
+		values.change_colour_B = 0;
+	}
+	
+	values.change_up = 0;
+	values.generic_colour_up = 0;
+	values.direction_up = 2;
+]
+/timeout = 0
+/branch = [
+	return trial.staircase_up;
+]
+</trial>
+
+<trial staircase_up>
+/ontrialbegin = [
+	values.staircase = 2;
+	if (values.direction_up == 1) {
+		values.generic_colour_up -= values.change_up;
+	} else {
+		values.generic_colour_up += values.change_up;
+	};
+	
+	// set the changing stimulus colour for the start of this individual trial
+	if(values.mode == "GR"){
+		values.change_colour_G = values.generic_colour_up
+	} else if(values.mode == "GB"){
+		values.change_colour_G = values.generic_colour_up
+	} else if(values.mode == "RB"){
+		values.change_colour_R = values.generic_colour_up
+	}
+	
+]
+/timeout = 0
+
+/ontrialend =[
+	values.change_up = parameters.step;
+	
+	values.direction_helper = values.direction_up;
+	
+	
+]
+
+/branch = [return trial.flicker;]
+</trial>
+*************************************************
+Flicker - flicker between base and changing stimulus
+*************************************************
+<trial flicker>
+/ stimulusframes = [1=base;2=change]
+/ trialduration = display.refreshinterval * 2 // hard coding trial to 2 frame duration
+/ branch = [
+	if( values.n_flick < values.flicker_number){
+		values.n_flick += 1;
+		return trial.flicker;
+	} else {
+		values.n_flick = 0;
+		if(values.initial){ // skip response for first trial in staircase
+			return trial.pause;
+		}
+		return trial.response;
+	}
+]
+/ recorddata = false // testing
+
+</trial>
+
+<trial pause> // just add a delay between the flicker for the initial stimuli
+/ ontrialbegin = [
+	parameters.step = parameters.initial_step;
+]
+
+/trialduration = display.refreshinterval * 20 // hard coding trial to 2 frame duration
+/ branch = [
+	values.initial = false;
+	if(values.run_down == 1){
+		return trial.staircase_down;
+	} else {
+		return trial.staircase_up;
+	}
+]
+</trial>
+
+<trial response>
+/ stimulusframes = [1=taskinstruct1,taskinstruct2]
+/ validresponse = (parameters.responsekey_less,parameters.responsekey_more)
+/ ontrialend = [
+	parameters.step = parameters.subsequent_step; // shorten steps compared to the initial step
+	
+	if(values.run_down == 1){ // DOWN
+		// if started with stimulus brighter than base & participant responded that flickering got worse on this trial, record & reverse
+		if (values.direction_down == 1 && trial.response.responsetext == parameters.responsekey_more) {
+			values.direction_helper = 2; 
+			values.countreversals_down += 1; 
+			values.reversalthreshold = values.generic_colour_down + 0.5*parameters.step;
+			if(values.mode == "GR"){
+				list.down_reversals_GR.appenditem(values.reversalthreshold);
+			} else if(values.mode == "GB"){
+				list.down_reversals_GB.appenditem(values.reversalthreshold);
+			} else if(values.mode == "RB"){
+				list.down_reversals_RB.appenditem(values.reversalthreshold);
+			}
+			values.run_down = 0; // end staircase
+			// if started with stimulus dimmer than base & participant responded that flickering got worse on this trial, record & reverse
+		} else if (values.direction_down == 2 && trial.response.responsetext == parameters.responsekey_more) {
+			values.direction_helper = 1; 
+			values.countreversals_down += 1; 
+			values.reversalthreshold = values.generic_colour_down - 0.5*parameters.step;
+			if(values.mode == "GR"){
+				list.down_reversals_GR.appenditem(values.reversalthreshold);
+			} else if(values.mode == "GB"){
+				list.down_reversals_GB.appenditem(values.reversalthreshold);
+			} else if(values.mode == "RB"){
+				list.down_reversals_RB.appenditem(values.reversalthreshold);
+			}
+			values.run_down = 0; // end staircase
+		};
+		// set the increment direction for the next trial
+		values.direction_down = values.direction_helper;
+		
+	} else if(values.run_up == 1){ // UP
+		// if started with stimulus brighter than base & participant responded that flickering got worse on this trial, record & reverse
+		if (values.direction_up == 2 && trial.response.responsetext == parameters.responsekey_more) {
+			values.direction_helper = 1; 
+			values.countreversals_up += 1; 
+			values.reversalthreshold = values.generic_colour_up - 0.5*parameters.step;
+			if(values.mode == "GR"){
+				list.up_reversals_GR.appenditem(values.reversalthreshold);
+			} else if(values.mode == "GB"){
+				list.up_reversals_GB.appenditem(values.reversalthreshold);
+			} else if(values.mode == "RB"){
+				list.up_reversals_RB.appenditem(values.reversalthreshold);
+			}
+			values.run_up = 0;
+		} else if (values.direction_up == 1 && trial.response.responsetext == parameters.responsekey_more) {
+			values.direction_helper = 2; 
+			values.countreversals_up += 1; 
+			values.reversalthreshold = values.generic_colour_up + 0.5*parameters.step;
+			if(values.mode == "GR"){
+				list.up_reversals_GR.appenditem(values.reversalthreshold);
+			} else if(values.mode == "GB"){
+				list.up_reversals_GB.appenditem(values.reversalthreshold);
+			} else if(values.mode == "RB"){
+				list.up_reversals_RB.appenditem(values.reversalthreshold);
+			}
+			values.run_up = 0;
+		};
+	// set the increment direction for the next trial
+		values.direction_up = values.direction_helper; 
+	}
+	
+]
+/ branch = [
+	if( (values.run_down == 1) && (values.direction_down == values.direction_helper) ){		// down staircase ongoing
+		return trial.staircase_down;
+	} else if( (values.run_up == 1) && (values.direction_up == values.direction_helper) ) { // up staircase ongoing
+		return trial.staircase_up;
+	}else {	// staircase finished, return to start
+		return trial.staircaseselection; 
+	}
+]
+
+</trial>
+
+*************************************************
+luminancedisplay - verify that reversal thresholds enable the creation of equiluminant stimuli
+*************************************************
+
+<trial luminancedisplay>
+/ stimulusframes = [1=stim1,stim2,stim3,stim4,stim5,stim6,stim7,stim8,stim9,luminant]
+/ validresponse = (57)
+</trial>
+
+*******************************************************************************************************************
+*******************************************************************************************************************
+	BLOCKS
+*******************************************************************************************************************
+*******************************************************************************************************************
+
+
+*****************
+Staircase
+*****************
+
+Note: block.staircase_XX runs one cycle of two interweaved staircases (one starting above and one starting below
+basevalue) with parameters.baselinevalue1
+
+To run further cycles, create separate blocks for each of the baselines.
+change -> /onblockbegin = [values.baseline_value = values.baselinevalue2]
+Go to EXPERIMENT and add the new  cycles
+
+<block staircase>
+/onblockbegin = [
+	
+	if(values.mode == "GR"){
+		values.base_colour_R = 255;
+		values.base_colour_G = 0;
+		values.base_colour_B = 0;
+	} else if(values.mode == "GB"){
+		values.base_colour_R = 0;
+		values.base_colour_G = 0;
+		values.base_colour_B = 255;
+	} else if(values.mode == "RB"){
+		values.base_colour_R = 0;
+		values.base_colour_G = 0;
+		values.base_colour_B = 255;
+	}
+	
+	values.cycles += 1;
+	values.sum_diffthreshold_down = 0; 
+	values.sum_diffthreshold_up = 0;
+	values.countreversals_down = 0; 
+	values.countreversals_up = 0;
+	values.run_down = 0; 
+	values.run_up = 0;
+	values.baseline_value = parameters.baselinevalue1;
+	values.nextstaircase = list.randomstaircase.nextvalue;
+]
+/trials = [1=staircaseselection]
+/onblockend = [
+	values.diffthreshold1 = expressions.diffthreshold;
+	values.mode = "RB"; // do the next one (red vs. blue)
+	
+	values.Rnorm = values.ReversalThreshold_RB / values.B_setting;
+	values.Gnorm = values.ReversalThreshold_GB / values.B_setting;
+	values.Bnorm = values.B_setting/values.B_setting;
+	
+	
+	
+	values.color1 = shape.stim1.color;
+	values.color2 = shape.stim2.color;
+	values.color3 = shape.stim3.color;
+	values.color4 = shape.stim4.color;
+	values.color5 = shape.stim5.color;
+	values.color6 = shape.stim6.color;
+	values.color7 = shape.stim7.color;
+	values.color8 = shape.stim8.color;
+	values.color9 = shape.stim9.color;
+]
+</block>
+
+*****************
+Verification
+*****************
+"""
+luminance_check block runs a trial that asks for verification that the stimuli all appear to be of equivalent luminance
+<block luminancedisplay>
+/ onblockbegin = [
+	// calculate & set renormalised R, G, B luminance values
+	values.Rnorm = values.ReversalThreshold_RB / values.B_setting;
+	values.Gnorm = values.ReversalThreshold_GB / values.B_setting;
+	values.Bnorm = values.B_setting/values.B_setting;
+]
+/ trials = [1=luminancedisplay]
+
+</block>
+"""
+*******************************************************************************************************************
+												End of File
+*******************************************************************************************************************
