@@ -40,7 +40,7 @@ FILL IN
 /file = "survey.iqx"
 /file = "general_stimuli.iqx"
 /file = "trial_type_sequencer.iqx"
-/file = "isoluminance_flicker.iqx"
+/file = "binary_isoluminance_flicker.iqx"
 </include>
 
 *******************************************************************************************************************
@@ -64,9 +64,9 @@ FILL IN
 
 // These three factors are what need to be adjusted for a specific experiment
 
-/radius_central = 0.05 // chosen 0.05 DVA within the 0.2 DVA S-cone scotoma
+/radius_central = 0 // chosen 0.05 DVA within the 0.2 DVA S-cone scotoma
 /radius_peripheral = 1 // chosen 1 DVA outside the S-cone scotoma
-/stimulus_size = 0.0375 // want the stimuli to be comfortably within the scotomoa
+/stimulus_size = 0.05 // want the stimuli to be comfortably within the scotomoa
 
 // This factor can be adjusted if you want to play with the peripheral scaling factor
 /magnify = true // set to 'true' if you want scaling, 'false' if you don't want peripheral scaling
@@ -201,7 +201,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2 = calibration;3=staircase;4=staircase; 5 = instructions; 6-14 = practice; 15 = end_practice; 16-268 = experiment; 269 = followup]
+/ blocks = [1 = consent; 2 = calibration;3=staircase;4=staircase;5=luminancedisplay; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-269 = experiment; 270 = followup]
 / postinstructions = (end)
 </expt>
 
@@ -239,11 +239,11 @@ values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,v
 values.catch_vals,expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
 values.line_size,values.calibration_image_size,
 values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P, values.r_F, values.peripheral_scale, values.radius_central, values.radius_peripheral, values.stimulus_size,
-values.countreversals_down, values.countreversals_up, values.reversalthreshold,
-expressions.diffthreshold_down, expressions.diffthreshold_up, expressions.diffthreshold,
-shape.base.color, shape.change.color, values.mode,
-values.n_flick, values.flicker_number, values.initial,
-values.base_colour_R,values.base_colour_G,values.base_colour_B,values.change_colour_R,values.change_colour_G,values.change_colour_B,
+
+values.mode,values.n_staircase, values.run_over,
+values.n_flick, values.flicker_number, values.initial, list.LR.currentvalue, list.LR.nextvalue, values.stair_direction, values.direction, values.n_trials, values.n_reversals, trial.response.responsetext, values.temp, values.step_helper,
+values.generic_colour_current, values.generic_colour_previous,
+values.mode, values.left_colour_R, values.left_colour_G, values.left_colour_B, values.right_colour_R, values.right_colour_G, values.right_colour_B
 values.ReversalThreshold_GR, values.ReversalThreshold_GB, values.ReversalThreshold_RB,
 values.Rnorm,values.Gnorm,values.Bnorm,
 shape.stim1.color,shape.stim2.color,shape.stim3.color,shape.stim4.color,shape.stim5.color,shape.stim6.color,shape.stim7.color,shape.stim8.color,shape.stim9.color,
