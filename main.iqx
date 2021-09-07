@@ -109,6 +109,17 @@ FILL IN
 // debugging aids
 /sequence_number = -1 // debugging aid
 /order_num = -1 // debugging aid
+
+// specify the colours
+/color1 = "000000"
+/color2 = "000000"
+/color3 = "000000"
+/color4 = "000000"
+/color5 = "000000"
+/color6 = "000000"
+/color7 = "000000"
+/color8 = "000000"
+/color9 = "000000"
 </values>
 
 *******************************************************************************************************************
@@ -125,7 +136,7 @@ FILL IN
 
 ** counter to run the main trials
 <counter sequence>
-/ select = noreplace(1-253)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
+/ select = noreplace(1-172)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
 / selectionrate = block
 </counter>
 
@@ -133,7 +144,7 @@ FILL IN
 ** from 1 to stimuli^2 * condition number (e.g. 3 for FF, FP, PP)
 ** during
 <counter order_during>
-/ select = noreplace(1-243)
+/ select = noreplace(1-162)
 / selectionrate = block
 </counter>
 
@@ -145,7 +156,7 @@ FILL IN
 
 *********** practice trial versions of the counters
 <counter order_during_practice>
-/ select = noreplace(1-243) // change
+/ select = noreplace(1-162) // change
 / selectionrate = block
 </counter>
 
@@ -201,7 +212,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2 = calibration;3=staircase;4=staircase;5=luminancedisplay; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-269 = experiment; 270 = followup]
+/ blocks = [1 = consent; 2=staircase;3=staircase;4=luminancedisplay;5 = calibration; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-269 = experiment; 270 = followup]
 / postinstructions = (end)
 </expt>
 

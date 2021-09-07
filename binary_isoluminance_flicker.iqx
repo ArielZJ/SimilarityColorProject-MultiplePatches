@@ -39,6 +39,12 @@ ________________________________________________________________________________
 
 
 </usermanual>
+
+<include >
+/file = "main.iqx"
+
+</include>
+
 **************************************************************************************************************
 **************************************************************************************************************
 	EDITABLE PARAMETERS: change editable parameters here
@@ -211,28 +217,28 @@ Please press CTRL-Q to quit the experiment.")
 <shape base_left>
 /shape = circle
 /color = (values.base_colour_R, values.base_colour_G, values.base_colour_B)
-/size = (30%*3/4, 30%)
+/size = (30%*9/16, 30%)
 /position = (values.left_x, values.left_y)
 </shape>
 
 <shape change_left>
 /shape = circle
 /color = (values.left_colour_R, values.left_colour_G, values.left_colour_B)
-/size = (30%*3/4, 30%)
+/size = (30%*9/16, 30%)
 /position = (values.left_x, values.left_y)
 </shape>
 
 <shape base_right>
 /shape = circle
 /color = (values.base_colour_R, values.base_colour_G, values.base_colour_B)
-/size = (30%*3/4, 30%)
+/size = (30%*9/16, 30%)
 /position = (values.right_x, values.right_y)
 </shape>
 
 <shape change_right>
 /shape = circle
 /color = (values.right_colour_R, values.right_colour_G, values.right_colour_B)
-/size = (30%*3/4, 30%)
+/size = (30%*9/16, 30%)
 /position = (values.right_x, values.right_y)
 </shape>
 
@@ -242,64 +248,64 @@ Stimuli for the equiluminance check
 
 <shape stim1>
 /shape = circle
-/color = (floor( (0.5 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor( (1 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (25,25)
 </shape>
 
 <shape stim2>
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.5 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (50,25)
 </shape>
 
 <shape stim3>
 /shape = circle
-/color = (floor((0.5 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.5 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((1 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (75,25)
 </shape>
 
 <shape stim4>
 /shape = circle
-/color = (floor((0.4 *values.B_setting) * values.Rnorm),floor( (0.6 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.67 *values.B_setting) * values.Rnorm),floor( (0.34 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (25,50)
 </shape>
 
 <shape stim5> //problem
 /shape = circle
-/color = (floor((0.0 *values.B_setting)* values.Rnorm),floor( (0.4 *values.B_setting) * values.Gnorm),floor((0.6 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.0 *values.B_setting)* values.Rnorm),floor( (0.67 *values.B_setting) * values.Gnorm),floor((0.34 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (50,50)
 </shape>
 
 <shape stim6> //problem
 /shape = circle
-/color = (floor((0.6 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.4 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.34 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.67 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (75,50)
 </shape>
 
 <shape stim7>
 /shape = circle
-/color = (floor((0.6 *values.B_setting) * values.Rnorm),floor( (0.4 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.34 *values.B_setting) * values.Rnorm),floor( (0.67 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (25,75)
 </shape>
 
 <shape stim8> //problem
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (0.6 *values.B_setting) * values.Gnorm),floor((0.4 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (0.34 *values.B_setting) * values.Gnorm),floor((0.67 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (50,75)
 </shape>
 
 <shape stim9> //problem
 /shape = circle
-/color = (floor((0.4 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.6 *values.B_setting) * values.Bnorm ))
-/size = (10%*3/4, 10%)
+/color = (floor((0.67 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.34 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
 /position = (75,75)
 </shape>
 
@@ -708,6 +714,17 @@ luminance_check block runs a trial that asks for verification that the stimuli a
 	values.Rnorm = values.ReversalThreshold_RB / values.B_setting;
 	values.Gnorm = values.ReversalThreshold_GB / values.B_setting;
 	values.Bnorm = values.B_setting/values.B_setting;
+	
+	// set the colors for the main experiment
+	values.color1 = shape.stim1.color;
+	values.color2 = shape.stim2.color;
+	values.color3 = shape.stim3.color;
+	values.color4 = shape.stim4.color;
+	values.color5 = shape.stim5.color;
+	values.color6 = shape.stim6.color;
+	values.color7 = shape.stim7.color;
+	values.color8 = shape.stim8.color;
+	values.color9 = shape.stim9.color;
 ]
 / trials = [1=luminancedisplay]
 
