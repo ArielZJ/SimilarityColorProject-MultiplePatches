@@ -255,56 +255,56 @@ Stimuli for the equiluminance check
 
 <shape stim2>
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.875 *values.B_setting) * values.Rnorm),floor( (0.125 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (50,25)
 </shape>
 
 <shape stim3>
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((1 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.75 *values.B_setting) * values.Rnorm),floor( (0.25 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (75,25)
 </shape>
 
 <shape stim4>
 /shape = circle
-/color = (floor((0.67 *values.B_setting) * values.Rnorm),floor( (0.34 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.625 *values.B_setting) * values.Rnorm),floor( (0.375 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (25,50)
 </shape>
 
 <shape stim5> //problem
 /shape = circle
-/color = (floor((0.0 *values.B_setting)* values.Rnorm),floor( (0.67 *values.B_setting) * values.Gnorm),floor((0.34 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.5 *values.B_setting)* values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (50,50)
 </shape>
 
 <shape stim6> //problem
 /shape = circle
-/color = (floor((0.34 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.67 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.375 *values.B_setting) * values.Rnorm),floor( (0.675 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (75,50)
 </shape>
 
 <shape stim7>
 /shape = circle
-/color = (floor((0.34 *values.B_setting) * values.Rnorm),floor( (0.67 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.25 *values.B_setting) * values.Rnorm),floor( (0.75 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (25,75)
 </shape>
 
 <shape stim8> //problem
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (0.34 *values.B_setting) * values.Gnorm),floor((0.67 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.125 *values.B_setting) * values.Rnorm),floor( (0.875 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (50,75)
 </shape>
 
 <shape stim9> //problem
 /shape = circle
-/color = (floor((0.67 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.34 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
 /position = (75,75)
 </shape>

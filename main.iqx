@@ -96,7 +96,7 @@ FILL IN
 /response_time = 0
 /temp = 0
 
-/number_of_patch = 243
+/number_of_patch = 162
 /number_of_patch_practice = 9
 
 // timing & display control
@@ -212,7 +212,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2=staircase;3=staircase;4=luminancedisplay;5 = calibration; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-269 = experiment; 270 = followup]
+/ blocks = [1 = consent; 2=staircase;3=staircase;4=luminancedisplay;5 = calibration; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-188 = experiment; 189 = followup]
 / postinstructions = (end)
 </expt>
 
