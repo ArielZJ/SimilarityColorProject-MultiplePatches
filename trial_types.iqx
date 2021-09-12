@@ -157,9 +157,18 @@
 		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "8"){
 			shape.F1.color = values.color8;
 			values.Color_1 = 8;
-		}else{
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "9"){
 			shape.F1.color = values.color9;
 			values.Color_1 = 9;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "10"){
+			shape.F1.color = values.color10;
+			values.Color_1 = 10;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "11"){
+			shape.F1.color = values.color11;
+			values.Color_1 = 11;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "12"){
+			shape.F1.color = values.color12;
+			values.Color_1 = 12;
 		}
 		
 		if(item.present_during_colour2.item(counter.order_during.selectedvalue) == "1"){
@@ -186,9 +195,18 @@
 		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "8"){
 			shape.F2.color = values.color8;
 			values.Color_2 = 8;
-		}else{
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "9"){
 			shape.F2.color = values.color9;
 			values.Color_2 = 9;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "10"){
+			shape.F2.color = values.color10;
+			values.Color_2 = 10;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "11"){
+			shape.F2.color = values.color11;
+			values.Color_2 = 11;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "12"){
+			shape.F2.color = values.color12;
+			values.Color_2 = 12;
 		}
 		
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery	
@@ -225,9 +243,18 @@
 		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "8"){
 			shape.F1.color = values.color8;
 			values.Color_1 = 8;
-		}else{
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "9"){
 			shape.F1.color = values.color9;
 			values.Color_1 = 9;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "10"){
+			shape.F1.color = values.color10;
+			values.Color_1 = 10;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "11"){
+			shape.F1.color = values.color11;
+			values.Color_1 = 11;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "12"){
+			shape.F1.color = values.color12;
+			values.Color_1 = 12;
 		}
 		
 		if(item.present_during_colour2.item(counter.order_during.selectedvalue) == "1"){
@@ -254,9 +281,18 @@
 		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "8"){
 			shape.P1.color = values.color8;
 			values.Color_2 = 8;
-		}else{
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "9"){
 			shape.P1.color = values.color9;
 			values.Color_2 = 9;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "10"){
+			shape.P1.color = values.color10;
+			values.Color_2 = 10;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "11"){
+			shape.P1.color = values.color11;
+			values.Color_2 = 11;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "12"){
+			shape.P1.color = values.color12;
+			values.Color_2 = 12;
 		}
 		
 	// see above for documentation. Inquisit doesn't allow functions, so have to specify everything again for Fovea-Periphery
@@ -294,9 +330,18 @@
 		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "8"){
 			shape.P1.color = values.color8;
 			values.Color_1 = 8;
-		}else{
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "9"){
 			shape.P1.color = values.color9;
 			values.Color_1 = 9;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "10"){
+			shape.P1.color = values.color10;
+			values.Color_1 = 10;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "11"){
+			shape.P1.color = values.color11;
+			values.Color_1 = 11;
+		}else if (item.present_during_colour1.item(counter.order_during.selectedvalue) == "12"){
+			shape.P1.color = values.color12;
+			values.Color_1 = 12;
 		}
 		
 		if(item.present_during_colour2.item(counter.order_during.selectedvalue) == "1"){
@@ -323,9 +368,18 @@
 		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "8"){
 			shape.P2.color = values.color8;
 			values.Color_2 = 8;
-		}else{
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "9"){
 			shape.P2.color = values.color9;
 			values.Color_2 = 9;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "10"){
+			shape.P2.color = values.color10;
+			values.Color_2 = 10;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "11"){
+			shape.P2.color = values.color11;
+			values.Color_2 = 11;
+		}else if (item.present_during_colour2.item(counter.order_during.selectedvalue) == "12"){
+			shape.P2.color = values.color12;
+			values.Color_2 = 12;
 		}
 	}
 	

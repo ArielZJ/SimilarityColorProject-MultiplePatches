@@ -96,7 +96,7 @@ FILL IN
 /response_time = 0
 /temp = 0
 
-/number_of_patch = 162
+/number_of_patch = 288
 /number_of_patch_practice = 9
 
 // timing & display control
@@ -120,6 +120,9 @@ FILL IN
 /color7 = "000000"
 /color8 = "000000"
 /color9 = "000000"
+/color10 = "000000"
+/color11 = "000000"
+/color12 = "000000"
 </values>
 
 *******************************************************************************************************************
@@ -136,7 +139,7 @@ FILL IN
 
 ** counter to run the main trials
 <counter sequence>
-/ select = noreplace(1-172)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
+/ select = noreplace(1-298)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
 / selectionrate = block
 </counter>
 
@@ -144,7 +147,7 @@ FILL IN
 ** from 1 to stimuli^2 * condition number (e.g. 3 for FF, FP, PP)
 ** during
 <counter order_during>
-/ select = noreplace(1-162)
+/ select = noreplace(1-288)
 / selectionrate = block
 </counter>
 
@@ -156,7 +159,7 @@ FILL IN
 
 *********** practice trial versions of the counters
 <counter order_during_practice>
-/ select = noreplace(1-162) // change
+/ select = noreplace(1-288) // change
 / selectionrate = block
 </counter>
 
@@ -212,7 +215,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2=staircase;3=staircase;4=luminancedisplay;5 = calibration; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-188 = experiment; 189 = followup]
+/ blocks = [1 = consent; 2=staircase;3=staircase;4=luminancedisplay;5 = calibration; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-305 = experiment; 306 = followup]
 / postinstructions = (end)
 </expt>
 
@@ -257,7 +260,7 @@ values.generic_colour_current, values.generic_colour_previous,
 values.mode, values.left_colour_R, values.left_colour_G, values.left_colour_B, values.right_colour_R, values.right_colour_G, values.right_colour_B
 values.ReversalThreshold_GR, values.ReversalThreshold_GB, values.ReversalThreshold_RB,
 values.Rnorm,values.Gnorm,values.Bnorm,
-shape.stim1.color,shape.stim2.color,shape.stim3.color,shape.stim4.color,shape.stim5.color,shape.stim6.color,shape.stim7.color,shape.stim8.color,shape.stim9.color,
+shape.stim1.color,shape.stim2.color,shape.stim3.color,shape.stim4.color,shape.stim5.color,shape.stim6.color,shape.stim7.color,shape.stim8.color,shape.stim9.color,shape.stim10.color,shape.stim11.color,shape.stim12.color
 ]
  /separatefiles = true
 </data>

@@ -250,65 +250,87 @@ Stimuli for the equiluminance check
 /shape = circle
 /color = (floor( (1 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (25,25)
+/position = (20,25)
 </shape>
 
 <shape stim2>
 /shape = circle
 /color = (floor((0.875 *values.B_setting) * values.Rnorm),floor( (0.125 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (50,25)
+/position = (40,25)
 </shape>
 
 <shape stim3>
 /shape = circle
 /color = (floor((0.75 *values.B_setting) * values.Rnorm),floor( (0.25 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (75,25)
+/position = (60,25)
 </shape>
 
 <shape stim4>
 /shape = circle
 /color = (floor((0.625 *values.B_setting) * values.Rnorm),floor( (0.375 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (25,50)
+/position = (80,25)
 </shape>
 
-<shape stim5> //problem
+<shape stim5> 
 /shape = circle
 /color = (floor((0.5 *values.B_setting)* values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (50,50)
+/position = (20,50)
 </shape>
 
-<shape stim6> //problem
+<shape stim6> 
 /shape = circle
 /color = (floor((0.375 *values.B_setting) * values.Rnorm),floor( (0.675 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (75,50)
+/position = (40,50)
 </shape>
 
 <shape stim7>
 /shape = circle
 /color = (floor((0.25 *values.B_setting) * values.Rnorm),floor( (0.75 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (25,75)
+/position = (60,50)
 </shape>
 
-<shape stim8> //problem
+<shape stim8> 
 /shape = circle
 /color = (floor((0.125 *values.B_setting) * values.Rnorm),floor( (0.875 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (50,75)
+/position = (80,50)
 </shape>
 
-<shape stim9> //problem
+<shape stim9> 
 /shape = circle
 /color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (75,75)
+/position = (20,75)
 </shape>
 
+// adjust colour of 10-12
+
+<shape stim10> 
+/shape = circle
+/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
+/position = (40,75)
+</shape>
+
+<shape stim11> 
+/shape = circle
+/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
+/position = (60,75)
+</shape>
+
+<shape stim12> 
+/shape = circle
+/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/size = (10%*9/16, 10%)
+/position = (80,75)
+</shape>
 *******************************************************************************************************************
 *******************************************************************************************************************
 	LISTS
@@ -725,6 +747,9 @@ luminance_check block runs a trial that asks for verification that the stimuli a
 	values.color7 = shape.stim7.color;
 	values.color8 = shape.stim8.color;
 	values.color9 = shape.stim9.color;
+	values.color10 = shape.stim10.color;
+	values.color11 = shape.stim11.color;
+	values.color12 = shape.stim12.color;
 ]
 / trials = [1=luminancedisplay]
 
