@@ -215,7 +215,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2=staircase;3=staircase;4=luminancedisplay;5 = calibration; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-313 = experiment; 314 = followup]
+/ blocks = [1 = consent; 2=staircase;3=staircase;4=luminancedisplay;5 = calibration; 6 = instructions; 7-15 = practice; 16 = end_practice; 17-314 = experiment; 315 = followup]
 / postinstructions = (end)
 </expt>
 
