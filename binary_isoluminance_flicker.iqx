@@ -61,8 +61,8 @@ ________________________________________________________________________________
 /step = 50 // initial step value, gets reduced with each reversal
 
 // increase for higher accuracy, slower calibration
-/max_n_staircase = 6
-/max_n_reversals = 4
+/max_n_staircase = 2 // set to 6
+/max_n_reversals = 2 // set to 4
 /max_run_over = 2 // max times a participant can run off the edge
 </parameters>
 
@@ -248,88 +248,86 @@ Stimuli for the equiluminance check
 
 <shape stim1>
 /shape = circle
-/color = (floor( (1 *values.B_setting) * values.Rnorm),floor( (0.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor( (0.00 *values.B_setting) * values.Rnorm),floor( (1.00 *values.B_setting) * values.Gnorm),floor((0.00 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (20,25)
+/position = (20,10)
 </shape>
 
 <shape stim2>
 /shape = circle
-/color = (floor((0.875 *values.B_setting) * values.Rnorm),floor( (0.125 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.00 *values.B_setting) * values.Rnorm),floor( (0.50*values.B_setting) * values.Gnorm),floor((0.50 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (40,25)
+/position = (40,10)
 </shape>
 
 <shape stim3>
 /shape = circle
-/color = (floor((0.75 *values.B_setting) * values.Rnorm),floor( (0.25 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.00 *values.B_setting) * values.Rnorm),floor( (0.00 *values.B_setting) * values.Gnorm),floor((1.00 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (60,25)
+/position = (60,10)
 </shape>
 
 <shape stim4>
 /shape = circle
-/color = (floor((0.625 *values.B_setting) * values.Rnorm),floor( (0.375 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.15 *values.B_setting) * values.Rnorm),floor( (0.15 *values.B_setting) * values.Gnorm),floor((0.7 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (80,25)
+/position = (80,10)
 </shape>
 
 <shape stim5> 
 /shape = circle
-/color = (floor((0.5 *values.B_setting)* values.Rnorm),floor( (0.5 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.10 *values.B_setting)* values.Rnorm),floor( (0.80 *values.B_setting) * values.Gnorm),floor((0.10 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (20,50)
+/position = (20,35)
 </shape>
 
 <shape stim6> 
 /shape = circle
-/color = (floor((0.375 *values.B_setting) * values.Rnorm),floor( (0.675 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.34 *values.B_setting) * values.Rnorm),floor( (0.67 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (40,50)
+/position = (40,35)
 </shape>
 
 <shape stim7>
 /shape = circle
-/color = (floor((0.25 *values.B_setting) * values.Rnorm),floor( (0.75 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.4 *values.B_setting) * values.Rnorm),floor( (0.4 *values.B_setting) * values.Gnorm),floor((0.2 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (60,50)
+/position = (60,35)
 </shape>
 
 <shape stim8> 
 /shape = circle
-/color = (floor((0.125 *values.B_setting) * values.Rnorm),floor( (0.875 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.50 *values.B_setting) * values.Rnorm),floor( (0.50 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (80,50)
+/position = (80,35)
 </shape>
 
 <shape stim9> 
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.67 *values.B_setting) * values.Rnorm),floor( (0.34 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (20,75)
+/position = (20,60)
 </shape>
-
-// adjust colour of 10-12
 
 <shape stim10> 
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.80 *values.B_setting) * values.Rnorm),floor( (0.10 *values.B_setting) * values.Gnorm),floor((0.10 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (40,75)
+/position = (40,60)
 </shape>
 
 <shape stim11> 
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((1.0 *values.B_setting) * values.Rnorm),floor( (0.00 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (60,75)
+/position = (60,60)
 </shape>
 
 <shape stim12> 
 /shape = circle
-/color = (floor((0.0 *values.B_setting) * values.Rnorm),floor( (1.0 *values.B_setting) * values.Gnorm),floor((0.0 *values.B_setting) * values.Bnorm ))
+/color = (floor((0.50 *values.B_setting) * values.Rnorm),floor( (0.00 *values.B_setting) * values.Gnorm),floor((0.50 *values.B_setting) * values.Bnorm ))
 /size = (10%*9/16, 10%)
-/position = (80,75)
+/position = (80,60)
 </shape>
 *******************************************************************************************************************
 *******************************************************************************************************************
@@ -671,7 +669,7 @@ luminancedisplay - verify that reversal thresholds enable the creation of equilu
 *************************************************
 
 <trial luminancedisplay>
-/ stimulusframes = [1=stim1,stim2,stim3,stim4,stim5,stim6,stim7,stim8,stim9,luminant]
+/ stimulusframes = [1=stim1,stim2,stim3,stim4,stim5,stim6,stim7,stim8,stim9,stim10,stim11,stim12,luminant]
 / validresponse = (parameters.same,parameters.different)
 </trial>
 
