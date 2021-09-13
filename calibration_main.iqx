@@ -699,7 +699,8 @@ Blocks
 				values.radius_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; 
 				values.radius_P = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_peripheral;
 				values.r_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.stimulus_size;
-				values.R_P = 1px * values.peripheral_scale * values.r_F;]
+				values.R_P = 1px * values.peripheral_scale * values.r_F;
+				]
 </block>
 
 

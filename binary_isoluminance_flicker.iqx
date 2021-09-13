@@ -61,9 +61,9 @@ ________________________________________________________________________________
 /step = 50 // initial step value, gets reduced with each reversal
 
 // increase for higher accuracy, slower calibration
-/max_n_staircase = 2 // set to 6
-/max_n_reversals = 2 // set to 4
-/max_run_over = 2 // max times a participant can run off the edge
+/max_n_staircase = 4 // set to 6
+/max_n_reversals = 4 // set to 4
+/max_run_over = 4 // max times a participant can run off the edge
 </parameters>
 
 **************************************************************************************************************

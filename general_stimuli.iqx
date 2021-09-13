@@ -28,7 +28,7 @@
 	/ position = (values.x,values.y)
 	/ color = snow
 	/ txbgcolor = (127, 127, 127)
-	/ fontstyle = ("Arial",50pt)
+	/ fontstyle = ("Arial",25pt)
 </text>
 
 <text catch>
