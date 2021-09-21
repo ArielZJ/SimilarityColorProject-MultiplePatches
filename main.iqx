@@ -60,12 +60,13 @@ FILL IN
 
 ********** Main factors to be optimised here **************
 <values>
-/peripheral_scale = 4.5 // scaling factor for peripheral stimuli, chosen based on Freeman & Simoncelli 2011 fig 1.
-/radius_central = 1 // arbitrarily chosen 1 DVA
-/radius_peripheral = 10 // arbitrarily chosen 10 DVA
+/radius_central = 5 // spacing between stimuli
 /stimulus_size = 0.5 // arbitarily chosen 0.5 DVA
 
 // ************* main factors to be optimised above ************
+/radius_peripheral = -999 // 
+/peripheral_scale = -999 // 
+
 
 // need to limit the colours displayed for this test, come back to this
 /color1 = #ff0000
@@ -97,13 +98,16 @@ FILL IN
 /response_time = 0
 /temp = 0
 
-/number_of_patch = 243
+/number_of_patch = 324
 /number_of_patch_practice = 9
 
 // timing & display control
+/fixation_duration = 500
+/stimulus_duration = 125
+/gap_duration = 1000
+/trial_timeout = 2250
+
 /patch_timeout = 250
-/stim_cue_gap = 100
-/cue_time = 250
 
 /trial_type = ""
 
@@ -126,7 +130,7 @@ FILL IN
 
 ** counter to run the main trials
 <counter sequence>
-/ select = noreplace(1-253)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
+/ select = noreplace(1-334)  // 243 main trials + 10 catch trials = 253 total trials. Should match the number of trials in 'experiment'
 / selectionrate = block
 </counter>
 
@@ -134,7 +138,7 @@ FILL IN
 ** from 1 to stimuli^2 * condition number (e.g. 3 for FF, FP, PP)
 ** during
 <counter order_during>
-/ select = noreplace(1-243)
+/ select = noreplace(1-324)
 / selectionrate = block
 </counter>
 
@@ -146,7 +150,7 @@ FILL IN
 
 *********** practice trial versions of the counters
 <counter order_during_practice>
-/ select = noreplace(1-243) // change
+/ select = noreplace(1-324) // change
 / selectionrate = block
 </counter>
 
@@ -202,7 +206,7 @@ FILL IN
 
 <expt main>
 / preinstructions = (start)
-/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4-12 = practice; 13 = end_practice; 14-266 = experiment; 267 = followup]
+/ blocks = [1 = consent; 2 = calibration; 3 = instructions; 4-12 = practice; 13 = end_practice; 14-347 = experiment; 348 = followup]
 / postinstructions = (end)
 </expt>
 
@@ -236,7 +240,6 @@ latency: 						the response latency (in ms)
 response, correct, latency,
 subject,values.trial_number, values.sequence_number, values.order_num, values.trial_type,values.Cross_position,values.Circle_1,values.Position_1,values.Color_1,
 values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.similarity,values.response_time,
-values.angle_1,values.angle_2,values.angle_3,values.angle_4,values.angle_1_cue,values.angle_2_cue,values.angle_3_cue,values.angle_4_cue,
 values.catch_vals,expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
 values.line_size,values.calibration_image_size,
 values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P, values.r_F, values.peripheral_scale
