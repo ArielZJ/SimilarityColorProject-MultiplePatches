@@ -63,11 +63,14 @@
 </text>
 
 <text Instruction_Page_1>
-/ items = ("Throughout the experiment, focus on the cross at the centre
-of the screen.
-2 circles will flash out quickly somewhere on the screen")
+/ items = ("On each trial, five things will happen in sequence:
+1. A cross will appear. STARE AT THE CROSS.
+2. A coloured circle will appear. DO NOT MOVE YOUR EYES TO THE CIRCLE. Keep staring at the cross.
+3. The screen will go blank.
+4. Another cross will appear. STARE AT THE CROSS.
+5. Another coloured circle will appear. DO NOT MOVE YOUR EYES TO THE CIRCLE. Keep staring at the cross.")
 / hposition = 50%
-/ vposition = 70%
+/ vposition = 60%
 / fontstyle = ("Arial", 3%, true)
 / txbgcolor = (127,127,127)
 / txcolor = yellow
@@ -75,7 +78,7 @@ of the screen.
 
 
 <video Instruction_Page_1_gif> // fix
-/ items = ("2stimuli.gif")
+/ items = ("move_fovea_screen_stimulus.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
@@ -84,12 +87,12 @@ of the screen.
 
 
 <text Instruction_Page_2>
-/ items = ("Sometimes you will need to decide the similarity level of the colour of the 2 circles. Ignore any size differences.
+/ items = ("On most trials, you will need to decide the similarity level of the colour of the 2 circles you just saw.
 
 0 => most similar colour (least different colour)
 7 => most different colour (least similar colour)
 
-After choosing, move your cursor back to the centre and click the  box to continue")
+After choosing, move your cursor back to the centre and click the box to continue")
 / hposition = 50%
 / vposition = 70%
 / fontstyle = ("Arial", 3%, true)
@@ -98,7 +101,7 @@ After choosing, move your cursor back to the centre and click the  box to contin
 </text>
 
 <video Instruction_Page_2_gif> // fix
-/ items = ("2stimuli_response.gif")
+/ items = ("move_fovea_screen_response.gif")
 / hposition = 50%
 / vposition = 30%
 / loop = true
