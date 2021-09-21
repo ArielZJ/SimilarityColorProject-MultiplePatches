@@ -62,6 +62,7 @@ FILL IN
 <values>
 /radius_central = 5 // spacing between stimuli
 /stimulus_size = 0.5 // arbitarily chosen 0.5 DVA
+/stimulus_radius = 0.5
 
 // ************* main factors to be optimised above ************
 /radius_peripheral = -999 // 
@@ -242,7 +243,7 @@ subject,values.trial_number, values.sequence_number, values.order_num, values.tr
 values.Circle_2,values.Position_2,values.Color_2,values.Position_3,values.Color_3,values.Position_4,values.Color_4,values.similarity,values.response_time,
 values.catch_vals,expressions.ratio_pxpermm, values.screen_size_x, values.screen_size_y, values.viewer_distance,
 values.line_size,values.calibration_image_size,
-values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P, values.r_F, values.peripheral_scale
+values.DVA_to_distance,values.ratio_pxpermm,values.radius_F, values.radius_P, values.r_F, values.peripheral_scale, values.stimulus_radius
 ]
  /separatefiles = true
 </data>
