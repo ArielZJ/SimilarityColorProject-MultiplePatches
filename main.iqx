@@ -68,15 +68,16 @@ FILL IN
 // ************* main factors to be optimised above ************
 
 // need to limit the colours displayed for this test, come back to this
-/color1 = #ff0000
-/color2 = #ffaa00
-/color3 = #aaff00
-/color4 = #00ff00
-/color5 = #00ffa9
-/color6 = #00a9ff
-/color7 = #0000ff
-/color8 = #aa00ff
-/color9 = #ff00aa
+// from saturated Red to desaturated red
+/color1 = #FFFFFF
+/color2 = #FFDFDF
+/color3 = #FFBFBF
+/color4 = #FF9F9F
+/color5 = #FF8080
+/color6 = #FF6060
+/color7 = #FF4040
+/color8 = #FF2D2D
+/color9 = #FF0000
 
 // various counters and such
 /trial_number = 0
